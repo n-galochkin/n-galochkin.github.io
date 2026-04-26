@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIKITA GALOCHKIN · CAREER PROFILE</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:       #0b0d0f;
+  --bg2:      #111519;
+  --panel:    #14181e;
+  --panel2:   #1c222b;
+  --panel3:   #222a35;
+  --orange:   #e8a22a;
+  --orange2:  #f5b94a;
+  --orange-d: #8c5a0a;
+  --orange-bg:rgba(232,162,42,0.08);
+  --text:     #dde4ec;
+  --muted:    #5a6b7a;
+  --muted2:   #8a9bac;
+  --border:   rgba(232,162,42,0.22);
+  --border2:  rgba(255,255,255,0.06);
+  --green:    #4da870;
+  --red:      #c84848;
+  --blue:     #4a80c8;
+}
+
+html{scroll-behavior:smooth}
+body{
+  font-family:'Barlow',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  min-height:100vh;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#080a0c}
+::-webkit-scrollbar-thumb{background:var(--orange-d)}
+
+/* ─── GLOBAL SCAN-LINE OVERLAY ─── */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  pointer-events:none;z-index:0;
+  background:repeating-linear-gradient(
+    0deg,
+    transparent,transparent 3px,
+    rgba(0,0,0,0.08) 3px,rgba(0,0,0,0.08) 4px
+  );
+}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:52px;
+  background:#0b0d0f;
+  border-bottom:1px solid var(--border2);
+  display:flex;align-items:center;
+  padding:0 2rem;
+  gap:0;
+}
+.nav-logo{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:1.05rem;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--orange);text-decoration:none;
+  margin-right:3rem;
+}
+.nav-logo span{color:var(--text)}
+
+.nav-tabs{display:flex;height:100%}
+.nav-tab{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;font-size:0.78rem;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted2);text-decoration:none;
+  padding:0 1.4rem;
+  display:flex;align-items:center;
+  border-bottom:2px solid transparent;
+  transition:all 0.15s;
+}
+.nav-tab:hover{color:var(--text);border-bottom-color:var(--orange-d)}
+.nav-tab.active{color:var(--orange);border-bottom-color:var(--orange)}
+
+.nav-hire{
+  margin-left:auto;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:0.75rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  background:var(--orange);color:#080a0c;
+  padding:0.4rem 1.2rem;
+  text-decoration:none;
+  clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition:background 0.15s;
+}
+.nav-hire:hover{background:var(--orange2)}
+
+/* ─── HERO / PROFILE SCREEN ─── */
+.profile-screen{
+  min-height:100vh;
+  display:flex;
+  padding-top:52px;
+  position:relative;
+  z-index:1;
+}
+
+/* LEFT PANEL */
+.player-panel{
+  width:300px;flex-shrink:0;
+  background:var(--panel);
+  border-right:1px solid var(--border2);
+  display:flex;flex-direction:column;
+  position:relative;
+}
+.player-panel::after{
+  content:'';
+  position:absolute;top:0;right:0;
+  width:1px;height:100%;
+  background:linear-gradient(to bottom,var(--orange),transparent 60%);
+  opacity:0.4;
+}
+
+/* RANK BADGE AREA */
+.rank-block{
+  padding:2rem 1.5rem 1.5rem;
+  border-bottom:1px solid var(--border2);
+  display:flex;flex-direction:column;align-items:center;
+  gap:0.5rem;
+  background:linear-gradient(180deg,rgba(232,162,42,0.05) 0%,transparent 100%);
+}
+.rank-badge{
+  width:80px;height:80px;
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+}
+.rank-badge-diamond{
+  width:64px;height:64px;
+  background:linear-gradient(135deg,#1c222b,#252d38);
+  border:2px solid var(--orange);
+  transform:rotate(45deg);
+  position:relative;
+  box-shadow:0 0 20px rgba(232,162,42,0.25),inset 0 0 15px rgba(0,0,0,0.5);
+}
+.rank-badge-diamond::before{
+  content:'C';
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:1.6rem;
+  color:var(--orange2);
+  transform:rotate(-45deg);
+}
+.rank-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:0.72rem;
+  letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--orange);
+}
+.rank-tier{
+  font-size:0.65rem;color:var(--muted);
+  letter-spacing:0.1em;text-transform:uppercase;
+  font-family:'Barlow Condensed',sans-serif;
+}
+
+/* AVATAR */
+.avatar-block{
+  padding:1.5rem;
+  display:flex;flex-direction:column;align-items:center;
+  border-bottom:1px solid var(--border2);
+}
+.avatar-frame{
+  width:160px;height:180px;
+  background:var(--panel2);
+  border:1px solid var(--border2);
+  position:relative;
+  overflow:hidden;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;
+}
+.avatar-frame::before{
+  content:'';position:absolute;
+  bottom:0;left:0;right:0;height:3px;
+  background:var(--orange);
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 100%,0 100%);
+}
+.avatar-letter{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:5rem;font-weight:800;
+  color:var(--muted);opacity:0.4;
+  user-select:none;
+}
+.avatar-online{
+  display:flex;align-items:center;gap:0.5rem;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--green);
+}
+.online-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--green);
+  animation:blink 2s infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* PLAYER META */
+.player-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:1.6rem;
+  letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--text);text-align:center;
+  line-height:1;margin-bottom:0.2rem;
+}
+.player-class{
+  font-size:0.78rem;color:var(--muted2);
+  text-align:center;font-family:'Barlow Condensed',sans-serif;
+  letter-spacing:0.08em;text-transform:uppercase;
+  margin-bottom:0.4rem;
+}
+.player-server{
+  font-size:0.68rem;color:var(--muted);
+  text-align:center;letter-spacing:0.06em;
+  text-transform:uppercase;font-family:'Barlow Condensed',sans-serif;
+}
+
+/* SIDE STATS */
+.side-stats{padding:1rem 1.5rem;flex:1}
+.ss-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--orange);margin-bottom:0.8rem;
+  display:flex;align-items:center;gap:0.6rem;
+}
+.ss-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.ss-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.5rem 0;
+  border-bottom:1px solid var(--border2);
+}
+.ss-label{
+  font-size:0.72rem;color:var(--muted2);
+  font-family:'Barlow Condensed',sans-serif;
+  letter-spacing:0.06em;text-transform:uppercase;
+}
+.ss-val{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:0.88rem;
+  color:var(--text);
+}
+.ss-val.orange{color:var(--orange)}
+.ss-val.green{color:var(--green)}
+
+/* ─── RIGHT: MAIN CONTENT ─── */
+.main-content{
+  flex:1;
+  overflow-y:auto;
+  position:relative;
+}
+
+/* PLAYER HEADER BAR */
+.player-header{
+  background:var(--panel);
+  border-bottom:1px solid var(--border2);
+  padding:1.5rem 2.5rem;
+  display:flex;align-items:flex-end;justify-content:space-between;
+  position:relative;
+  overflow:hidden;
+}
+.player-header::before{
+  content:'';
+  position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,var(--orange),transparent 70%);
+}
+.header-left h1{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:2.8rem;
+  letter-spacing:0.04em;text-transform:uppercase;
+  line-height:1;color:var(--text);
+  margin-bottom:0.3rem;
+}
+.header-left h1 span{color:var(--orange)}
+.header-subtitle{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.85rem;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--muted2);
+}
+.header-season{
+  text-align:right;
+}
+.season-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:0.2rem;
+}
+.season-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:1.1rem;letter-spacing:0.1em;
+  color:var(--orange);text-transform:uppercase;
+}
+
+/* CAREER STATS GRID */
+.career-section{
+  padding:2rem 2.5rem;
+  border-bottom:1px solid var(--border2);
+}
+.cs-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--orange);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:0.8rem;
+}
+.cs-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--border2);
+  border:1px solid var(--border2);
+}
+.stat-card{
+  background:var(--panel);
+  padding:1.2rem 1rem;
+  position:relative;
+  transition:background 0.15s;
+}
+.stat-card:hover{background:var(--panel2)}
+.stat-card::before{
+  content:'';
+  position:absolute;top:0;left:0;
+  width:3px;height:100%;
+  background:var(--orange);
+  opacity:0;transition:opacity 0.15s;
+}
+.stat-card:hover::before{opacity:1}
+.sc-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:0.4rem;
+}
+.sc-value{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:2rem;
+  color:var(--text);line-height:1;
+  margin-bottom:0.2rem;
+}
+.sc-value.orange{color:var(--orange)}
+.sc-value.green{color:var(--green)}
+.sc-sub{font-size:0.68rem;color:var(--muted);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.05em}
+
+/* SKILLS ROW */
+.skills-section{
+  padding:1.5rem 2.5rem;
+  border-bottom:1px solid var(--border2);
+  background:var(--panel);
+}
+.skills-row{
+  display:flex;flex-wrap:wrap;gap:0.5rem;
+  margin-top:0.8rem;
+}
+.skill-chip{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.72rem;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.3rem 0.7rem;
+  background:var(--panel2);
+  border:1px solid var(--border2);
+  color:var(--muted2);
+  transition:all 0.15s;cursor:default;
+}
+.skill-chip:hover{border-color:var(--border);color:var(--text);background:var(--panel3)}
+.skill-chip.tier1{border-color:rgba(232,162,42,0.4);color:var(--orange)}
+.skill-chip.tier1:hover{background:var(--orange-bg)}
+
+/* ATTRIBUTE BARS */
+.attrs-section{
+  padding:1.5rem 2.5rem;
+  border-bottom:1px solid var(--border2);
+}
+.attrs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem 3rem;margin-top:0.8rem}
+.attr-row{display:flex;align-items:center;gap:0.8rem}
+.attr-abbr{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:0.65rem;
+  letter-spacing:0.12em;color:var(--orange);
+  width:30px;text-transform:uppercase;
+}
+.attr-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.72rem;letter-spacing:0.06em;
+  color:var(--muted2);width:130px;text-transform:uppercase;
+}
+.attr-track{
+  flex:1;height:4px;
+  background:rgba(255,255,255,0.05);
+  position:relative;
+}
+.attr-fill{
+  height:100%;
+  background:var(--orange);
+  position:relative;
+}
+.attr-fill::after{
+  content:'';
+  position:absolute;right:0;top:-2px;
+  width:1px;height:8px;
+  background:var(--orange2);
+}
+.attr-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:0.72rem;
+  color:var(--text);width:28px;text-align:right;
+}
+
+/* ─── MATCH HISTORY / PROJECTS ─── */
+.match-section{padding:2rem 2.5rem}
+.match-list{display:flex;flex-direction:column;gap:1px;background:var(--border2)}
+
+.match-row{
+  display:grid;
+  grid-template-columns:80px 1fr auto;
+  gap:0;
+  background:var(--panel);
+  border-left:3px solid transparent;
+  transition:all 0.15s;
+  cursor:default;
+}
+.match-row:hover{background:var(--panel2)}
+.match-row.legendary{border-left-color:var(--orange)}
+.match-row.rare{border-left-color:var(--blue)}
+.match-row.uncommon{border-left-color:var(--green)}
+
+.match-rank{
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:1.2rem 0.8rem;
+  background:rgba(0,0,0,0.2);
+  border-right:1px solid var(--border2);
+  gap:0.2rem;
+}
+.mr-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:1.6rem;
+  line-height:1;
+}
+.mr-num.gold{color:var(--orange)}
+.mr-num.blue{color:var(--blue)}
+.mr-num.green{color:var(--green)}
+.mr-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.55rem;letter-spacing:0.12em;
+  color:var(--muted);text-transform:uppercase;
+}
+
+.match-info{padding:1rem 1.5rem}
+.mi-top{
+  display:flex;align-items:center;gap:0.8rem;
+  margin-bottom:0.4rem;
+}
+.mi-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:1.1rem;
+  letter-spacing:0.04em;text-transform:uppercase;
+  color:var(--text);
+}
+.mi-badge{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;
+  padding:0.15rem 0.5rem;
+  border:1px solid;
+}
+.mi-badge.lead{border-color:var(--orange);color:var(--orange);background:rgba(232,162,42,0.08)}
+.mi-badge.senior{border-color:var(--blue);color:var(--blue);background:rgba(74,128,200,0.08)}
+.mi-badge.active{border-color:var(--green);color:var(--green);background:rgba(77,168,112,0.08)}
+
+.mi-studio{
+  font-size:0.78rem;color:var(--muted2);
+  margin-bottom:0.5rem;
+  font-family:'Barlow Condensed',sans-serif;
+  letter-spacing:0.04em;text-transform:uppercase;
+}
+.mi-desc{
+  font-size:0.82rem;color:var(--muted2);
+  line-height:1.5;max-width:600px;
+}
+.mi-tags{
+  display:flex;flex-wrap:wrap;gap:0.35rem;
+  margin-top:0.6rem;
+}
+.mi-tag{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;
+  padding:0.15rem 0.5rem;
+  background:var(--panel3);
+  border:1px solid var(--border2);
+  color:var(--muted);
+}
+
+.match-result{
+  display:flex;flex-direction:column;
+  align-items:flex-end;justify-content:center;
+  padding:1rem 1.5rem;
+  gap:0.4rem;min-width:120px;
+}
+.res-status{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:0.72rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+}
+.res-status.win{color:var(--green)}
+.res-status.active{color:var(--orange)}
+.res-date{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.65rem;color:var(--muted);
+  letter-spacing:0.06em;text-transform:uppercase;
+}
+.res-kd{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:0.78rem;
+  color:var(--muted2);
+}
+
+/* ─── TIMELINE / SEASONS ─── */
+.seasons-section{
+  padding:2rem 2.5rem;
+  background:var(--panel);
+  border-top:1px solid var(--border2);
+}
+.season-list{display:flex;flex-direction:column;gap:0}
+.season-item{
+  display:grid;
+  grid-template-columns:140px 1fr;
+  gap:0;
+  border-bottom:1px solid var(--border2);
+}
+.si-left{
+  padding:1.2rem 1rem;
+  background:rgba(0,0,0,0.2);
+  border-right:1px solid var(--border2);
+  display:flex;flex-direction:column;
+  gap:0.2rem;
+}
+.si-season{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:0.65rem;
+  letter-spacing:0.18em;color:var(--orange);
+  text-transform:uppercase;
+}
+.si-period{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.68rem;color:var(--muted);
+  letter-spacing:0.05em;text-transform:uppercase;
+}
+.si-right{padding:1.2rem 1.5rem}
+.si-role{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:1rem;
+  letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--text);margin-bottom:0.2rem;
+}
+.si-company{
+  font-size:0.78rem;color:var(--orange);
+  font-family:'Barlow Condensed',sans-serif;
+  letter-spacing:0.06em;text-transform:uppercase;
+  margin-bottom:0.5rem;
+}
+.si-points{list-style:none;padding:0}
+.si-points li{
+  font-size:0.8rem;color:var(--muted2);
+  padding:0.15rem 0;padding-left:1rem;
+  position:relative;line-height:1.5;
+}
+.si-points li::before{
+  content:'›';position:absolute;left:0;
+  color:var(--orange);font-weight:700;
+}
+
+/* ─── ACHIEVEMENTS / MEDALS ─── */
+.achievements-section{
+  padding:2rem 2.5rem;
+  border-top:1px solid var(--border2);
+  background:var(--panel);
+}
+.medals-summary{
+  display:flex;gap:1.5rem;margin-bottom:1.5rem;flex-wrap:wrap;
+}
+.ms-item{
+  display:flex;align-items:center;gap:0.6rem;
+  padding:0.4rem 0.9rem;
+  background:var(--panel2);
+  border:1px solid var(--border2);
+}
+.ms-dot{width:10px;height:10px;clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%)}
+.ms-dot.t3{background:var(--orange)}
+.ms-dot.t2{background:#b8c4d4}
+.ms-dot.t1{background:#c87a3a}
+.ms-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--muted2);
+}
+.ms-count{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:0.9rem;color:var(--text);
+  margin-left:0.2rem;
+}
+
+.medals-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:1px;
+  background:var(--border2);
+  border:1px solid var(--border2);
+}
+.medal-card{
+  background:var(--panel);
+  padding:1.5rem 1rem 1.2rem;
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+  position:relative;
+  transition:background 0.15s;
+  cursor:default;
+}
+.medal-card:hover{background:var(--panel2)}
+
+/* Tier accent strip on top */
+.medal-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+}
+.medal-card.t3::before{background:linear-gradient(to right,transparent,var(--orange),transparent)}
+.medal-card.t2::before{background:linear-gradient(to right,transparent,#b8c4d4,transparent)}
+.medal-card.t1::before{background:linear-gradient(to right,transparent,#c87a3a,transparent)}
+.medal-card.locked::before{background:transparent}
+
+/* Medal badge */
+.medal{
+  width:72px;height:78px;
+  position:relative;
+  margin-bottom:1rem;
+  display:flex;align-items:center;justify-content:center;
+  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+}
+.medal-inner{
+  position:absolute;inset:3px;
+  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;
+  letter-spacing:0.02em;
+}
+.medal-inner::after{
+  /* metallic top sheen */
+  content:'';position:absolute;top:0;left:0;right:0;height:50%;
+  background:linear-gradient(to bottom,rgba(255,255,255,0.18),transparent);
+  pointer-events:none;
+}
+
+/* TIER 3 — GOLD */
+.medal.t3{background:linear-gradient(135deg,#f5b94a,#8c5a0a)}
+.medal.t3 .medal-inner{
+  background:linear-gradient(135deg,#3a2810,#1a1208);
+  color:var(--orange2);
+  font-size:1.6rem;
+  text-shadow:0 0 10px rgba(232,162,42,0.6);
+}
+
+/* TIER 2 — SILVER */
+.medal.t2{background:linear-gradient(135deg,#dfe6ee,#6a7888)}
+.medal.t2 .medal-inner{
+  background:linear-gradient(135deg,#252b35,#14181e);
+  color:#dfe6ee;
+  font-size:1.4rem;
+  text-shadow:0 0 8px rgba(184,196,212,0.4);
+}
+
+/* TIER 1 — BRONZE */
+.medal.t1{background:linear-gradient(135deg,#e09060,#7a3a10)}
+.medal.t1 .medal-inner{
+  background:linear-gradient(135deg,#2a1a0c,#150c06);
+  color:#e09060;
+  font-size:1.3rem;
+  text-shadow:0 0 8px rgba(200,122,58,0.5);
+}
+
+/* LOCKED */
+.medal.locked{background:linear-gradient(135deg,#2a3038,#161a1f);opacity:0.45}
+.medal.locked .medal-inner{
+  background:#0c0e11;
+  color:var(--muted);
+  font-size:1.2rem;
+}
+.medal-card.locked{opacity:0.5}
+.medal-card.locked:hover{opacity:0.75}
+
+.medal-tier-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:0.58rem;
+  letter-spacing:0.2em;text-transform:uppercase;
+  margin-bottom:0.4rem;
+}
+.medal-tier-label.t3{color:var(--orange)}
+.medal-tier-label.t2{color:#b8c4d4}
+.medal-tier-label.t1{color:#c87a3a}
+.medal-tier-label.locked{color:var(--muted)}
+
+.medal-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:0.9rem;
+  letter-spacing:0.05em;text-transform:uppercase;
+  color:var(--text);line-height:1.15;
+  margin-bottom:0.4rem;
+}
+.medal-card.locked .medal-name{color:var(--muted2)}
+
+.medal-desc{
+  font-size:0.72rem;color:var(--muted);
+  line-height:1.45;
+  font-family:'Barlow Condensed',sans-serif;
+  letter-spacing:0.02em;
+}
+
+/* ─── FIELD REPORTS / ARTICLES ─── */
+.reports-section{
+  padding:2rem 2.5rem;
+  border-top:1px solid var(--border2);
+}
+.reports-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:1.2rem;flex-wrap:wrap;gap:1rem;
+}
+.reports-feed-link{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.7rem;font-weight:600;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted2);text-decoration:none;
+  padding:0.35rem 0.9rem;
+  border:1px solid var(--border2);
+  display:inline-flex;align-items:center;gap:0.4rem;
+  transition:all 0.15s;
+}
+.reports-feed-link:hover{color:var(--orange);border-color:var(--border)}
+.reports-feed-link::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--orange);
+  animation:blink 2s infinite;
+}
+
+.reports-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:1px;
+  background:var(--border2);
+  border:1px solid var(--border2);
+}
+.report-card{
+  background:var(--panel);
+  padding:1.4rem 1.5rem;
+  display:flex;flex-direction:column;
+  position:relative;
+  text-decoration:none;color:inherit;
+  transition:background 0.15s;
+  border-left:3px solid transparent;
+  min-height:240px;
+}
+.report-card:hover{background:var(--panel2);border-left-color:var(--orange)}
+
+.rc-top{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:0.8rem;margin-bottom:0.8rem;
+}
+.rc-id{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:0.62rem;
+  letter-spacing:0.18em;color:var(--muted);
+  text-transform:uppercase;
+}
+.rc-cat{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:0.6rem;
+  letter-spacing:0.14em;text-transform:uppercase;
+  padding:0.18rem 0.55rem;
+  border:1px solid;
+}
+.rc-cat.tech{border-color:var(--orange);color:var(--orange);background:rgba(232,162,42,0.08)}
+.rc-cat.tutorial{border-color:var(--blue);color:var(--blue);background:rgba(74,128,200,0.08)}
+.rc-cat.postmortem{border-color:var(--red);color:var(--red);background:rgba(200,72,72,0.08)}
+.rc-cat.deepdive{border-color:var(--green);color:var(--green);background:rgba(77,168,112,0.08)}
+
+.rc-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:1.15rem;
+  letter-spacing:0.03em;text-transform:uppercase;
+  color:var(--text);line-height:1.2;
+  margin-bottom:0.6rem;
+}
+.rc-excerpt{
+  font-size:0.84rem;color:var(--muted2);
+  line-height:1.55;margin-bottom:1rem;
+  flex:1;
+}
+.rc-meta{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:0.8rem;border-top:1px solid var(--border2);
+  margin-top:auto;
+}
+.rc-date{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.68rem;color:var(--muted);
+  letter-spacing:0.08em;text-transform:uppercase;
+}
+.rc-read{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:0.7rem;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--orange);
+}
+.rc-read::after{content:' →'}
+
+.report-card.coming-soon{
+  background:transparent;cursor:default;
+  border:1px dashed rgba(232,162,42,0.2);
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;
+}
+.report-card.coming-soon:hover{background:transparent;border-left-color:transparent}
+.cs-icon{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:1.6rem;color:var(--orange-d);
+  margin-bottom:0.6rem;line-height:1;letter-spacing:0.1em;
+}
+.cs-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:0.85rem;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted2);margin-bottom:0.4rem;
+}
+.cs-sub{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.7rem;color:var(--muted);
+  letter-spacing:0.06em;text-transform:uppercase;
+  max-width:200px;line-height:1.4;
+}
+
+/* ─── CONTACT ─── */
+.contact-section{
+  padding:3rem 2.5rem;
+  text-align:center;
+  border-top:1px solid var(--border2);
+}
+.contact-box{
+  max-width:540px;margin:0 auto;
+  background:var(--panel);
+  border:1px solid var(--border);
+  padding:2.5rem;
+  position:relative;
+  clip-path:polygon(0 0,calc(100% - 20px) 0,100% 20px,100% 100%,20px 100%,0 calc(100% - 20px));
+}
+.contact-box::before,.contact-box::after{
+  content:'';position:absolute;
+  background:var(--orange);
+}
+.contact-box::before{top:0;left:0;right:20px;height:1px}
+.contact-box::after{bottom:0;left:20px;right:0;height:1px}
+
+.contact-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:1.6rem;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--text);margin-bottom:0.4rem;
+}
+.contact-sub{
+  font-size:0.85rem;color:var(--muted2);
+  margin-bottom:1.5rem;
+  font-family:'Barlow Condensed',sans-serif;
+  letter-spacing:0.05em;text-transform:uppercase;
+}
+.contact-email{
+  display:block;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;font-size:1.1rem;
+  letter-spacing:0.08em;
+  color:var(--orange);text-decoration:none;
+  margin-bottom:1.5rem;
+  transition:color 0.15s;
+}
+.contact-email:hover{color:var(--orange2)}
+.contact-links{
+  display:flex;gap:0.6rem;justify-content:center;flex-wrap:wrap;
+}
+.c-link{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;font-size:0.7rem;
+  letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted2);text-decoration:none;
+  padding:0.4rem 1rem;
+  border:1px solid var(--border2);
+  transition:all 0.15s;
+}
+.c-link:hover{color:var(--orange);border-color:var(--border)}
+
+/* ─── FOOTER ─── */
+footer{
+  padding:1.2rem 2.5rem;
+  border-top:1px solid var(--border2);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.footer-logo{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;font-size:0.8rem;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--orange-d);
+}
+.footer-copy{
+  font-size:0.68rem;color:var(--muted);
+  font-family:'Barlow Condensed',sans-serif;
+  letter-spacing:0.08em;text-transform:uppercase;
+}
+
+/* ─── SECTION LABEL ─── */
+.s-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--orange);margin-bottom:1.2rem;
+  display:flex;align-items:center;gap:0.8rem;
+}
+.s-label::after{content:'';flex:1;height:1px;background:var(--border)}
+
+@media(max-width:900px){
+  .profile-screen{flex-direction:column}
+  .player-panel{width:100%;flex-direction:row;flex-wrap:wrap}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .attrs-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .stats-grid{grid-template-columns:1fr 1fr}
+  nav .nav-tabs .nav-tab{display:none}
+  .nav-tabs .nav-tab.active{display:flex}
+  .player-header{padding:1rem 1.5rem}
+  .match-section,.career-section,.attrs-section,.skills-section,.seasons-section,.contact-section{padding-left:1.5rem;padding-right:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">N.<span>GALOCHKIN</span></a>
+  <div class="nav-tabs">
+    <a href="#overview" class="nav-tab active">Overview</a>
+    <a href="#matches" class="nav-tab">Match History</a>
+    <a href="#achievements" class="nav-tab">Achievements</a>
+    <a href="#seasons" class="nav-tab">Seasons</a>
+    <a href="#reports" class="nav-tab">Field Reports</a>
+    <a href="#contact" class="nav-tab">Contact</a>
+  </div>
+  <a href="mailto:work.n.galochkin@gmail.com" class="nav-hire">⚡ Hire</a>
+</nav>
+
+<!-- ══════════════════════════════════ -->
+<!--  PROFILE SCREEN                   -->
+<!-- ══════════════════════════════════ -->
+<div class="profile-screen" id="overview">
+
+  <!-- LEFT PANEL -->
+  <div class="player-panel">
+    <div class="rank-block">
+      <div class="rank-badge">
+        <div class="rank-badge-diamond"></div>
+      </div>
+      <div class="rank-name">Conqueror</div>
+      <div class="rank-tier">Tier I · AAA Guild</div>
+    </div>
+
+    <div class="avatar-block">
+      <div class="avatar-frame">
+        <span class="avatar-letter">NG</span>
+      </div>
+      <div class="player-name">Nikita G.</div>
+      <div class="player-class">Sr. UE Programmer</div>
+      <div class="player-server">Server: Da Nang · Remote</div>
+      <br>
+      <div class="avatar-online"><div class="online-dot"></div>Available for Contract</div>
+    </div>
+
+    <div class="side-stats">
+      <div class="ss-title">Quick Stats</div>
+      <div class="ss-row">
+        <span class="ss-label">Experience</span>
+        <span class="ss-val orange">10+ yrs</span>
+      </div>
+      <div class="ss-row">
+        <span class="ss-label">Studios</span>
+        <span class="ss-val">5</span>
+      </div>
+      <div class="ss-row">
+        <span class="ss-label">Titles Shipped</span>
+        <span class="ss-val">AAA</span>
+      </div>
+      <div class="ss-row">
+        <span class="ss-label">CPU Reduced</span>
+        <span class="ss-val green">−27%</span>
+      </div>
+      <div class="ss-row">
+        <span class="ss-label">Primary Lang</span>
+        <span class="ss-val">C++</span>
+      </div>
+      <div class="ss-row">
+        <span class="ss-label">Engine</span>
+        <span class="ss-val orange">UE4/5</span>
+      </div>
+      <div class="ss-row">
+        <span class="ss-label">Location</span>
+        <span class="ss-val">Vietnam</span>
+      </div>
+      <div class="ss-row">
+        <span class="ss-label">English</span>
+        <span class="ss-val">B1</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- PLAYER HEADER -->
+    <div class="player-header" id="overview">
+      <div class="header-left">
+        <h1>Nikita <span>Galochkin</span></h1>
+        <div class="header-subtitle">Senior Unreal Engine Programmer · Gameplay / Network / AI</div>
+      </div>
+      <div class="header-season">
+        <div class="season-label">Current Season</div>
+        <div class="season-name">Season 2025 · Active</div>
+      </div>
+    </div>
+
+    <!-- CAREER STATS -->
+    <div class="career-section">
+      <div class="cs-label">Career Statistics</div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="sc-label">Years Active</div>
+          <div class="sc-value orange">10+</div>
+          <div class="sc-sub">Since 2015 · GD Forge</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-label">CPU Reduction</div>
+          <div class="sc-value green">−27%</div>
+          <div class="sc-sub">Via Unreal Insights profiling</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-label">Studios Served</div>
+          <div class="sc-value">5</div>
+          <div class="sc-sub">AAA to VR Indie</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-label">Architecture</div>
+          <div class="sc-value orange">P2P→CS</div>
+          <div class="sc-sub">Full net rearchitect shipped</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-label">AI Systems</div>
+          <div class="sc-value">HTN</div>
+          <div class="sc-sub">Crowd · Navigation · Climbing</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-label">Team Lead</div>
+          <div class="sc-value green">✓</div>
+          <div class="sc-sub">Led growing programmer team</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-label">Platforms</div>
+          <div class="sc-value">PC/VR</div>
+          <div class="sc-sub">Console · Mobile · VR</div>
+        </div>
+        <div class="stat-card">
+          <div class="sc-label">Network Protocols</div>
+          <div class="sc-value orange">Quic</div>
+          <div class="sc-sub">WebSocket · GRPC · Protobuf</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ATTRIBUTE BARS -->
+    <div class="attrs-section">
+      <div class="s-label">Attribute Points</div>
+      <div class="attrs-grid">
+        <div class="attr-row">
+          <span class="attr-abbr">INT</span>
+          <span class="attr-label">C++ / Algorithms</span>
+          <div class="attr-track"><div class="attr-fill" style="width:98%"></div></div>
+          <span class="attr-num">98</span>
+        </div>
+        <div class="attr-row">
+          <span class="attr-abbr">NET</span>
+          <span class="attr-label">Multiplayer / Netcode</span>
+          <div class="attr-track"><div class="attr-fill" style="width:92%"></div></div>
+          <span class="attr-num">92</span>
+        </div>
+        <div class="attr-row">
+          <span class="attr-abbr">WIS</span>
+          <span class="attr-label">System Architecture</span>
+          <div class="attr-track"><div class="attr-fill" style="width:93%"></div></div>
+          <span class="attr-num">93</span>
+        </div>
+        <div class="attr-row">
+          <span class="attr-abbr">DEX</span>
+          <span class="attr-label">Performance Opt.</span>
+          <div class="attr-track"><div class="attr-fill" style="width:88%"></div></div>
+          <span class="attr-num">88</span>
+        </div>
+        <div class="attr-row">
+          <span class="attr-abbr">AI</span>
+          <span class="attr-label">AI / Behaviour</span>
+          <div class="attr-track"><div class="attr-fill" style="width:85%"></div></div>
+          <span class="attr-num">85</span>
+        </div>
+        <div class="attr-row">
+          <span class="attr-abbr">CHA</span>
+          <span class="attr-label">Team Leadership</span>
+          <div class="attr-track"><div class="attr-fill" style="width:80%"></div></div>
+          <span class="attr-num">80</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="skills-section">
+      <div class="s-label">Equipped Skills</div>
+      <div class="skills-row">
+        <span class="skill-chip tier1">C++</span>
+        <span class="skill-chip tier1">Unreal Engine 5</span>
+        <span class="skill-chip tier1">Multiplayer Netcode</span>
+        <span class="skill-chip tier1">GAS</span>
+        <span class="skill-chip">Blueprints</span>
+        <span class="skill-chip">CommonUI</span>
+        <span class="skill-chip">AI / HTN</span>
+        <span class="skill-chip">EOS</span>
+        <span class="skill-chip">WebSocket</span>
+        <span class="skill-chip">Quic Protocol</span>
+        <span class="skill-chip">GRPC · Protobuf</span>
+        <span class="skill-chip">CI/CD</span>
+        <span class="skill-chip">Easy Anti-Cheat</span>
+        <span class="skill-chip">Sentry · Graphana</span>
+        <span class="skill-chip">Test Automation</span>
+        <span class="skill-chip">Perforce · Git</span>
+        <span class="skill-chip">Unreal Insights</span>
+        <span class="skill-chip">Editor Tools</span>
+      </div>
+    </div>
+
+    <!-- MATCH HISTORY (PROJECTS) -->
+    <div class="match-section" id="matches">
+      <div class="s-label">Match History · Key Projects</div>
+      <div class="match-list">
+
+        <!-- GS Studio -->
+        <div class="match-row legendary">
+          <div class="match-rank">
+            <div class="mr-num gold">#1</div>
+            <div class="mr-label">Rank</div>
+          </div>
+          <div class="match-info">
+            <div class="mi-top">
+              <span class="mi-name">Action Adventure MMORPG</span>
+              <span class="mi-badge active">Active</span>
+            </div>
+            <div class="mi-studio">GS Studio · 30+ projects · 20M+ players</div>
+            <div class="mi-desc">Refactoring client networking to Quic protocol for high-perf sessions. Integrating EOS online services and decomposing automated test bot architecture.</div>
+            <div class="mi-tags">
+              <span class="mi-tag">Quic</span>
+              <span class="mi-tag">EOS</span>
+              <span class="mi-tag">Network Refactor</span>
+              <span class="mi-tag">Test Automation</span>
+            </div>
+          </div>
+          <div class="match-result">
+            <div class="res-status active">● In Progress</div>
+            <div class="res-date">Dec 2025 – Now</div>
+            <div class="res-kd">Sr. Client Programmer</div>
+          </div>
+        </div>
+
+        <!-- Boss Fighters -->
+        <div class="match-row legendary">
+          <div class="match-rank">
+            <div class="mr-num gold">#1</div>
+            <div class="mr-label">Victory</div>
+          </div>
+          <div class="match-info">
+            <div class="mi-top">
+              <span class="mi-name">Boss Fighters</span>
+              <span class="mi-badge lead">Lead</span>
+            </div>
+            <div class="mi-studio">Pixward Games · Asymmetric VR-PC Multiplayer Shooter</div>
+            <div class="mi-desc">Full rearchitect from P2P to authoritative client-server. Designed WebSocket services layer, integrated EOS + Easy Anti-Cheat + CI/CD. Led growing team of programmers.</div>
+            <div class="mi-tags">
+              <span class="mi-tag">Client-Server Arch</span>
+              <span class="mi-tag">WebSocket</span>
+              <span class="mi-tag">EOS</span>
+              <span class="mi-tag">CI/CD</span>
+              <span class="mi-tag">Anti-Cheat</span>
+              <span class="mi-tag">Team Lead</span>
+            </div>
+          </div>
+          <div class="match-result">
+            <div class="res-status win">✓ Shipped</div>
+            <div class="res-date">2023 – 2025</div>
+            <div class="res-kd">Lead Programmer</div>
+          </div>
+        </div>
+
+        <!-- Majestic Games -->
+        <div class="match-row rare">
+          <div class="match-rank">
+            <div class="mr-num blue">#2</div>
+            <div class="mr-label">Top 10</div>
+          </div>
+          <div class="match-info">
+            <div class="mi-top">
+              <span class="mi-name">Role Play GTA-like</span>
+              <span class="mi-badge senior">Senior</span>
+            </div>
+            <div class="mi-studio">Majestic Games · London Studio · 500k+ players</div>
+            <div class="mi-desc">Core gameplay features, CommonUI redesign for UI extension system, Unreal Editor tools for backend data export, interaction system refactor.</div>
+            <div class="mi-tags">
+              <span class="mi-tag">CommonUI</span>
+              <span class="mi-tag">Gameplay Systems</span>
+              <span class="mi-tag">Editor Tools</span>
+              <span class="mi-tag">UI Architecture</span>
+            </div>
+          </div>
+          <div class="match-result">
+            <div class="res-status win">✓ Shipped</div>
+            <div class="res-date">2025</div>
+            <div class="res-kd">Sr. Gameplay Programmer</div>
+          </div>
+        </div>
+
+        <!-- MY.GAMES -->
+        <div class="match-row rare">
+          <div class="match-rank">
+            <div class="mr-num blue">#2</div>
+            <div class="mr-label">Top 10</div>
+          </div>
+          <div class="match-info">
+            <div class="mi-top">
+              <span class="mi-name">Open World MMORPG</span>
+              <span class="mi-badge senior">Senior AI</span>
+            </div>
+            <div class="mi-studio">MY.GAMES · Global Gaming · 1B+ users</div>
+            <div class="mi-desc">HTN planning system with new nodes, crowd NPC behaviours, AI navigation extended with climbing and jumping. Automated nav-links generator saving level-designer hours per sprint.</div>
+            <div class="mi-tags">
+              <span class="mi-tag">AI / HTN</span>
+              <span class="mi-tag">Crowd NPC</span>
+              <span class="mi-tag">Navigation</span>
+              <span class="mi-tag">Open World</span>
+            </div>
+          </div>
+          <div class="match-result">
+            <div class="res-status win">✓ Shipped</div>
+            <div class="res-date">2022 – 2023</div>
+            <div class="res-kd">Sr. AI Programmer</div>
+          </div>
+        </div>
+
+        <!-- Blood of Heroes -->
+        <div class="match-row uncommon">
+          <div class="match-rank">
+            <div class="mr-num green">#3</div>
+            <div class="mr-label">Top 25</div>
+          </div>
+          <div class="match-info">
+            <div class="mi-top">
+              <span class="mi-name">Blood of Heroes</span>
+              <span class="mi-badge senior">Engineer</span>
+            </div>
+            <div class="mi-studio">Vizor Games · Minsk · 700+ team · PvP Melee Fighter</div>
+            <div class="mi-desc">GAS integration with combat abilities. Profiled with Unreal Insights — CPU time reduced by 27%. Built unit + automation test frameworks using Automation Spec and Gauntlet.</div>
+            <div class="mi-tags">
+              <span class="mi-tag">GAS</span>
+              <span class="mi-tag">Perf −27% CPU</span>
+              <span class="mi-tag">Unreal Insights</span>
+              <span class="mi-tag">Test Automation</span>
+              <span class="mi-tag">Gauntlet</span>
+            </div>
+          </div>
+          <div class="match-result">
+            <div class="res-status win">✓ Shipped</div>
+            <div class="res-date">2019 – 2022</div>
+            <div class="res-kd">Software Engineer</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SEASON HISTORY -->
+    <div class="seasons-section" id="seasons">
+      <div class="s-label">Season History · Career Timeline</div>
+      <div class="season-list">
+        <div class="season-item">
+          <div class="si-left">
+            <div class="si-season">Season 11</div>
+            <div class="si-period">Dec 2025 – Now</div>
+          </div>
+          <div class="si-right">
+            <div class="si-role">Senior Client Programmer</div>
+            <div class="si-company">GS Studio · Remote</div>
+            <ul class="si-points">
+              <li>Quic protocol network refactor</li>
+              <li>EOS integration for online sessions</li>
+            </ul>
+          </div>
+        </div>
+        <div class="season-item">
+          <div class="si-left">
+            <div class="si-season">Season 10</div>
+            <div class="si-period">Jan – Dec 2025</div>
+          </div>
+          <div class="si-right">
+            <div class="si-role">Senior Gameplay Programmer</div>
+            <div class="si-company">Majestic Games · Phuket, Thailand</div>
+            <ul class="si-points">
+              <li>CommonUI extension system redesign</li>
+              <li>Core gameplay features & editor tools</li>
+            </ul>
+          </div>
+        </div>
+        <div class="season-item">
+          <div class="si-left">
+            <div class="si-season">Season 8–9</div>
+            <div class="si-period">Jun 2023 – Jan 2025</div>
+          </div>
+          <div class="si-right">
+            <div class="si-role">Lead Unreal Engine Programmer</div>
+            <div class="si-company">Pixward Games · Phuket, Thailand</div>
+            <ul class="si-points">
+              <li>P2P → Client-Server full rearchitect</li>
+              <li>CI/CD · Sentry · EOS · EAC integration</li>
+              <li>Led growing team of programmers</li>
+            </ul>
+          </div>
+        </div>
+        <div class="season-item">
+          <div class="si-left">
+            <div class="si-season">Season 7</div>
+            <div class="si-period">Jun 2022 – Jun 2023</div>
+          </div>
+          <div class="si-right">
+            <div class="si-role">Senior AI Programmer</div>
+            <div class="si-company">MY.GAMES · Remote</div>
+            <ul class="si-points">
+              <li>HTN planning system & crowd NPCs</li>
+              <li>Nav-links generator for open world</li>
+            </ul>
+          </div>
+        </div>
+        <div class="season-item">
+          <div class="si-left">
+            <div class="si-season">Season 4–6</div>
+            <div class="si-period">Jan 2019 – Jun 2022</div>
+          </div>
+          <div class="si-right">
+            <div class="si-role">Software Engineer</div>
+            <div class="si-company">Vizor Games · Minsk, Belarus</div>
+            <ul class="si-points">
+              <li>GAS integration & combat abilities</li>
+              <li>CPU optimisation −27% via profiling</li>
+              <li>Automation Spec & Gauntlet test frameworks</li>
+            </ul>
+          </div>
+        </div>
+        <div class="season-item">
+          <div class="si-left">
+            <div class="si-season">Season 1–3</div>
+            <div class="si-period">Nov 2015 – Dec 2018</div>
+          </div>
+          <div class="si-right">
+            <div class="si-role">Game Developer</div>
+            <div class="si-company">GD Forge · Kazan, Russia</div>
+            <ul class="si-points">
+              <li>Fullstack dev for 2 mobile games (Unity / C#)</li>
+              <li>AI, gameplay & VFX for VR cooperative games on UE4</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ ACHIEVEMENTS / MEDALS ═══ -->
+    <div class="achievements-section" id="achievements">
+      <div class="s-label">Achievements · Medal Cabinet</div>
+
+      <div class="medals-summary">
+        <div class="ms-item"><span class="ms-dot t3"></span><span class="ms-label">Tier 3</span><span class="ms-count">×3</span></div>
+        <div class="ms-item"><span class="ms-dot t2"></span><span class="ms-label">Tier 2</span><span class="ms-count">×3</span></div>
+        <div class="ms-item"><span class="ms-dot t1"></span><span class="ms-label">Tier 1</span><span class="ms-count">×3</span></div>
+        <div class="ms-item"><span class="ms-dot" style="background:var(--muted)"></span><span class="ms-label">Locked</span><span class="ms-count">×2</span></div>
+      </div>
+
+      <div class="medals-grid">
+
+        <!-- ═══ TIER 3 — LEGENDARY (GOLD) ═══ -->
+
+        <div class="medal-card t3">
+          <div class="medal t3"><div class="medal-inner">AAA</div></div>
+          <div class="medal-tier-label t3">★★★ Tier 3 · Legendary</div>
+          <div class="medal-name">Triple-A Shipped</div>
+          <div class="medal-desc">Contributed to AAA published titles on PC &amp; Console.</div>
+        </div>
+
+        <div class="medal-card t3">
+          <div class="medal t3"><div class="medal-inner">⚡</div></div>
+          <div class="medal-tier-label t3">★★★ Tier 3 · Legendary</div>
+          <div class="medal-name">Network Architect</div>
+          <div class="medal-desc">Led full P2P → Client-Server migration on a live VR-PC shooter.</div>
+        </div>
+
+        <div class="medal-card t3">
+          <div class="medal t3"><div class="medal-inner">X</div></div>
+          <div class="medal-tier-label t3">★★★ Tier 3 · Legendary</div>
+          <div class="medal-name">Decade Veteran</div>
+          <div class="medal-desc">10+ years of professional Unreal Engine development.</div>
+        </div>
+
+        <!-- ═══ TIER 2 — EPIC (SILVER) ═══ -->
+
+        <div class="medal-card t2">
+          <div class="medal t2"><div class="medal-inner">★</div></div>
+          <div class="medal-tier-label t2">★★ Tier 2 · Epic</div>
+          <div class="medal-name">Lead Programmer</div>
+          <div class="medal-desc">Led and grew a programmer team at Pixward Games.</div>
+        </div>
+
+        <div class="medal-card t2">
+          <div class="medal t2"><div class="medal-inner">−27</div></div>
+          <div class="medal-tier-label t2">★★ Tier 2 · Epic</div>
+          <div class="medal-name">Performance Master</div>
+          <div class="medal-desc">Reduced CPU time by 27% on a shipped UE4 fighter via profiling.</div>
+        </div>
+
+        <div class="medal-card t2">
+          <div class="medal t2"><div class="medal-inner">AI</div></div>
+          <div class="medal-tier-label t2">★★ Tier 2 · Epic</div>
+          <div class="medal-name">AI Specialist</div>
+          <div class="medal-desc">HTN planning, crowd NPCs, and nav-link generators for open worlds.</div>
+        </div>
+
+        <!-- ═══ TIER 1 — RARE (BRONZE) ═══ -->
+
+        <div class="medal-card t1">
+          <div class="medal t1"><div class="medal-inner">C++</div></div>
+          <div class="medal-tier-label t1">★ Tier 1 · Rare</div>
+          <div class="medal-name">C++ Expert</div>
+          <div class="medal-desc">Primary language across all 5 studios for a decade.</div>
+        </div>
+
+        <div class="medal-card t1">
+          <div class="medal t1"><div class="medal-inner">VR</div></div>
+          <div class="medal-tier-label t1">★ Tier 1 · Rare</div>
+          <div class="medal-name">VR Developer</div>
+          <div class="medal-desc">Shipped VR cooperative titles &amp; an asymmetric VR-PC shooter.</div>
+        </div>
+
+        <div class="medal-card t1">
+          <div class="medal t1"><div class="medal-inner">∞</div></div>
+          <div class="medal-tier-label t1">★ Tier 1 · Rare</div>
+          <div class="medal-name">CI/CD Engineer</div>
+          <div class="medal-desc">Built pipelines from scratch with Sentry monitoring &amp; EAC.</div>
+        </div>
+
+        <!-- ═══ LOCKED / FUTURE GOALS ═══ -->
+
+        <div class="medal-card locked">
+          <div class="medal locked"><div class="medal-inner">?</div></div>
+          <div class="medal-tier-label locked">⌬ Locked</div>
+          <div class="medal-name">Open Source Hero</div>
+          <div class="medal-desc">Publish a public UE plugin or dev tool. <em>In Progress.</em></div>
+        </div>
+
+        <div class="medal-card locked">
+          <div class="medal locked"><div class="medal-inner">?</div></div>
+          <div class="medal-tier-label locked">⌬ Locked</div>
+          <div class="medal-name">GDC Speaker</div>
+          <div class="medal-desc">Talk at a major industry conference. <em>Career Goal.</em></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ FIELD REPORTS / ARTICLES ═══ -->
+    <div class="reports-section" id="reports">
+      <div class="reports-header">
+        <div class="s-label" style="margin-bottom:0">Field Reports · Articles &amp; Devlogs</div>
+        <a href="#" class="reports-feed-link">Subscribe / RSS</a>
+      </div>
+
+      <div class="reports-grid">
+
+        <!-- TEMPLATE: REAL ARTICLE — copy this block to add new ones -->
+        <a href="#" class="report-card">
+          <div class="rc-top">
+            <span class="rc-id">Report #001</span>
+            <span class="rc-cat tech">Tech</span>
+          </div>
+          <h3 class="rc-title">P2P → Client-Server: Migrating a Live Game's Netcode</h3>
+          <p class="rc-excerpt">A practical breakdown of how I rearchitected Boss Fighters' networking layer from peer-to-peer to authoritative client-server — the gotchas, the wins, and what I'd do differently.</p>
+          <div class="rc-meta">
+            <span class="rc-date">Coming Soon</span>
+            <span class="rc-read">Read</span>
+          </div>
+        </a>
+
+        <a href="#" class="report-card">
+          <div class="rc-top">
+            <span class="rc-id">Report #002</span>
+            <span class="rc-cat deepdive">Deep Dive</span>
+          </div>
+          <h3 class="rc-title">HTN Planning in Open World MMORPG</h3>
+          <p class="rc-excerpt">How we extended Hierarchical Task Networks for a Genshin-style sandbox: new node types, climbing/jumping AI, and a nav-links generator that saved level-designers hours per sprint.</p>
+          <div class="rc-meta">
+            <span class="rc-date">Coming Soon</span>
+            <span class="rc-read">Read</span>
+          </div>
+        </a>
+
+        <a href="#" class="report-card">
+          <div class="rc-top">
+            <span class="rc-id">Report #003</span>
+            <span class="rc-cat tutorial">Tutorial</span>
+          </div>
+          <h3 class="rc-title">Cutting CPU by 27% with Unreal Insights</h3>
+          <p class="rc-excerpt">A step-by-step walkthrough of profiling a shipped UE4 fighter — the tools, the bottlenecks I found, and the changes that delivered measurable, repeatable wins.</p>
+          <div class="rc-meta">
+            <span class="rc-date">Coming Soon</span>
+            <span class="rc-read">Read</span>
+          </div>
+        </a>
+
+        <!-- COMING SOON PLACEHOLDER -->
+        <div class="report-card coming-soon">
+          <div>
+            <div class="cs-icon">+</div>
+            <div class="cs-title">More Reports Inbound</div>
+            <div class="cs-sub">New articles published regularly. Stay tuned.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="contact-section" id="contact">
+      <div class="s-label" style="max-width:540px;margin:0 auto 2rem">Recruitment</div>
+      <div class="contact-box">
+        <div class="contact-title">Open to New Contracts</div>
+        <div class="contact-sub">Remote · Freelance · Full-time · Available Now</div>
+        <a href="mailto:work.n.galochkin@gmail.com" class="contact-email">work.n.galochkin@gmail.com</a>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/n-galochkin" target="_blank" class="c-link">LinkedIn</a>
+          <a href="https://github.com/n-galochkin" target="_blank" class="c-link">GitHub</a>
+          <a href="https://www.upwork.com/freelancers/~013b0bb6cd2d2b7969" target="_blank" class="c-link">Upwork</a>
+          <a href="https://www.freelancer.in/u/RebornAimer" target="_blank" class="c-link">Freelancer</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <span class="footer-logo">N.Galochkin · Career Profile</span>
+      <span class="footer-copy">Senior UE Programmer · Da Nang, Vietnam</span>
+    </footer>
+
+  </div><!-- /main-content -->
+</div><!-- /profile-screen -->
+
+</body>
+</html>
