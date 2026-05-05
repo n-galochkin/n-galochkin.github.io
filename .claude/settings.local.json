@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:store.steampowered.com)",
+      "WebFetch(domain:www.gs-studio.eu)",
+      "WebFetch(domain:www.bossfighters.game)",
+      "WebFetch(domain:en.everybodywiki.com)",
+      "WebFetch(domain:www.gamespress.com)",
+      "Bash(curl -sL \"https://store.steampowered.com/api/appdetails?appids=1784650\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); ss=d['1784650']['data'].get\\('screenshots',[]\\); [print\\(s['path_full']\\) for s in ss[:6]]\")",
+      "Bash(where curl:*)",
+      "Bash(where wget:*)",
+      "Bash(/mingw64/bin/curl -sL -A 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36' 'https://store.steampowered.com/api/appdetails?appids=1784650&cc=us&l=en')",
+      "Bash(node -e ':*)",
+      "WebFetch(domain:www.playstationlifestyle.net)",
+      "WebFetch(domain:getyourcomicon.co.uk)",
+      "Bash(/mingw64/bin/curl -sL \"https://store.steampowered.com/api/appdetails?appids=693800&cc=us&l=en\")",
+      "Bash(/mingw64/bin/curl -sL \"https://store.steampowered.com/api/appdetails?appids=724490&cc=us&l=en\")",
+      "WebFetch(domain:gdforge.com)",
+      "WebFetch(domain:apkpure.com)"
+    ]
+  }
+}

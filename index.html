@@ -193,6 +193,78 @@
       </div>
     </div>
 
+    <!-- SPECIALIZATION RADAR -->
+    <div class="radar-section">
+      <div class="s-label">Play Style · Specializations</div>
+      <svg class="radar-svg" viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Grid rings: value 5 → 1 -->
+        <polygon fill="none" stroke="rgba(232,162,42,0.18)" stroke-width="1"
+          points="190,55 257.2,82.8 285,150 257.2,217.2 190,245 122.8,217.2 95,150 122.8,82.8"/>
+        <polygon fill="none" stroke="rgba(232,162,42,0.1)" stroke-width="1"
+          points="190,74 243.7,96.3 266,150 243.7,203.7 190,226 136.3,203.7 114,150 136.3,96.3"/>
+        <polygon fill="none" stroke="rgba(232,162,42,0.1)" stroke-width="1"
+          points="190,93 230.3,109.7 247,150 230.3,190.3 190,207 149.7,190.3 133,150 149.7,109.7"/>
+        <polygon fill="none" stroke="rgba(232,162,42,0.1)" stroke-width="1"
+          points="190,112 216.9,123.1 228,150 216.9,176.9 190,188 163.1,176.9 152,150 163.1,123.1"/>
+        <polygon fill="none" stroke="rgba(232,162,42,0.1)" stroke-width="1"
+          points="190,131 203.4,136.6 209,150 203.4,163.4 190,169 176.6,163.4 171,150 176.6,136.6"/>
+        <!-- Axis lines -->
+        <g stroke="rgba(232,162,42,0.22)" stroke-width="0.75">
+          <line x1="190" y1="150" x2="190" y2="55"/>
+          <line x1="190" y1="150" x2="257.2" y2="82.8"/>
+          <line x1="190" y1="150" x2="285" y2="150"/>
+          <line x1="190" y1="150" x2="257.2" y2="217.2"/>
+          <line x1="190" y1="150" x2="190" y2="245"/>
+          <line x1="190" y1="150" x2="122.8" y2="217.2"/>
+          <line x1="190" y1="150" x2="95" y2="150"/>
+          <line x1="190" y1="150" x2="122.8" y2="82.8"/>
+        </g>
+        <!-- Data fill -->
+        <polygon fill="rgba(232,162,42,0.1)" stroke="none"
+          points="190,55 230.3,109.7 266,150 230.3,190.3 190,188 176.6,163.4 152,150 163.1,123.1"/>
+        <!-- Data border -->
+        <polygon fill="none" stroke="#e8a22a" stroke-width="1.5" stroke-linejoin="round"
+          points="190,55 230.3,109.7 266,150 230.3,190.3 190,188 176.6,163.4 152,150 163.1,123.1"/>
+        <!-- Data point dots -->
+        <g fill="#e8a22a">
+          <circle cx="190"   cy="55"   r="2.5"/>
+          <circle cx="230.3" cy="109.7" r="2.5"/>
+          <circle cx="266"   cy="150"  r="2.5"/>
+          <circle cx="230.3" cy="190.3" r="2.5"/>
+          <circle cx="190"   cy="188"  r="2.5"/>
+          <circle cx="176.6" cy="163.4" r="2.5"/>
+          <circle cx="152"   cy="150"  r="2.5"/>
+          <circle cx="163.1" cy="123.1" r="2.5"/>
+        </g>
+        <circle cx="190" cy="150" r="2" fill="rgba(232,162,42,0.5)"/>
+        <!-- Labels: name + value -->
+        <!-- Gameplay (top) -->
+        <text x="190" y="35"  text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">GAMEPLAY</text>
+        <text x="190" y="48"  text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">5</text>
+        <!-- AI (upper right) -->
+        <text x="264" y="68"  text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">AI</text>
+        <text x="264" y="81"  text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">3</text>
+        <!-- Multiplayer (right) -->
+        <text x="292" y="144" text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">MULTIPLAYER</text>
+        <text x="292" y="157" text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">4</text>
+        <!-- UI (lower right) -->
+        <text x="264" y="222" text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">UI</text>
+        <text x="264" y="235" text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">3</text>
+        <!-- Automation (bottom) -->
+        <text x="190" y="257" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">AUTOMATION</text>
+        <text x="190" y="270" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">2</text>
+        <!-- Optimization (lower left) -->
+        <text x="116" y="222" text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">OPTIM.</text>
+        <text x="116" y="235" text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">1</text>
+        <!-- Leadership (left) -->
+        <text x="88"  y="144" text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">LEADERSHIP</text>
+        <text x="88"  y="157" text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">2</text>
+        <!-- Tools (upper left) -->
+        <text x="116" y="68"  text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">TOOLS</text>
+        <text x="116" y="81"  text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">2</text>
+      </svg>
+    </div>
+
     <!-- SKILLS -->
     <div class="skills-section">
       <div class="s-label">Equipped Skills</div>
@@ -223,46 +295,101 @@
       <div class="s-label">Match History · Key Projects</div>
       <div class="match-list">
 
-        <!-- GS Studio -->
+        <!-- #1 Atone / GS Studio -->
         <div class="match-row legendary">
-          <div class="match-rank">
-            <div class="mr-num gold">#1</div>
-            <div class="mr-label">Rank</div>
-          </div>
           <div class="match-info">
-            <div class="mi-top">
-              <span class="mi-name">Action Adventure MMORPG</span>
-              <span class="mi-badge active">Active</span>
+            <div class="mi-header">
+              <div class="mi-header-left">
+                <span class="mi-name">Atone</span>
+                <span class="mi-badge aaa">AAA</span>
+              </div>
+              <div class="mi-header-right">
+                <span class="res-status hold">✕ Cancelled</span>
+                <span class="res-date">Dec 2025 – 2026</span>
+                <span class="res-kd">Sr. Client Programmer</span>
+              </div>
             </div>
-            <div class="mi-studio">GS Studio · 30+ projects · 20M+ players</div>
-            <div class="mi-desc">Refactoring client networking to Quic protocol for high-perf sessions. Integrating EOS online services and decomposing automated test bot architecture.</div>
+            <div class="mi-studio">GS Studio · Cyprus · Action-Adventure MMORPG · UE5 · 30+ projects · 20M+ players</div>
+            <div class="match-media">
+              <div class="mm-thumb" data-gallery="atone" data-index="0"><img src="media/atone/1.jpg" alt="Atone screenshot 1"></div>
+              <div class="mm-thumb" data-gallery="atone" data-index="1"><img src="media/atone/2.jpg" alt="Atone screenshot 2"></div>
+              <div class="mm-thumb" data-gallery="atone" data-index="2"><img src="media/atone/3.jpg" alt="Atone screenshot 3"></div>
+              <div class="mm-thumb" data-gallery="atone" data-index="3"><img src="media/atone/4.jpg" alt="Atone screenshot 4"></div>
+              <div class="mm-thumb" data-gallery="atone" data-index="4"><img src="media/atone/5.jpg" alt="Atone screenshot 5"></div>
+            </div>
+            <div class="mi-desc">Large-scale action-adventure MMORPG built entirely in-house over 5 years. Desert/Middle-Eastern open world in UE5 with custom dedicated servers (70 CCU per layer), server-authoritative netcode, IRIS replication and Nanite geometry.</div>
             <div class="mi-tags">
               <span class="mi-tag">Quic</span>
               <span class="mi-tag">EOS</span>
+              <span class="mi-tag">IRIS Replication</span>
               <span class="mi-tag">Network Refactor</span>
               <span class="mi-tag">Test Automation</span>
             </div>
           </div>
-          <div class="match-result">
-            <div class="res-status active">● In Progress</div>
-            <div class="res-date">Dec 2025 – Now</div>
-            <div class="res-kd">Sr. Client Programmer</div>
+        </div>
+
+        <!-- #2 Blood of Heroes -->
+        <div class="match-row legendary">
+          <div class="match-info">
+            <div class="mi-header">
+              <div class="mi-header-left">
+                <span class="mi-name">Blood of Heroes</span>
+                <span class="mi-badge aaa">AAA</span>
+              </div>
+              <div class="mi-header-right">
+                <span class="res-status win">✓ Shipped</span>
+                <span class="res-date">2019 – 2022</span>
+                <span class="res-kd">Software Engineer</span>
+              </div>
+            </div>
+            <div class="mi-studio">Vizor Games · Minsk · 700+ team · PvP Melee Fighter · PC &amp; Console</div>
+            <div class="match-media">
+              <div class="mm-thumb" data-gallery="blood-of-heroes" data-index="0"><img src="media/blood-of-heroes/1.jpg" alt="Blood of Heroes screenshot 1"></div>
+              <div class="mm-thumb" data-gallery="blood-of-heroes" data-index="1"><img src="media/blood-of-heroes/2.jpg" alt="Blood of Heroes screenshot 2"></div>
+              <div class="mm-thumb mm-video-thumb" data-gallery="blood-of-heroes" data-index="2">
+                <img src="https://img.youtube.com/vi/k1dJ1VYJVNg/mqdefault.jpg" alt="Blood of Heroes trailer">
+                <div class="mm-play-icon">▶</div>
+              </div>
+            </div>
+            <div class="mi-desc">Dark fantasy PvP melee arena fighter inspired by For Honor. Warriors battle in medieval Nordic arenas with directional combat and stamina mechanics. Released on PC — PS4/PS5 &amp; Xbox in progress before cancellation.</div>
+            <div class="mi-tags">
+              <span class="mi-tag">GAS</span>
+              <span class="mi-tag">Perf −27% CPU</span>
+              <span class="mi-tag">Unreal Insights</span>
+              <span class="mi-tag">Test Automation</span>
+              <span class="mi-tag">Gauntlet</span>
+            </div>
+            <div class="mi-links">
+              <a href="https://www.youtube.com/watch?v=k1dJ1VYJVNg" target="_blank" rel="noopener" class="mi-link">Trailer</a>
+            </div>
           </div>
         </div>
 
-        <!-- Boss Fighters -->
-        <div class="match-row legendary">
-          <div class="match-rank">
-            <div class="mr-num gold">#1</div>
-            <div class="mr-label">Victory</div>
-          </div>
+        <!-- #3 Boss Fighters -->
+        <div class="match-row rare">
           <div class="match-info">
-            <div class="mi-top">
-              <span class="mi-name">Boss Fighters</span>
-              <span class="mi-badge lead">Lead</span>
+            <div class="mi-header">
+              <div class="mi-header-left">
+                <span class="mi-name">Boss Fighters</span>
+                <span class="mi-badge aa">AA</span>
+              </div>
+              <div class="mi-header-right">
+                <span class="res-status win">✓ Shipped</span>
+                <span class="res-date">2023 – 2025</span>
+                <span class="res-kd">Lead Programmer</span>
+              </div>
             </div>
-            <div class="mi-studio">Pixward Games · Asymmetric VR-PC Multiplayer Shooter</div>
-            <div class="mi-desc">Full rearchitect from P2P to authoritative client-server. Designed WebSocket services layer, integrated EOS + Easy Anti-Cheat + CI/CD. Led growing team of programmers.</div>
+            <div class="mi-studio">Pixward Games · Asymmetric VR-PC Multiplayer Shooter · Free to Play</div>
+            <div class="match-media">
+              <div class="mm-thumb" data-gallery="boss-fighters" data-index="0"><img src="media/boss-fighters/1.jpg" alt="Boss Fighters screenshot 1"></div>
+              <div class="mm-thumb" data-gallery="boss-fighters" data-index="1"><img src="media/boss-fighters/2.jpg" alt="Boss Fighters screenshot 2"></div>
+              <div class="mm-thumb" data-gallery="boss-fighters" data-index="2"><img src="media/boss-fighters/3.jpg" alt="Boss Fighters screenshot 3"></div>
+              <div class="mm-thumb mm-video-thumb" data-gallery="boss-fighters" data-index="3">
+                <img src="https://img.youtube.com/vi/TQRobo2zft8/mqdefault.jpg" alt="Boss Fighters trailer">
+                <div class="mm-play-icon">▶</div>
+              </div>
+            </div>
+            <div class="mi-desc">Asymmetrical multiplayer — VR player becomes the massive Boss, manipulating a physics sandbox arena. PC team plays as Fighters using strategy and environment to take it down.</div>
             <div class="mi-tags">
               <span class="mi-tag">Client-Server Arch</span>
               <span class="mi-tag">WebSocket</span>
@@ -271,93 +398,205 @@
               <span class="mi-tag">Anti-Cheat</span>
               <span class="mi-tag">Team Lead</span>
             </div>
-          </div>
-          <div class="match-result">
-            <div class="res-status win">✓ Shipped</div>
-            <div class="res-date">2023 – 2025</div>
-            <div class="res-kd">Lead Programmer</div>
+            <div class="mi-links">
+              <a href="https://store.steampowered.com/app/1784650/BOSS_FIGHTERS/" target="_blank" rel="noopener" class="mi-link">Steam</a>
+              <a href="https://www.bossfighters.game/" target="_blank" rel="noopener" class="mi-link">Website</a>
+            </div>
           </div>
         </div>
 
         <!-- Majestic Games -->
-        <div class="match-row rare">
-          <div class="match-rank">
-            <div class="mr-num blue">#2</div>
-            <div class="mr-label">Top 10</div>
-          </div>
+        <div class="match-row legendary">
           <div class="match-info">
-            <div class="mi-top">
-              <span class="mi-name">Role Play GTA-like</span>
-              <span class="mi-badge senior">Senior</span>
+            <div class="mi-header">
+              <div class="mi-header-left">
+                <span class="mi-name">Open World Roleplay</span>
+                <span class="mi-badge aaa">AAA</span>
+              </div>
+              <div class="mi-header-right">
+                <span class="res-status win">✓ Shipped</span>
+                <span class="res-date">2025</span>
+                <span class="res-kd">Sr. Gameplay Programmer</span>
+              </div>
             </div>
-            <div class="mi-studio">Majestic Games · London Studio · 500k+ players</div>
-            <div class="mi-desc">Core gameplay features, CommonUI redesign for UI extension system, Unreal Editor tools for backend data export, interaction system refactor.</div>
+            <div class="mi-studio">Majestic Games · London Studio · GTA-Style Roleplay · 500k+ players · NDA</div>
+            <div class="match-media">
+              <div class="mm-thumb" data-gallery="majestic" data-index="0"><img src="media/majestic/1.jpg" alt="Project screenshot 1"></div>
+              <div class="mm-thumb" data-gallery="majestic" data-index="1"><img src="media/majestic/2.jpg" alt="Project screenshot 2"></div>
+            </div>
+            <div class="mi-desc">GTA-style open-world roleplay with deep progression and 500k+ active players. London studio title with a large existing codebase — shipped new systems into a live game.</div>
             <div class="mi-tags">
               <span class="mi-tag">CommonUI</span>
               <span class="mi-tag">Gameplay Systems</span>
               <span class="mi-tag">Editor Tools</span>
               <span class="mi-tag">UI Architecture</span>
+              <span class="mi-tag">Interaction System</span>
             </div>
-          </div>
-          <div class="match-result">
-            <div class="res-status win">✓ Shipped</div>
-            <div class="res-date">2025</div>
-            <div class="res-kd">Sr. Gameplay Programmer</div>
           </div>
         </div>
 
         <!-- MY.GAMES -->
-        <div class="match-row rare">
-          <div class="match-rank">
-            <div class="mr-num blue">#2</div>
-            <div class="mr-label">Top 10</div>
-          </div>
+        <div class="match-row legendary">
           <div class="match-info">
-            <div class="mi-top">
-              <span class="mi-name">Open World MMORPG</span>
-              <span class="mi-badge senior">Senior AI</span>
+            <div class="mi-header">
+              <div class="mi-header-left">
+                <span class="mi-name">Open World MMORPG</span>
+                <span class="mi-badge aaa">AAA</span>
+              </div>
+              <div class="mi-header-right">
+                <span class="res-status win">✓ Shipped</span>
+                <span class="res-date">2022 – 2023</span>
+                <span class="res-kd">Sr. AI Programmer</span>
+              </div>
             </div>
-            <div class="mi-studio">MY.GAMES · Global Gaming · 1B+ users</div>
-            <div class="mi-desc">HTN planning system with new nodes, crowd NPC behaviours, AI navigation extended with climbing and jumping. Automated nav-links generator saving level-designer hours per sprint.</div>
+            <div class="mi-studio">MY.GAMES · Global · 1B+ users · Open World MMORPG · NDA</div>
+            <div class="match-media">
+              <div class="mm-thumb" data-gallery="mygames" data-index="0"><img src="media/mygames/1.jpg" alt="Project screenshot 1"></div>
+              <div class="mm-thumb" data-gallery="mygames" data-index="1"><img src="media/mygames/2.jpg" alt="Project screenshot 2"></div>
+            </div>
+            <div class="mi-desc">Massive open-world MMORPG under MY.GAMES publishing. Hundreds of AI-driven NPCs navigating complex terrain — climbing, jumping, crowd simulation. Shipped to a live player base.</div>
             <div class="mi-tags">
               <span class="mi-tag">AI / HTN</span>
               <span class="mi-tag">Crowd NPC</span>
               <span class="mi-tag">Navigation</span>
               <span class="mi-tag">Open World</span>
+              <span class="mi-tag">Nav Automation</span>
             </div>
-          </div>
-          <div class="match-result">
-            <div class="res-status win">✓ Shipped</div>
-            <div class="res-date">2022 – 2023</div>
-            <div class="res-kd">Sr. AI Programmer</div>
           </div>
         </div>
 
-        <!-- Blood of Heroes -->
-        <div class="match-row uncommon">
-          <div class="match-rank">
-            <div class="mr-num green">#3</div>
-            <div class="mr-label">Top 25</div>
-          </div>
+        <!-- Loco Parentis -->
+        <div class="match-row rare">
           <div class="match-info">
-            <div class="mi-top">
-              <span class="mi-name">Blood of Heroes</span>
-              <span class="mi-badge senior">Engineer</span>
+            <div class="mi-header">
+              <div class="mi-header-left">
+                <span class="mi-name">Loco Parentis</span>
+                <span class="mi-badge aa">AA</span>
+              </div>
+              <div class="mi-header-right">
+                <span class="res-status win">✓ Shipped</span>
+                <span class="res-date">2017 – 2019</span>
+                <span class="res-kd">Programmer</span>
+              </div>
             </div>
-            <div class="mi-studio">Vizor Games · Minsk · 700+ team · PvP Melee Fighter</div>
-            <div class="mi-desc">GAS integration with combat abilities. Profiled with Unreal Insights — CPU time reduced by 27%. Built unit + automation test frameworks using Automation Spec and Gauntlet.</div>
+            <div class="mi-studio">GD Forge · Fair Games Studio · Kazan · Surreal Co-op VR Horror · PC &amp; VR</div>
+            <div class="match-media">
+              <div class="mm-thumb" data-gallery="loco-parentis" data-index="0"><img src="media/loco-parentis/1.jpg" alt="Loco Parentis screenshot 1"></div>
+              <div class="mm-thumb" data-gallery="loco-parentis" data-index="1"><img src="media/loco-parentis/2.jpg" alt="Loco Parentis screenshot 2"></div>
+              <div class="mm-thumb" data-gallery="loco-parentis" data-index="2"><img src="media/loco-parentis/3.jpg" alt="Loco Parentis screenshot 3"></div>
+              <div class="mm-thumb mm-video-thumb" data-gallery="loco-parentis" data-index="3">
+                <img src="https://img.youtube.com/vi/YHb0HB64ZqQ/mqdefault.jpg" alt="Loco Parentis trailer">
+                <div class="mm-play-icon">▶</div>
+              </div>
+            </div>
+            <div class="mi-desc">Surreal co-op VR+PC horror — help a girl find her mother in an endless, monster-filled building. Supports VR+VR, VR+PC, and PC+PC co-op combinations.</div>
             <div class="mi-tags">
-              <span class="mi-tag">GAS</span>
-              <span class="mi-tag">Perf −27% CPU</span>
-              <span class="mi-tag">Unreal Insights</span>
-              <span class="mi-tag">Test Automation</span>
-              <span class="mi-tag">Gauntlet</span>
+              <span class="mi-tag">VR</span>
+              <span class="mi-tag">Co-op</span>
+              <span class="mi-tag">Horror</span>
+              <span class="mi-tag">UE4</span>
+            </div>
+            <div class="mi-links">
+              <a href="https://store.steampowered.com/app/693800/Loco_Parentis/" target="_blank" rel="noopener" class="mi-link">Steam</a>
             </div>
           </div>
-          <div class="match-result">
-            <div class="res-status win">✓ Shipped</div>
-            <div class="res-date">2019 – 2022</div>
-            <div class="res-kd">Software Engineer</div>
+        </div>
+
+        <!-- Protocol -->
+        <div class="match-row rare">
+          <div class="match-info">
+            <div class="mi-header">
+              <div class="mi-header-left">
+                <span class="mi-name">Protocol</span>
+                <span class="mi-badge aa">AA</span>
+              </div>
+              <div class="mi-header-right">
+                <span class="res-status win">✓ Shipped</span>
+                <span class="res-date">2016 – 2018</span>
+                <span class="res-kd">Programmer</span>
+              </div>
+            </div>
+            <div class="mi-studio">GD Forge · Fair Games Studio · Kazan · Sci-Fi Comedy Adventure · PC &amp; VR</div>
+            <div class="match-media">
+              <div class="mm-thumb" data-gallery="protocol" data-index="0"><img src="media/protocol/1.jpg" alt="Protocol screenshot 1"></div>
+              <div class="mm-thumb" data-gallery="protocol" data-index="1"><img src="media/protocol/2.jpg" alt="Protocol screenshot 2"></div>
+              <div class="mm-thumb" data-gallery="protocol" data-index="2"><img src="media/protocol/3.jpg" alt="Protocol screenshot 3"></div>
+              <div class="mm-thumb mm-video-thumb" data-gallery="protocol" data-index="3">
+                <img src="https://img.youtube.com/vi/kJdMoBnWK5o/mqdefault.jpg" alt="Protocol trailer">
+                <div class="mm-play-icon">▶</div>
+              </div>
+            </div>
+            <div class="mi-desc">Sci-fi comedy adventure with dark humour. Carry out the Protocol — a strict set of government rules for making first contact with an alien life form shot down in the Arctic Circle.</div>
+            <div class="mi-tags">
+              <span class="mi-tag">VR</span>
+              <span class="mi-tag">Sci-Fi</span>
+              <span class="mi-tag">Adventure</span>
+              <span class="mi-tag">UE4</span>
+            </div>
+            <div class="mi-links">
+              <a href="https://store.steampowered.com/app/724490/Protocol/" target="_blank" rel="noopener" class="mi-link">Steam</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mages Mazes -->
+        <div class="match-row uncommon">
+          <div class="match-info">
+            <div class="mi-header">
+              <div class="mi-header-left">
+                <span class="mi-name">Mages Mazes</span>
+                <span class="mi-badge a">A</span>
+              </div>
+              <div class="mi-header-right">
+                <span class="res-status win">✓ Shipped</span>
+                <span class="res-date">2015 – 2017</span>
+                <span class="res-kd">Programmer</span>
+              </div>
+            </div>
+            <div class="mi-studio">GD Forge · Kazan · Mobile Online Rogue-like</div>
+            <div class="match-media">
+              <div class="mm-thumb mm-video-thumb" data-gallery="mages-mazes" data-index="0">
+                <img src="https://img.youtube.com/vi/BUKej18sdvI/mqdefault.jpg" alt="Mages Mazes gameplay">
+                <div class="mm-play-icon">▶</div>
+              </div>
+            </div>
+            <div class="mi-desc">Mobile online rogue-like — fight monsters and other players in a magical, constantly changing dungeon. Find keys, unlock chests, collect rewards in an ever-shifting maze.</div>
+            <div class="mi-tags">
+              <span class="mi-tag">Mobile</span>
+              <span class="mi-tag">Rogue-like</span>
+              <span class="mi-tag">Online Multiplayer</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 36 Strategists -->
+        <div class="match-row uncommon">
+          <div class="match-info">
+            <div class="mi-header">
+              <div class="mi-header-left">
+                <span class="mi-name">36 Strategists</span>
+                <span class="mi-badge a">A</span>
+              </div>
+              <div class="mi-header-right">
+                <span class="res-status win">✓ Shipped</span>
+                <span class="res-date">2015 – 2016</span>
+                <span class="res-kd">Programmer</span>
+              </div>
+            </div>
+            <div class="mi-studio">GD Forge · Kazan · Mobile Turn-Based Strategy · Android</div>
+            <div class="match-media">
+              <div class="mm-thumb mm-video-thumb" data-gallery="36-strategists" data-index="0">
+                <img src="https://img.youtube.com/vi/QyZCI1gq7Us/mqdefault.jpg" alt="36 Strategists gameplay">
+                <div class="mm-play-icon">▶</div>
+              </div>
+            </div>
+            <div class="mi-desc">Mobile adaptation of a classic Chinese strategy board game — turn-based tactics rooted in ancient Chinese military philosophy. 80+ languages, online multiplayer.</div>
+            <div class="mi-tags">
+              <span class="mi-tag">Mobile</span>
+              <span class="mi-tag">Turn-Based</span>
+              <span class="mi-tag">Strategy</span>
+              <span class="mi-tag">Online Multiplayer</span>
+            </div>
           </div>
         </div>
 
@@ -642,6 +881,127 @@
 
   </div><!-- /main-content -->
 </div><!-- /profile-screen -->
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <div class="lb-overlay" id="lb-overlay"></div>
+  <button class="lb-close" id="lb-close" aria-label="Close">✕</button>
+  <button class="lb-nav lb-prev" id="lb-prev" aria-label="Previous">&#8249;</button>
+  <button class="lb-nav lb-next" id="lb-next" aria-label="Next">&#8250;</button>
+  <div class="lb-content">
+    <img class="lb-img" id="lb-img" src="" alt="">
+    <iframe class="lb-video" id="lb-video" src="" frameborder="0"
+      allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
+
+<script>
+const GALLERIES = {
+  'atone': [
+    { type: 'image', src: 'media/atone/1.jpg' },
+    { type: 'image', src: 'media/atone/2.jpg' },
+    { type: 'image', src: 'media/atone/3.jpg' },
+    { type: 'image', src: 'media/atone/4.jpg' },
+    { type: 'image', src: 'media/atone/5.jpg' },
+  ],
+  'boss-fighters': [
+    { type: 'image', src: 'media/boss-fighters/1.jpg' },
+    { type: 'image', src: 'media/boss-fighters/2.jpg' },
+    { type: 'image', src: 'media/boss-fighters/3.jpg' },
+    { type: 'youtube', videoId: 'TQRobo2zft8' },
+  ],
+  'majestic': [
+    { type: 'image', src: 'media/majestic/1.jpg' },
+    { type: 'image', src: 'media/majestic/2.jpg' },
+  ],
+  'mygames': [
+    { type: 'image', src: 'media/mygames/1.jpg' },
+    { type: 'image', src: 'media/mygames/2.jpg' },
+  ],
+  'blood-of-heroes': [
+    { type: 'image', src: 'media/blood-of-heroes/1.jpg' },
+    { type: 'image', src: 'media/blood-of-heroes/2.jpg' },
+    { type: 'youtube', videoId: 'k1dJ1VYJVNg' },
+  ],
+  'loco-parentis': [
+    { type: 'image', src: 'media/loco-parentis/1.jpg' },
+    { type: 'image', src: 'media/loco-parentis/2.jpg' },
+    { type: 'image', src: 'media/loco-parentis/3.jpg' },
+    { type: 'youtube', videoId: 'YHb0HB64ZqQ' },
+  ],
+  'protocol': [
+    { type: 'image', src: 'media/protocol/1.jpg' },
+    { type: 'image', src: 'media/protocol/2.jpg' },
+    { type: 'image', src: 'media/protocol/3.jpg' },
+    { type: 'youtube', videoId: 'kJdMoBnWK5o' },
+  ],
+  'mages-mazes': [
+    { type: 'youtube', videoId: 'BUKej18sdvI' },
+  ],
+  '36-strategists': [
+    { type: 'youtube', videoId: 'QyZCI1gq7Us' },
+  ],
+};
+
+const lb      = document.getElementById('lightbox');
+const lbImg   = document.getElementById('lb-img');
+const lbVideo = document.getElementById('lb-video');
+const lbCount = document.getElementById('lb-counter');
+let gallery = null, idx = 0;
+
+function openLightbox(g, i) {
+  gallery = g; idx = i;
+  renderLb();
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lb.classList.remove('active');
+  lbVideo.src = '';
+  document.body.style.overflow = '';
+}
+
+function navigate(dir) {
+  const len = GALLERIES[gallery].length;
+  idx = (idx + dir + len) % len;
+  renderLb();
+}
+
+function renderLb() {
+  const item = GALLERIES[gallery][idx];
+  lbCount.textContent = `${idx + 1} / ${GALLERIES[gallery].length}`;
+  if (item.type === 'image') {
+    lbImg.src = item.src;
+    lbImg.style.display = 'block';
+    lbVideo.style.display = 'none';
+    lbVideo.src = '';
+  } else {
+    lbVideo.src = `https://www.youtube.com/embed/${item.videoId}?autoplay=1`;
+    lbVideo.style.display = 'block';
+    lbImg.style.display = 'none';
+  }
+}
+
+document.getElementById('lb-overlay').addEventListener('click', closeLightbox);
+document.getElementById('lb-close').addEventListener('click', closeLightbox);
+document.getElementById('lb-prev').addEventListener('click', () => navigate(-1));
+document.getElementById('lb-next').addEventListener('click', () => navigate(1));
+
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('active')) return;
+  if (e.key === 'ArrowLeft')  navigate(-1);
+  if (e.key === 'ArrowRight') navigate(1);
+  if (e.key === 'Escape')     closeLightbox();
+});
+
+document.querySelectorAll('.mm-thumb').forEach(thumb => {
+  thumb.addEventListener('click', () =>
+    openLightbox(thumb.dataset.gallery, parseInt(thumb.dataset.index))
+  );
+});
+</script>
 
 </body>
 </html>
