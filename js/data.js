@@ -1,11 +1,9 @@
 const PLAYER = {
   name:     'Nikita G.',
   fullName: 'Nikita Galochkin',
-  handle:   'N.<span>GALOCHKIN</span>',
+  handle:   'Player <span>Profile</span>',
   title:    'Sr. UE Programmer',
-  subtitle: 'Senior Unreal Engine Programmer · Gameplay / Network / AI',
-  server:   'Da Nang · Remote',
-  rank:     { name: 'Conqueror', tier: 'Tier I · AAA Guild' },
+server:   'Da Nang · Remote',
   status:   'Available for Contract',
   stats: [
     { label: 'Prof. Experience',        value: '10+ yrs'},
@@ -23,22 +21,18 @@ const CAREER_OVERVIEW = {
 };
 
 const SKILLS = [
-  { label: 'C++',                tier: 1 },
-  { label: 'Unreal Engine 5',    tier: 1 },
-  { label: 'Multiplayer Netcode',tier: 1 },
   { label: 'GAS',                tier: 1 },
-  { label: 'Blueprints' },
   { label: 'CommonUI' },
-  { label: 'AI / HTN' },
+  { label: 'HTN' },
   { label: 'EOS' },
   { label: 'WebSocket' },
   { label: 'Quic Protocol' },
   { label: 'GRPC · Protobuf' },
   { label: 'CI/CD' },
   { label: 'Easy Anti-Cheat' },
-  { label: 'Sentry · Graphana' },
+  { label: 'Sentry' },
   { label: 'Test Automation' },
-  { label: 'Perforce · Git' },
+  { label: 'Perforce / Git' },
   { label: 'Unreal Insights' },
   { label: 'Editor Tools' },
 ];

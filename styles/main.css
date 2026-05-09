@@ -128,48 +128,6 @@ nav{
   opacity:0.4;
 }
 
-/* RANK BADGE AREA */
-.rank-block{
-  padding:2rem 1.5rem 1.5rem;
-  border-bottom:1px solid var(--border2);
-  display:flex;flex-direction:column;align-items:center;
-  gap:0.5rem;
-  background:linear-gradient(180deg,rgba(232,162,42,0.05) 0%,transparent 100%);
-}
-.rank-badge{
-  width:80px;height:80px;
-  position:relative;
-  display:flex;align-items:center;justify-content:center;
-}
-.rank-badge-diamond{
-  width:64px;height:64px;
-  background:linear-gradient(135deg,#1c222b,#252d38);
-  border:2px solid var(--orange);
-  transform:rotate(45deg);
-  position:relative;
-  box-shadow:0 0 20px rgba(232,162,42,0.25),inset 0 0 15px rgba(0,0,0,0.5);
-}
-.rank-badge-diamond::before{
-  content:'C';
-  position:absolute;inset:0;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:800;font-size:1.6rem;
-  color:var(--orange2);
-  transform:rotate(-45deg);
-}
-.rank-name{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:700;font-size:0.72rem;
-  letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--orange);
-}
-.rank-tier{
-  font-size:0.65rem;color:var(--muted);
-  letter-spacing:0.1em;text-transform:uppercase;
-  font-family:'Barlow Condensed',sans-serif;
-}
-
 /* AVATAR */
 .avatar-block{
   padding:1.5rem;
@@ -265,47 +223,6 @@ nav{
   position:relative;
 }
 
-/* PLAYER HEADER BAR */
-.player-header{
-  background:var(--panel);
-  border-bottom:1px solid var(--border2);
-  padding:1.5rem 2.5rem;
-  display:flex;align-items:flex-end;justify-content:space-between;
-  position:relative;
-  overflow:hidden;
-}
-.player-header::before{
-  content:'';
-  position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:linear-gradient(to right,var(--orange),transparent 70%);
-}
-.header-left h1{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:800;font-size:2.8rem;
-  letter-spacing:0.04em;text-transform:uppercase;
-  line-height:1;color:var(--text);
-  margin-bottom:0.3rem;
-}
-.header-left h1 span{color:var(--orange)}
-.header-subtitle{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.85rem;letter-spacing:0.14em;
-  text-transform:uppercase;color:var(--muted2);
-}
-.header-season{
-  text-align:right;
-}
-.season-label{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:0.2rem;
-}
-.season-name{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:700;font-size:1.1rem;letter-spacing:0.1em;
-  color:var(--orange);text-transform:uppercase;
-}
-
 /* CAREER OVERVIEW */
 .overview-section{
   padding:2rem 2.5rem;
@@ -342,11 +259,30 @@ nav{
   text-transform:uppercase;color:var(--muted);
 }
 
+/* SKILLS + RADAR ROW */
+.skills-spec-section{
+  border-bottom:1px solid var(--border2);
+  background:var(--panel);
+  padding-top:1.5rem;
+}
+.skills-spec-section > .s-label{
+  padding:0 2.5rem 0;
+  margin-bottom:0;
+}
+.skills-radar-row{
+  display:flex;align-items:stretch;
+}
+#mount-skills{
+  flex:1;min-width:0;
+}
+.skills-radar-row .radar-section{
+  flex:0 0 65%;min-width:0;
+  display:flex;flex-direction:column;justify-content:center;
+}
+
 /* SKILLS ROW */
 .skills-section{
   padding:1.5rem 2.5rem;
-  border-bottom:1px solid var(--border2);
-  background:var(--panel);
 }
 .skills-row{
   display:flex;flex-wrap:wrap;gap:0.5rem;
@@ -369,16 +305,14 @@ nav{
 
 /* ─── SPECIALIZATION RADAR ─── */
 .radar-section{
-  padding:1.5rem 2.5rem;
-  border-bottom:1px solid var(--border2);
-  background:var(--panel);
+  padding:1rem 1.5rem;
 }
 .radar-svg{
   width:100%;
-  max-width:520px;
+  max-width:100%;
   height:auto;
   display:block;
-  margin:0.6rem auto 0;
+  margin:0 auto;
 }
 
 /* ─── MATCH HISTORY / PROJECTS ─── */
@@ -981,11 +915,13 @@ footer{
   .player-panel{width:100%;flex-direction:row;flex-wrap:wrap}
   .ov-highlights{flex-wrap:wrap}
   .ov-highlight{flex-basis:50%}
+  .skills-radar-row{flex-direction:column}
+  #mount-skills{border-bottom:1px solid var(--border2)}
+  .skills-radar-row .radar-section{flex:unset}
 }
 @media(max-width:640px){
   nav .nav-tabs .nav-tab{display:none}
   .nav-tabs .nav-tab.active{display:flex}
-  .player-header{padding:1rem 1.5rem}
   .overview-section,.match-section,.skills-section,.seasons-section,.contact-section{padding-left:1.5rem;padding-right:1.5rem}
   .ov-highlight{flex-basis:50%}
 }

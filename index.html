@@ -38,72 +38,76 @@
   <!-- MAIN CONTENT -->
   <div class="main-content">
 
-    <!-- PLAYER HEADER (rendered by js/render.js) -->
-    <div id="mount-player-header"></div>
-
     <!-- CAREER OVERVIEW (rendered by js/render.js) -->
     <div id="mount-overview"></div>
 
-    <!-- SPECIALIZATION RADAR -->
-    <div class="radar-section">
-      <div class="s-label">Play Style · Specializations</div>
-      <svg class="radar-svg" viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg">
-        <polygon fill="none" stroke="rgba(232,162,42,0.18)" stroke-width="1"
-          points="190,55 257.2,82.8 285,150 257.2,217.2 190,245 122.8,217.2 95,150 122.8,82.8"/>
-        <polygon fill="none" stroke="rgba(232,162,42,0.1)" stroke-width="1"
-          points="190,74 243.7,96.3 266,150 243.7,203.7 190,226 136.3,203.7 114,150 136.3,96.3"/>
-        <polygon fill="none" stroke="rgba(232,162,42,0.1)" stroke-width="1"
-          points="190,93 230.3,109.7 247,150 230.3,190.3 190,207 149.7,190.3 133,150 149.7,109.7"/>
-        <polygon fill="none" stroke="rgba(232,162,42,0.1)" stroke-width="1"
-          points="190,112 216.9,123.1 228,150 216.9,176.9 190,188 163.1,176.9 152,150 163.1,123.1"/>
-        <polygon fill="none" stroke="rgba(232,162,42,0.1)" stroke-width="1"
-          points="190,131 203.4,136.6 209,150 203.4,163.4 190,169 176.6,163.4 171,150 176.6,136.6"/>
-        <g stroke="rgba(232,162,42,0.22)" stroke-width="0.75">
-          <line x1="190" y1="150" x2="190" y2="55"/>
-          <line x1="190" y1="150" x2="257.2" y2="82.8"/>
-          <line x1="190" y1="150" x2="285" y2="150"/>
-          <line x1="190" y1="150" x2="257.2" y2="217.2"/>
-          <line x1="190" y1="150" x2="190" y2="245"/>
-          <line x1="190" y1="150" x2="122.8" y2="217.2"/>
-          <line x1="190" y1="150" x2="95" y2="150"/>
-          <line x1="190" y1="150" x2="122.8" y2="82.8"/>
-        </g>
-        <polygon fill="rgba(232,162,42,0.1)" stroke="none"
-          points="190,55 230.3,109.7 266,150 230.3,190.3 190,188 176.6,163.4 152,150 163.1,123.1"/>
-        <polygon fill="none" stroke="#e8a22a" stroke-width="1.5" stroke-linejoin="round"
-          points="190,55 230.3,109.7 266,150 230.3,190.3 190,188 176.6,163.4 152,150 163.1,123.1"/>
-        <g fill="#e8a22a">
-          <circle cx="190"   cy="55"   r="2.5"/>
-          <circle cx="230.3" cy="109.7" r="2.5"/>
-          <circle cx="266"   cy="150"  r="2.5"/>
-          <circle cx="230.3" cy="190.3" r="2.5"/>
-          <circle cx="190"   cy="188"  r="2.5"/>
-          <circle cx="176.6" cy="163.4" r="2.5"/>
-          <circle cx="152"   cy="150"  r="2.5"/>
-          <circle cx="163.1" cy="123.1" r="2.5"/>
-        </g>
-        <circle cx="190" cy="150" r="2" fill="rgba(232,162,42,0.5)"/>
-        <text x="190" y="35"  text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">GAMEPLAY</text>
-        <text x="190" y="48"  text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">5</text>
-        <text x="264" y="68"  text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">AI</text>
-        <text x="264" y="81"  text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">3</text>
-        <text x="292" y="144" text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">MULTIPLAYER</text>
-        <text x="292" y="157" text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">4</text>
-        <text x="264" y="222" text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">UI</text>
-        <text x="264" y="235" text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">3</text>
-        <text x="190" y="257" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">AUTOMATION</text>
-        <text x="190" y="270" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">2</text>
-        <text x="116" y="222" text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">OPTIM.</text>
-        <text x="116" y="235" text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">1</text>
-        <text x="88"  y="144" text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">LEADERSHIP</text>
-        <text x="88"  y="157" text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">2</text>
-        <text x="116" y="68"  text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">TOOLS</text>
-        <text x="116" y="81"  text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">2</text>
-      </svg>
-    </div>
+    <!-- SKILLS & SPECIALIZATIONS -->
+    <div class="skills-spec-section">
+      <div class="s-label">Skills &amp; Specializations</div>
+      <div class="skills-radar-row">
 
-    <!-- SKILLS (rendered by js/render.js) -->
-    <div id="mount-skills"></div>
+        <!-- SKILLS (rendered by js/render.js) -->
+        <div id="mount-skills"></div>
+
+        <!-- SPECIALIZATION RADAR -->
+        <div class="radar-section">
+          <svg class="radar-svg" viewBox="0 0 380 300" xmlns="http://www.w3.org/2000/svg">
+          <polygon fill="none" stroke="rgba(232,162,42,0.18)" stroke-width="1"
+            points="190,55 257.2,82.8 285,150 257.2,217.2 190,245 122.8,217.2 95,150 122.8,82.8"/>
+          <polygon fill="none" stroke="rgba(232,162,42,0.1)" stroke-width="1"
+            points="190,74 243.7,96.3 266,150 243.7,203.7 190,226 136.3,203.7 114,150 136.3,96.3"/>
+          <polygon fill="none" stroke="rgba(232,162,42,0.1)" stroke-width="1"
+            points="190,93 230.3,109.7 247,150 230.3,190.3 190,207 149.7,190.3 133,150 149.7,109.7"/>
+          <polygon fill="none" stroke="rgba(232,162,42,0.1)" stroke-width="1"
+            points="190,112 216.9,123.1 228,150 216.9,176.9 190,188 163.1,176.9 152,150 163.1,123.1"/>
+          <polygon fill="none" stroke="rgba(232,162,42,0.1)" stroke-width="1"
+            points="190,131 203.4,136.6 209,150 203.4,163.4 190,169 176.6,163.4 171,150 176.6,136.6"/>
+          <g stroke="rgba(232,162,42,0.22)" stroke-width="0.75">
+            <line x1="190" y1="150" x2="190" y2="55"/>
+            <line x1="190" y1="150" x2="257.2" y2="82.8"/>
+            <line x1="190" y1="150" x2="285" y2="150"/>
+            <line x1="190" y1="150" x2="257.2" y2="217.2"/>
+            <line x1="190" y1="150" x2="190" y2="245"/>
+            <line x1="190" y1="150" x2="122.8" y2="217.2"/>
+            <line x1="190" y1="150" x2="95" y2="150"/>
+            <line x1="190" y1="150" x2="122.8" y2="82.8"/>
+          </g>
+          <polygon fill="rgba(232,162,42,0.1)" stroke="none"
+            points="190,55 230.3,109.7 266,150 230.3,190.3 190,188 176.6,163.4 152,150 163.1,123.1"/>
+          <polygon fill="none" stroke="#e8a22a" stroke-width="1.5" stroke-linejoin="round"
+            points="190,55 230.3,109.7 266,150 230.3,190.3 190,188 176.6,163.4 152,150 163.1,123.1"/>
+          <g fill="#e8a22a">
+            <circle cx="190"   cy="55"   r="2.5"/>
+            <circle cx="230.3" cy="109.7" r="2.5"/>
+            <circle cx="266"   cy="150"  r="2.5"/>
+            <circle cx="230.3" cy="190.3" r="2.5"/>
+            <circle cx="190"   cy="188"  r="2.5"/>
+            <circle cx="176.6" cy="163.4" r="2.5"/>
+            <circle cx="152"   cy="150"  r="2.5"/>
+            <circle cx="163.1" cy="123.1" r="2.5"/>
+          </g>
+          <circle cx="190" cy="150" r="2" fill="rgba(232,162,42,0.5)"/>
+          <text x="190" y="35"  text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">GAMEPLAY</text>
+          <text x="190" y="48"  text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">5</text>
+          <text x="264" y="68"  text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">AI</text>
+          <text x="264" y="81"  text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">3</text>
+          <text x="292" y="144" text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">MULTIPLAYER</text>
+          <text x="292" y="157" text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">4</text>
+          <text x="264" y="222" text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">UI</text>
+          <text x="264" y="235" text-anchor="start"  font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">3</text>
+          <text x="190" y="257" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">AUTOMATION</text>
+          <text x="190" y="270" text-anchor="middle" font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">2</text>
+          <text x="116" y="222" text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">OPTIM.</text>
+          <text x="116" y="235" text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">1</text>
+          <text x="88"  y="144" text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">LEADERSHIP</text>
+          <text x="88"  y="157" text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">2</text>
+          <text x="116" y="68"  text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="8" letter-spacing="1.5" fill="#5a6b7a">TOOLS</text>
+          <text x="116" y="81"  text-anchor="end"    font-family="'Barlow Condensed',sans-serif" font-weight="800" font-size="12" fill="#e8a22a">2</text>
+        </svg>
+      </div>
+
+      </div><!-- /skills-radar-row -->
+    </div><!-- /skills-spec-section -->
 
     <!-- MATCH HISTORY (rendered by js/render.js) -->
     <div id="mount-projects"></div>

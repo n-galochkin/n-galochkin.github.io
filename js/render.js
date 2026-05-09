@@ -6,11 +6,6 @@ function renderNav() {
 function renderPlayerPanel() {
   const initials = PLAYER.name.split(' ').map(w => w[0]).join('');
   document.getElementById('mount-player-panel').innerHTML = `
-    <div class="rank-block">
-      <div class="rank-badge"><div class="rank-badge-diamond"></div></div>
-      <div class="rank-name">${PLAYER.rank.name}</div>
-      <div class="rank-tier">${PLAYER.rank.tier}</div>
-    </div>
     <div class="avatar-block">
       <div class="avatar-frame"><span class="avatar-letter">${initials}</span></div>
       <div class="player-name">${PLAYER.name}</div>
@@ -21,22 +16,6 @@ function renderPlayerPanel() {
     </div>`;
 }
 
-function renderPlayerHeader() {
-  const parts = PLAYER.fullName.split(' ');
-  const h1 = parts.slice(0, -1).join(' ') + ' <span>' + parts[parts.length - 1] + '</span>';
-  const season = SEASONS[0];
-  document.getElementById('mount-player-header').innerHTML = `
-    <div class="player-header">
-      <div class="header-left">
-        <h1>${h1}</h1>
-        <div class="header-subtitle">${PLAYER.subtitle}</div>
-      </div>
-      <div class="header-season">
-        <div class="season-label">Current Season</div>
-        <div class="season-name">${season.season} · Active</div>
-      </div>
-    </div>`;
-}
 
 function renderContact() {
   const links = CONTACT.links.map(l =>
@@ -95,7 +74,6 @@ function renderSkills() {
 
   document.getElementById('mount-skills').innerHTML = `
     <div class="skills-section">
-      <div class="s-label">Equipped Skills</div>
       <div class="skills-row">${chips}</div>
     </div>`;
 }
@@ -248,7 +226,6 @@ function renderReports() {
 document.addEventListener('DOMContentLoaded', () => {
   renderNav();
   renderPlayerPanel();
-  renderPlayerHeader();
   renderSideStats();
   renderCareerOverview();
   renderSkills();
