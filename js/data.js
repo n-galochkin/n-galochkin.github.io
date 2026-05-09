@@ -6,25 +6,18 @@ const PLAYER = {
   rank:   { name: 'Conqueror', tier: 'Tier I · AAA Guild' },
   status: 'Available for Contract',
   stats: [
-    { label: 'Experience',    value: '10+ yrs', color: 'orange' },
-    { label: 'Studios',       value: '5' },
-    { label: 'Titles Shipped',value: 'AAA' },
-    { label: 'CPU Reduced',   value: '−27%', color: 'green' },
-    { label: 'Primary Lang',  value: 'C++' },
-    { label: 'Engine',        value: 'UE4/5', color: 'orange' },
-    { label: 'Location',      value: 'Vietnam' },
-    { label: 'English',       value: 'B1' },
+    { label: 'Prof. Experience',        value: '10+ yrs'},
+    { label: 'AAA Experience',          value: '5 yrs' },
+    { label: 'Titles Shipped',          value: '6' },
+    { label: 'Engines',                 value: 'Unreal Engine, Unity'},
+      { label: 'Primary Languages',       value: 'C++, C#, Python'}, 
+      { label: 'Languages',                 value: 'Eng B1, Rus Native' },
+    { label: 'Timezone',                value: 'Asia' },
   ],
 };
 
 const CAREER_OVERVIEW = {
   bio: 'Senior Unreal Engine programmer with 10+ years building gameplay, multiplayer, and AI systems across AAA and indie studios in Belarus, Russia, Thailand, and remote. Specialized in netcode architecture, GAS, and performance optimization — shipped titles on PC, console, and VR.',
-  highlights: [
-    { value: '10+',  label: 'Years Active',    color: 'orange' },
-    { value: '5',    label: 'Studios' },
-    { value: 'AAA',  label: 'Titles Shipped',  color: 'orange' },
-    { value: '−27%', label: 'CPU Reduced',     color: 'green' },
-  ],
 };
 
 const SKILLS = [

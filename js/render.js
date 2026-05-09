@@ -1,5 +1,20 @@
+function renderSideStats() {
+  const rows = PLAYER.stats.map(s =>
+    `<div class="ss-row">
+      <span class="ss-label">${s.label}</span>
+      <span class="ss-val${s.color ? ' ' + s.color : ''}">${s.value}</span>
+    </div>`
+  ).join('');
+
+  document.getElementById('mount-side-stats').innerHTML = `
+    <div class="side-stats">
+      <div class="ss-title">Quick Stats</div>
+      ${rows}
+    </div>`;
+}
+
 function renderCareerOverview() {
-  const { bio, highlights } = CAREER_OVERVIEW;
+  const { bio, highlights = [] } = CAREER_OVERVIEW;
   const hl = highlights.map(h => `
     <div class="ov-highlight">
       <div class="ov-h-val${h.color ? ' ' + h.color : ''}">${h.value}</div>
@@ -10,7 +25,6 @@ function renderCareerOverview() {
     <div class="overview-section">
       <div class="s-label">Career Overview</div>
       <p class="ov-bio">${bio}</p>
-      <div class="ov-highlights">${hl}</div>
     </div>`;
 }
 
@@ -172,6 +186,7 @@ function renderReports() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  renderSideStats();
   renderCareerOverview();
   renderSkills();
   renderProjects();
