@@ -58,6 +58,7 @@ const PROJECTS = [
       { type: 'image', src: 'media/atone/3.jpg', alt: 'Atone screenshot 3' },
       { type: 'image', src: 'media/atone/4.jpg', alt: 'Atone screenshot 4' },
       { type: 'image', src: 'media/atone/5.jpg', alt: 'Atone screenshot 5' },
+        // Вставить видео скаченное
     ],
   },
   {
@@ -78,6 +79,7 @@ const PROJECTS = [
       { type: 'image',   src: 'media/majestic/2.jpg', alt: 'Majestic Roleplay screenshot 2' },
       { type: 'image',   src: 'media/majestic/3.jpg', alt: 'Majestic Roleplay screenshot 3' },
       { type: 'image',   src: 'media/majestic/4.jpg', alt: 'Majestic Roleplay screenshot 4' },
+      // поменять скриншоты
     ],
   },
   {
@@ -110,9 +112,9 @@ const PROJECTS = [
     status: { type: 'hold', label: '✕ Canceled' },
     date:   '2022 – 2023',
     role:   'Sr. AI Programmer',
-    studio: 'MY.GAMES · Global · 1B+ users · Open World MMORPG · NDA',
-    desc:   'Massive open-world MMORPG under MY.GAMES publishing. Hundreds of AI-driven NPCs navigating complex terrain — climbing, jumping, crowd simulation. Had canceled after 5 years.',
-    tags:   ['AI / HTN', 'Crowd NPC', 'Navigation', 'Open World', 'Nav Automation'],
+    studio: 'MY.GAMES · Global · 100+ team',
+    desc:   'Massive open-world sandbox MMORPG under MY.GAMES publishing inspired by Genshin and Zelda.',
+    tags:   ['UE4', 'Open World', 'Sandbox', "Multiplayer"],
     links:  [],
     gallery: [
       { type: 'image', src: 'media/mygames/1.jpg', alt: 'Project screenshot 1' },
@@ -127,9 +129,9 @@ const PROJECTS = [
     status: { type: 'win', label: '✓ Shipped' },
     date:   '2019 – 2022',
     role:   'Software Engineer',
-    studio: 'Vizor Games · Minsk · 700+ team · PvP Melee Fighter · PC & Console',
+    studio: 'Vizor Games · Minsk · 100+ team',
     desc:   'Dark fantasy PvP melee arena fighter inspired by For Honor. Warriors battle in medieval Nordic arenas with directional combat and stamina mechanics. Released on PC — PS4/PS5 & Xbox in progress before cancellation.',
-    tags:   ['UE4','Action', 'Melee fighting', 'PvP Arena', 'Third Person'],
+    tags:   ['UE4', 'Action', 'Melee fighting', 'PvP Arena', 'Third Person'],
     links:  [{ label: 'Trailer', url: 'https://www.youtube.com/watch?v=k1dJ1VYJVNg' }],
     gallery: [
       { type: 'youtube', videoId: 'k1dJ1VYJVNg', alt: 'Blood of Heroes trailer' },
@@ -145,15 +147,15 @@ const PROJECTS = [
     status: { type: 'win', label: '✓ Shipped' },
     date:   '2017 – 2019',
     role:   'Programmer',
-    studio: 'GD Forge · Fair Games Studio · Kazan · Surreal Co-op VR Horror · PC & VR',
+    studio: 'Fair Games Studio · Kazan',
     desc:   'Surreal co-op VR+PC horror — help a girl find her mother in an endless, monster-filled building. Supports VR+VR, VR+PC, and PC+PC co-op combinations.',
-    tags:   ['VR', 'Co-op', 'Horror', 'UE4'],
+    tags:   ['UE4', 'PC/VR', 'Co-op', 'Horror'],
     links:  [{ label: 'Steam', url: 'https://store.steampowered.com/app/693800/Loco_Parentis/' }],
     gallery: [
+      { type: 'youtube', videoId: 'YHb0HB64ZqQ', alt: 'Loco Parentis trailer' },
       { type: 'image',   src: 'media/loco-parentis/1.jpg', alt: 'Loco Parentis screenshot 1' },
       { type: 'image',   src: 'media/loco-parentis/2.jpg', alt: 'Loco Parentis screenshot 2' },
       { type: 'image',   src: 'media/loco-parentis/3.jpg', alt: 'Loco Parentis screenshot 3' },
-      { type: 'youtube', videoId: 'YHb0HB64ZqQ', alt: 'Loco Parentis trailer' },
     ],
   },
   {
@@ -164,15 +166,15 @@ const PROJECTS = [
     status: { type: 'win', label: '✓ Shipped' },
     date:   '2016 – 2018',
     role:   'Programmer',
-    studio: 'GD Forge · Fair Games Studio · Kazan · Sci-Fi Comedy Adventure · PC & VR',
+    studio: 'Fair Games Studio · Kazan',
     desc:   'Sci-fi comedy adventure with dark humour. Carry out the Protocol — a strict set of government rules for making first contact with an alien life form shot down in the Arctic Circle.',
-    tags:   ['VR', 'Sci-Fi', 'Adventure', 'UE4'],
+    tags:   ['UE4', 'PC/VR', 'Sci-Fi', 'Adventure' ],
     links:  [{ label: 'Steam', url: 'https://store.steampowered.com/app/724490/Protocol/' }],
     gallery: [
+      { type: 'youtube', videoId: 'kJdMoBnWK5o', alt: 'Protocol trailer' },
       { type: 'image',   src: 'media/protocol/1.jpg', alt: 'Protocol screenshot 1' },
       { type: 'image',   src: 'media/protocol/2.jpg', alt: 'Protocol screenshot 2' },
       { type: 'image',   src: 'media/protocol/3.jpg', alt: 'Protocol screenshot 3' },
-      { type: 'youtube', videoId: 'kJdMoBnWK5o', alt: 'Protocol trailer' },
     ],
   },
   {
@@ -183,9 +185,9 @@ const PROJECTS = [
     status: { type: 'win', label: '✓ Shipped' },
     date:   '2015 – 2017',
     role:   'Programmer',
-    studio: 'GD Forge · Kazan · Mobile Online Rogue-like',
+    studio: 'GD Forge · Kazan',
     desc:   'Mobile online rogue-like — fight monsters and other players in a magical, constantly changing dungeon. Find keys, unlock chests, collect rewards in an ever-shifting maze.',
-    tags:   ['Mobile', 'Rogue-like', 'Online Multiplayer'],
+    tags:   ['Unity', 'Mobile', 'Rogue-like', 'Online Multiplayer'],
     links:  [],
     gallery: [
       { type: 'youtube', videoId: 'BUKej18sdvI', alt: 'Mages Mazes gameplay' },
@@ -199,9 +201,9 @@ const PROJECTS = [
     status: { type: 'win', label: '✓ Shipped' },
     date:   '2015 – 2016',
     role:   'Programmer',
-    studio: 'GD Forge · Kazan · Mobile Turn-Based Strategy · Android',
+    studio: 'GD Forge · Kazan',
     desc:   'Mobile adaptation of a classic Chinese strategy board game — turn-based tactics rooted in ancient Chinese military philosophy. 80+ languages, online multiplayer.',
-    tags:   ['Mobile', 'Turn-Based', 'Strategy', 'Online Multiplayer'],
+    tags:   ['Unity', 'Mobile', 'Turn-Based', 'Strategy', 'Online Multiplayer'],
     links:  [],
     gallery: [
       { type: 'youtube', videoId: 'QyZCI1gq7Us', alt: '36 Strategists gameplay' },
