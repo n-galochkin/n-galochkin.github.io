@@ -306,55 +306,41 @@ nav{
   color:var(--orange);text-transform:uppercase;
 }
 
-/* CAREER STATS GRID */
-.career-section{
+/* CAREER OVERVIEW */
+.overview-section{
   padding:2rem 2.5rem;
   border-bottom:1px solid var(--border2);
 }
-.cs-label{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--orange);margin-bottom:1.2rem;
-  display:flex;align-items:center;gap:0.8rem;
+.ov-bio{
+  font-size:0.9rem;color:var(--muted2);
+  line-height:1.7;max-width:720px;
+  margin-bottom:1.5rem;
 }
-.cs-label::after{content:'';flex:1;height:1px;background:var(--border)}
-
-.stats-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
+.ov-highlights{
+  display:flex;gap:1px;
   background:var(--border2);
   border:1px solid var(--border2);
 }
-.stat-card{
+.ov-highlight{
   background:var(--panel);
-  padding:1.2rem 1rem;
-  position:relative;
+  padding:1rem 1.4rem;
+  flex:1;
   transition:background 0.15s;
 }
-.stat-card:hover{background:var(--panel2)}
-.stat-card::before{
-  content:'';
-  position:absolute;top:0;left:0;
-  width:3px;height:100%;
-  background:var(--orange);
-  opacity:0;transition:opacity 0.15s;
-}
-.stat-card:hover::before{opacity:1}
-.sc-label{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:0.4rem;
-}
-.sc-value{
+.ov-highlight:hover{background:var(--panel2)}
+.ov-h-val{
   font-family:'Barlow Condensed',sans-serif;
   font-weight:800;font-size:2rem;
   color:var(--text);line-height:1;
-  margin-bottom:0.2rem;
+  margin-bottom:0.25rem;
 }
-.sc-value.orange{color:var(--orange)}
-.sc-value.green{color:var(--green)}
-.sc-sub{font-size:0.68rem;color:var(--muted);font-family:'Barlow Condensed',sans-serif;letter-spacing:0.05em}
+.ov-h-val.orange{color:var(--orange)}
+.ov-h-val.green{color:var(--green)}
+.ov-h-label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:0.65rem;letter-spacing:0.14em;
+  text-transform:uppercase;color:var(--muted);
+}
 
 /* SKILLS ROW */
 .skills-section{
@@ -380,45 +366,6 @@ nav{
 .skill-chip.tier1{border-color:rgba(232,162,42,0.4);color:var(--orange)}
 .skill-chip.tier1:hover{background:var(--orange-bg)}
 
-/* ATTRIBUTE BARS */
-.attrs-section{
-  padding:1.5rem 2.5rem;
-  border-bottom:1px solid var(--border2);
-}
-.attrs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem 3rem;margin-top:0.8rem}
-.attr-row{display:flex;align-items:center;gap:0.8rem}
-.attr-abbr{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:700;font-size:0.65rem;
-  letter-spacing:0.12em;color:var(--orange);
-  width:30px;text-transform:uppercase;
-}
-.attr-label{
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.72rem;letter-spacing:0.06em;
-  color:var(--muted2);width:130px;text-transform:uppercase;
-}
-.attr-track{
-  flex:1;height:4px;
-  background:rgba(255,255,255,0.05);
-  position:relative;
-}
-.attr-fill{
-  height:100%;
-  background:var(--orange);
-  position:relative;
-}
-.attr-fill::after{
-  content:'';
-  position:absolute;right:0;top:-2px;
-  width:1px;height:8px;
-  background:var(--orange2);
-}
-.attr-num{
-  font-family:'Barlow Condensed',sans-serif;
-  font-weight:700;font-size:0.72rem;
-  color:var(--text);width:28px;text-align:right;
-}
 
 /* ─── SPECIALIZATION RADAR ─── */
 .radar-section{
@@ -1032,13 +979,13 @@ footer{
 @media(max-width:900px){
   .profile-screen{flex-direction:column}
   .player-panel{width:100%;flex-direction:row;flex-wrap:wrap}
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
-  .attrs-grid{grid-template-columns:1fr}
+  .ov-highlights{flex-wrap:wrap}
+  .ov-highlight{flex-basis:50%}
 }
 @media(max-width:640px){
-  .stats-grid{grid-template-columns:1fr 1fr}
   nav .nav-tabs .nav-tab{display:none}
   .nav-tabs .nav-tab.active{display:flex}
   .player-header{padding:1rem 1.5rem}
-  .match-section,.career-section,.attrs-section,.skills-section,.seasons-section,.contact-section{padding-left:1.5rem;padding-right:1.5rem}
+  .overview-section,.match-section,.skills-section,.seasons-section,.contact-section{padding-left:1.5rem;padding-right:1.5rem}
+  .ov-highlight{flex-basis:50%}
 }
