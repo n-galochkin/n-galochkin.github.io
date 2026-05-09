@@ -1,3 +1,63 @@
+function renderNav() {
+  document.querySelector('.nav-logo').innerHTML = PLAYER.handle;
+  document.querySelector('.nav-hire').href = 'mailto:' + CONTACT.email;
+}
+
+function renderPlayerPanel() {
+  const initials = PLAYER.name.split(' ').map(w => w[0]).join('');
+  document.getElementById('mount-player-panel').innerHTML = `
+    <div class="rank-block">
+      <div class="rank-badge"><div class="rank-badge-diamond"></div></div>
+      <div class="rank-name">${PLAYER.rank.name}</div>
+      <div class="rank-tier">${PLAYER.rank.tier}</div>
+    </div>
+    <div class="avatar-block">
+      <div class="avatar-frame"><span class="avatar-letter">${initials}</span></div>
+      <div class="player-name">${PLAYER.name}</div>
+      <div class="player-class">${PLAYER.title}</div>
+      <div class="player-server">Server: ${PLAYER.server}</div>
+      <br>
+      <div class="avatar-online"><div class="online-dot"></div>${PLAYER.status}</div>
+    </div>`;
+}
+
+function renderPlayerHeader() {
+  const parts = PLAYER.fullName.split(' ');
+  const h1 = parts.slice(0, -1).join(' ') + ' <span>' + parts[parts.length - 1] + '</span>';
+  const season = SEASONS[0];
+  document.getElementById('mount-player-header').innerHTML = `
+    <div class="player-header">
+      <div class="header-left">
+        <h1>${h1}</h1>
+        <div class="header-subtitle">${PLAYER.subtitle}</div>
+      </div>
+      <div class="header-season">
+        <div class="season-label">Current Season</div>
+        <div class="season-name">${season.season} · Active</div>
+      </div>
+    </div>`;
+}
+
+function renderContact() {
+  const links = CONTACT.links.map(l =>
+    `<a href="${l.url}" target="_blank" class="c-link">${l.label}</a>`
+  ).join('');
+  document.getElementById('mount-contact').innerHTML = `
+    <div class="contact-section" id="contact">
+      <div class="s-label" style="max-width:540px;margin:0 auto 2rem">Recruitment</div>
+      <div class="contact-box">
+        <div class="contact-title">Open to New Contracts</div>
+        <div class="contact-sub">${CONTACT.availability}</div>
+        <a href="mailto:${CONTACT.email}" class="contact-email">${CONTACT.email}</a>
+        <div class="contact-links">${links}</div>
+      </div>
+    </div>
+    <footer>
+      <span class="footer-logo">${PLAYER.fullName} · Career Profile</span>
+      <span class="footer-copy">${PLAYER.title} · ${PLAYER.server}</span>
+    </footer>`;
+}
+
 function renderSideStats() {
   const rows = PLAYER.stats.map(s =>
     `<div class="ss-row">
@@ -186,6 +246,9 @@ function renderReports() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  renderNav();
+  renderPlayerPanel();
+  renderPlayerHeader();
   renderSideStats();
   renderCareerOverview();
   renderSkills();
@@ -193,4 +256,5 @@ document.addEventListener('DOMContentLoaded', () => {
   renderSeasons();
   renderMedals();
   renderReports();
+  renderContact();
 });

@@ -30,20 +30,7 @@
 
   <!-- LEFT PANEL -->
   <div class="player-panel">
-    <div class="rank-block">
-      <div class="rank-badge"><div class="rank-badge-diamond"></div></div>
-      <div class="rank-name">Conqueror</div>
-      <div class="rank-tier">Tier I · AAA Guild</div>
-    </div>
-
-    <div class="avatar-block">
-      <div class="avatar-frame"><span class="avatar-letter">NG</span></div>
-      <div class="player-name">Nikita G.</div>
-      <div class="player-class">Sr. UE Programmer</div>
-      <div class="player-server">Server: Da Nang · Remote</div>
-      <br>
-      <div class="avatar-online"><div class="online-dot"></div>Available for Contract</div>
-    </div>
+    <div id="mount-player-panel"></div>
 
     <div id="mount-side-stats"></div>
   </div>
@@ -51,17 +38,8 @@
   <!-- MAIN CONTENT -->
   <div class="main-content">
 
-    <!-- PLAYER HEADER -->
-    <div class="player-header">
-      <div class="header-left">
-        <h1>Nikita <span>Galochkin</span></h1>
-        <div class="header-subtitle">Senior Unreal Engine Programmer · Gameplay / Network / AI</div>
-      </div>
-      <div class="header-season">
-        <div class="season-label">Current Season</div>
-        <div class="season-name">Season 2025 · Active</div>
-      </div>
-    </div>
+    <!-- PLAYER HEADER (rendered by js/render.js) -->
+    <div id="mount-player-header"></div>
 
     <!-- CAREER OVERVIEW (rendered by js/render.js) -->
     <div id="mount-overview"></div>
@@ -139,26 +117,8 @@
     <!-- FIELD REPORTS (rendered by js/render.js) -->
     <div id="mount-reports"></div>
 
-    <!-- CONTACT -->
-    <div class="contact-section" id="contact">
-      <div class="s-label" style="max-width:540px;margin:0 auto 2rem">Recruitment</div>
-      <div class="contact-box">
-        <div class="contact-title">Open to New Contracts</div>
-        <div class="contact-sub">Remote · Freelance · Full-time · Available Now</div>
-        <a href="mailto:work.n.galochkin@gmail.com" class="contact-email">work.n.galochkin@gmail.com</a>
-        <div class="contact-links">
-          <a href="https://www.linkedin.com/in/n-galochkin"                          target="_blank" class="c-link">LinkedIn</a>
-          <a href="https://github.com/n-galochkin"                                   target="_blank" class="c-link">GitHub</a>
-          <a href="https://www.upwork.com/freelancers/~013b0bb6cd2d2b7969"           target="_blank" class="c-link">Upwork</a>
-          <a href="https://www.freelancer.in/u/RebornAimer"                          target="_blank" class="c-link">Freelancer</a>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <span class="footer-logo">N.Galochkin · Career Profile</span>
-      <span class="footer-copy">Senior UE Programmer · Da Nang, Vietnam</span>
-    </footer>
+    <!-- CONTACT + FOOTER (rendered by js/render.js) -->
+    <div id="mount-contact"></div>
 
   </div><!-- /main-content -->
 </div><!-- /profile-screen -->

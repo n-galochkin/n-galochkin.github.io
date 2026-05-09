@@ -1,10 +1,12 @@
 const PLAYER = {
-  name:   'Nikita G.',
-  handle: 'N.<span>GALOCHKIN</span>',
-  title:  'Sr. UE Programmer',
-  server: 'Da Nang · Remote',
-  rank:   { name: 'Conqueror', tier: 'Tier I · AAA Guild' },
-  status: 'Available for Contract',
+  name:     'Nikita G.',
+  fullName: 'Nikita Galochkin',
+  handle:   'N.<span>GALOCHKIN</span>',
+  title:    'Sr. UE Programmer',
+  subtitle: 'Senior Unreal Engine Programmer · Gameplay / Network / AI',
+  server:   'Da Nang · Remote',
+  rank:     { name: 'Conqueror', tier: 'Tier I · AAA Guild' },
+  status:   'Available for Contract',
   stats: [
     { label: 'Prof. Experience',        value: '10+ yrs'},
     { label: 'AAA Experience',          value: '5 yrs' },
@@ -276,6 +278,17 @@ const MEDALS_SUMMARY = [
   { tier: 't1', label: 'Tier 1', count: 3 },
   { tier: '',   label: 'Locked', count: 2 },
 ];
+
+const CONTACT = {
+  email:        'work.n.galochkin@gmail.com',
+  availability: 'Remote · Freelance · Full-time · Available Now',
+  links: [
+    { label: 'LinkedIn',   url: 'https://www.linkedin.com/in/n-galochkin' },
+    { label: 'GitHub',     url: 'https://github.com/n-galochkin' },
+    { label: 'Upwork',     url: 'https://www.upwork.com/freelancers/~013b0bb6cd2d2b7969' },
+    { label: 'Freelancer', url: 'https://www.freelancer.in/u/RebornAimer' },
+  ],
+};
 
 const REPORTS = [
   {
