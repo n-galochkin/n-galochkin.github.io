@@ -30,7 +30,8 @@
       "Bash(curl -L \"https://majestic-rp.ru/images/home/intro/criminal-bg.webp\" -o \"/c/Projects/Portfolio/media/majestic/criminal-bg.webp\" --max-time 30 -s -w \"%{http_code}\")",
       "Bash(curl -L \"https://majestic-rp.ru/images/home/intro/mafia-bg.webp\" -o \"/c/Projects/Portfolio/media/majestic/mafia-bg.webp\" --max-time 30 -s -w \"%{http_code}\")",
       "Bash(curl -L \"https://majestic-rp.ru/images/home/guide/cityscape.webp\" -o \"/c/Projects/Portfolio/media/majestic/cityscape.webp\" --max-time 30 -s -w \"%{http_code}\")",
-      "Bash(curl -L https://img.youtube.com/vi/__TRACKED_VAR__/maxresdefault.jpg -o __TRACKED_VAR__.jpg --max-time 30 -s -w '__TRACKED_VAR__: %{http_code} \\(%{size_download}B\\)\\\\n')"
+      "Bash(curl -L https://img.youtube.com/vi/__TRACKED_VAR__/maxresdefault.jpg -o __TRACKED_VAR__.jpg --max-time 30 -s -w '__TRACKED_VAR__: %{http_code} \\(%{size_download}B\\)\\\\n')",
+      "Bash(Get-ChildItem -Path \"C:\\\\Projects\\\\Portfolio\\\\js\\\\\" -Recurse -Filter \"*.js\" -File | Select-Object FullName | Head -20)"
     ]
   }
 }

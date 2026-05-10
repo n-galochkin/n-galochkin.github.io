@@ -478,6 +478,10 @@ nav{
   width:80vw;height:45vw;max-height:80vh;
   border:none;display:none;
 }
+.lb-local-video{
+  max-width:90vw;max-height:80vh;
+  display:none;
+}
 .lb-close{
   position:fixed;top:1.2rem;right:1.5rem;
   z-index:2;background:none;border:none;

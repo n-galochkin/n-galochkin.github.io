@@ -53,12 +53,12 @@ const PROJECTS = [
       { label: 'Website', url: 'https://www.gs-studio.eu/work/atone' },
     ],
     gallery: [
+      { type: 'video', src: 'media/atone/Video.mp4', alt: 'Atone gameplay video' },
       { type: 'image', src: 'media/atone/1.jpg', alt: 'Atone screenshot 1' },
       { type: 'image', src: 'media/atone/2.jpg', alt: 'Atone screenshot 2' },
       { type: 'image', src: 'media/atone/3.jpg', alt: 'Atone screenshot 3' },
       { type: 'image', src: 'media/atone/4.jpg', alt: 'Atone screenshot 4' },
       { type: 'image', src: 'media/atone/5.jpg', alt: 'Atone screenshot 5' },
-        // Вставить видео скаченное
     ],
   },
   {
@@ -69,17 +69,18 @@ const PROJECTS = [
     status: { type: 'hold', label: '? NDA' },
     date:   '2025',
     role:   'Sr. Gameplay Programmer',
-    studio: 'Majestic Games · London Studio',
+    studio: 'Majestic Games · London',
     desc:   'Some NDA project by studio who made GTA-style open-world roleplay with deep progression and 500k+ active players. London studio title with a large existing codebase.',
     tags:   ['UE5', 'Mobile', 'NDA'],
     links:  [],
     gallery: [
-      { type: 'youtube', videoId: 'LxMnCSCFcz8', alt: 'Majestic Role Play trailer' },
-      { type: 'image',   src: 'media/majestic/1.jpg', alt: 'Majestic Roleplay screenshot 1' },
-      { type: 'image',   src: 'media/majestic/2.jpg', alt: 'Majestic Roleplay screenshot 2' },
-      { type: 'image',   src: 'media/majestic/3.jpg', alt: 'Majestic Roleplay screenshot 3' },
-      { type: 'image',   src: 'media/majestic/4.jpg', alt: 'Majestic Roleplay screenshot 4' },
-      // поменять скриншоты
+      { type: 'youtube', videoId: '6dOGwQjXWNw', alt: 'Majestic Role Play trailer' },
+      { type: 'image',   src: 'media/majestic/1.png', alt: 'Majestic Roleplay screenshot 1' },
+      { type: 'image',   src: 'media/majestic/2.png', alt: 'Majestic Roleplay screenshot 2' },
+      { type: 'image',   src: 'media/majestic/3.png', alt: 'Majestic Roleplay screenshot 3' },
+      { type: 'image',   src: 'media/majestic/4.png', alt: 'Majestic Roleplay screenshot 4' },
+      { type: 'image',   src: 'media/majestic/5.jpg', alt: 'Majestic Roleplay screenshot 5' },
+      { type: 'image',   src: 'media/majestic/6.png', alt: 'Majestic Roleplay screenshot 6' },
     ],
   },
   {

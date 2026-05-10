@@ -87,6 +87,12 @@ function renderProjects() {
           <div class="mm-play-icon">▶</div>
         </div>`;
       }
+      if (item.type === 'video') {
+        return `<div class="mm-thumb mm-video-thumb" data-gallery="${p.id}" data-index="${i}">
+          <video src="${item.src}" preload="metadata" muted></video>
+          <div class="mm-play-icon">▶</div>
+        </div>`;
+      }
       return `<div class="mm-thumb" data-gallery="${p.id}" data-index="${i}">
         <img src="${item.src}" alt="${item.alt}">
       </div>`;
