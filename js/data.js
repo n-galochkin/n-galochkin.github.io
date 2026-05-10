@@ -1,6 +1,5 @@
 const PLAYER = {
-  name:     'Nikita G.',
-  fullName: 'Nikita Galochkin',
+  name:     'Nikita Galochkin',
   handle:   'Player <span>Profile</span>',
   title:    'Senior Unreal Engine programmer',
   server:   'Da Nang · Remote',
@@ -17,23 +16,33 @@ const PLAYER = {
 };  
 
 const CAREER_OVERVIEW = {
-  bio: 'Senior Unreal Engine programmer with 10+ years building gameplay, multiplayer, and AI systems across AAA and indie studios in Belarus, Russia, Thailand, and remote. Specialized in netcode architecture, GAS, and performance optimization — shipped titles on PC, console, and VR.',
+  bio: 'Unreal Engine developer with 10+ years of experience in gameplay, network and AI programming for multiplayer PC, mobile\n' +
+      'and VR games in various genres, including shooters, melee fighters, and open-world MMO RPGs. Also has skills in leading a\n' +
+      'development team, developing CI/CD pipelines, and optimizing performance. Has worked on published AAA titles in\n' +
+      'PC/Consoles. Master’s degree in software engineering',
 };
 
 const SKILLS = [
   { label: 'GAS',                tier: 1 },
-  { label: 'CommonUI' },
-  { label: 'HTN' },
-  { label: 'EOS' },
-  { label: 'WebSocket' },
-  { label: 'Quic Protocol' },
+  { label: 'CommonUI · MVVM · UMG' },
+  { label: 'Enhanced Input' },
+  { label: 'Gameplay Framework' },
+  { label: 'Network Replication' },
+  { label: 'Game Features' },
+  { label: 'Team management' },
+  { label: 'Metahuman · Mutable Customization' },
+  { label: 'k8s · Agones · Docker · Dedicated server' },
+  { label: 'HTN · Behavior tree · EQS · Navigation' },
+  { label: 'EOS · Easy Anti-Cheat' },
+  { label: 'WebSocket · Quic Protocol' },
+  { label: 'Geometry Scripting' },
   { label: 'GRPC · Protobuf' },
-  { label: 'CI/CD' },
-  { label: 'Easy Anti-Cheat' },
-  { label: 'Sentry' },
-  { label: 'Test Automation' },
+  { label: 'CI/CD · Sentry' },
+  { label: 'Gauntlet · Unit Testing · Automation Spec' },
+  { label: 'Graphana' },
   { label: 'Perforce / Git' },
   { label: 'Unreal Insights' },
+  { label: 'Matchmaking' },
   { label: 'Editor Tools' },
 ];
 

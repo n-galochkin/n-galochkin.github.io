@@ -30,11 +30,7 @@ function renderContact() {
         <a href="mailto:${CONTACT.email}" class="contact-email">${CONTACT.email}</a>
         <div class="contact-links">${links}</div>
       </div>
-    </div>
-    <footer>
-      <span class="footer-logo">${PLAYER.fullName} · Career Profile</span>
-      <span class="footer-copy">${PLAYER.title} · ${PLAYER.server}</span>
-    </footer>`;
+    </div>`;
 }
 
 function renderSideStats() {
@@ -127,8 +123,8 @@ function renderProjects() {
   }).join('');
 
   document.getElementById('mount-projects').innerHTML = `
-    <div class="match-section" id="matches">
-      <div class="s-label">Match History · Key Projects</div>
+    <div class="match-section" id="projects">
+      <div class="s-label">Key Projects</div>
       <div class="match-list">${rows}</div>
     </div>`;
 
