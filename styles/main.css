@@ -846,6 +846,7 @@ nav{
   display:flex;gap:0.6rem;justify-content:center;flex-wrap:wrap;
 }
 .c-link{
+  display:inline-flex;align-items:center;gap:0.45rem;
   font-family:'Barlow Condensed',sans-serif;
   font-weight:600;font-size:0.7rem;
   letter-spacing:0.14em;text-transform:uppercase;
@@ -854,6 +855,7 @@ nav{
   border:1px solid var(--border2);
   transition:all 0.15s;
 }
+.c-link svg{width:14px;height:14px;flex-shrink:0}
 .c-link:hover{color:var(--orange);border-color:var(--border)}
 
 /* ─── FOOTER ─── */
