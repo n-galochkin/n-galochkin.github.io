@@ -164,35 +164,18 @@ function renderSeasons() {
 }
 
 function renderMedals() {
-  const summary = MEDALS_SUMMARY.map(m => `
-    <div class="ms-item">
-      <span class="ms-dot ${m.tier}" ${!m.tier ? 'style="background:var(--muted)"' : ''}></span>
-      <span class="ms-label">${m.label}</span>
-      <span class="ms-count">×${m.count}</span>
-    </div>`).join('');
-
   const cards = MEDALS.map(m => `
     <div class="medal-card ${m.tier}">
       <div class="medal ${m.tier}"><div class="medal-inner">${m.icon}</div></div>
-      <div class="medal-tier-label ${m.tier}">${tierLabel(m.tier)}</div>
-      <div class="medal-name">${m.name}</div>
+      <div class="medal-name ${m.tier}">${m.name}</div>
       <div class="medal-desc">${m.desc}</div>
     </div>`).join('');
 
   document.getElementById('mount-medals').innerHTML = `
     <div class="achievements-section" id="achievements">
-      <div class="s-label">Achievements · Medal Cabinet</div>
-      <div class="medals-summary">${summary}</div>
+      <div class="s-label">Achievements</div>
       <div class="medals-grid">${cards}</div>
     </div>`;
-}
-
-function tierLabel(tier) {
-  if (tier === 't3')     return '★★★ Tier 3 · Legendary';
-  if (tier === 't2')     return '★★ Tier 2 · Epic';
-  if (tier === 't1')     return '★ Tier 1 · Rare';
-  if (tier === 'locked') return '⌬ Locked';
-  return '';
 }
 
 function renderReports() {

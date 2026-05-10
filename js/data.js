@@ -53,7 +53,7 @@ const PROJECTS = [
       { label: 'Website', url: 'https://www.gs-studio.eu/work/atone' },
     ],
     gallery: [
-      { type: 'video', src: 'media/atone/Video.mp4', alt: 'Atone gameplay video' },
+      { type: 'youtube', videoId: 'ct3dSTfC3TE', alt: 'Atone gameplay video' },
       { type: 'image', src: 'media/atone/1.jpg', alt: 'Atone screenshot 1' },
       { type: 'image', src: 'media/atone/2.jpg', alt: 'Atone screenshot 2' },
       { type: 'image', src: 'media/atone/3.jpg', alt: 'Atone screenshot 3' },
@@ -258,24 +258,14 @@ const SEASONS = [
 ];
 
 const MEDALS = [
+  { tier: 't3', icon: '⎈',  name: 'Architector',   desc: 'Led full P2P → Client-Server migration on a live VR-PC shooter.' },
   { tier: 't3', icon: 'AAA', name: 'Triple-A Shipped',    desc: 'Contributed to AAA published titles on PC &amp; Console.' },
-  { tier: 't3', icon: '⚡',  name: 'Network Architect',   desc: 'Led full P2P → Client-Server migration on a live VR-PC shooter.' },
   { tier: 't3', icon: 'X',   name: 'Decade Veteran',      desc: '10+ years of professional Unreal Engine development.' },
   { tier: 't2', icon: '★',   name: 'Lead Programmer',     desc: 'Led and grew a programmer team at Pixward Games.' },
-  { tier: 't2', icon: '−27', name: 'Performance Master',  desc: 'Reduced CPU time by 27% on a shipped UE4 fighter via profiling.' },
-  { tier: 't2', icon: 'AI',  name: 'AI Specialist',       desc: 'HTN planning, crowd NPCs, and nav-link generators for open worlds.' },
-  { tier: 't1', icon: 'C++', name: 'C++ Expert',          desc: 'Primary language across all 5 studios for a decade.' },
-  { tier: 't1', icon: 'VR',  name: 'VR Developer',        desc: 'Shipped VR cooperative titles &amp; an asymmetric VR-PC shooter.' },
+  { tier: 't2', icon: '↑',  name: 'Open Source Hero',       desc: 'Pushed accepted important fixes to HTN open-source plugin.' },
   { tier: 't1', icon: '∞',   name: 'CI/CD Engineer',      desc: 'Built pipelines from scratch with Sentry monitoring &amp; EAC.' },
   { tier: 'locked', icon: '?', name: 'Open Source Hero',  desc: 'Publish a public UE plugin or dev tool. <em>In Progress.</em>' },
   { tier: 'locked', icon: '?', name: 'GDC Speaker',       desc: 'Talk at a major industry conference. <em>Career Goal.</em>' },
-];
-
-const MEDALS_SUMMARY = [
-  { tier: 't3', label: 'Tier 3', count: 3 },
-  { tier: 't2', label: 'Tier 2', count: 3 },
-  { tier: 't1', label: 'Tier 1', count: 3 },
-  { tier: '',   label: 'Locked', count: 2 },
 ];
 
 const CONTACT = {
@@ -284,8 +274,8 @@ const CONTACT = {
   links: [
     { label: 'LinkedIn',   url: 'https://www.linkedin.com/in/n-galochkin' },
     { label: 'GitHub',     url: 'https://github.com/n-galochkin' },
-    { label: 'Upwork',     url: 'https://www.upwork.com/freelancers/~013b0bb6cd2d2b7969' },
-    { label: 'Freelancer', url: 'https://www.freelancer.in/u/RebornAimer' },
+    { label: 'Youtube',     url: 'https://www.youtube.com/channel/UCKqe2Z8Tcv4Jg1zpdk2O7mg' },
+    { label: 'Instagram',     url: 'https://www.instagram.com/reborn_aimer/' },
   ],
 };
 
