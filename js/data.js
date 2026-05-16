@@ -295,14 +295,17 @@ const SEASONS = [
 ];
 
 const MEDALS = [
-  { tier: 't3', icon: '⎈',  name: 'Architector',   desc: 'Led full P2P → Client-Server migration on a live VR-PC shooter.' },
-  { tier: 't3', icon: 'AAA', name: 'Triple-A Shipped',    desc: 'Contributed to AAA published titles on PC &amp; Console.' },
-  { tier: 't3', icon: 'X',   name: 'Decade Veteran',      desc: '10+ years of professional Unreal Engine development.' },
-  { tier: 't2', icon: '★',   name: 'Lead Programmer',     desc: 'Led and grew a programmer team at Pixward Games.' },
-  { tier: 't2', icon: '↑',  name: 'Open Source Hero',       desc: 'Pushed accepted important fixes to HTN open-source plugin.' },
-  { tier: 't1', icon: '∞',   name: 'CI/CD Engineer',      desc: 'Built pipelines from scratch with Sentry monitoring &amp; EAC.' },
-  { tier: 'locked', icon: '?', name: 'Open Source Hero',  desc: 'Publish a public UE plugin or dev tool. <em>In Progress.</em>' },
-  { tier: 'locked', icon: '?', name: 'GDC Speaker',       desc: 'Talk at a major industry conference. <em>Career Goal.</em>' },
+  { tier: 't3', icon: '⎈',  name: 'Architect rebuilder',   desc: 'Led full P2P → Client-Server migration on a live VR-PC shooter.' },
+  { tier: 't3', icon: 'AAA', name: 'Triple-A Shipped',    desc: 'Contributed to shipped AAA titles on PC & Console.' },
+  { tier: 't3', icon: '🎖',   name: 'Decade Veteran',      desc: '10+ years of professional Unreal Engine development.' },
+  { tier: 't2', icon: '★',   name: 'Lead Programmer',     desc: 'Led and grew a programmer team.' },
+  { tier: 't2', icon: '⑂',  name: 'Open Source Hero',       desc: 'Merged important fixes into the HTN open-source plugin.' },
+  { tier: 't1', icon: '§',   name: 'Software Master',      desc: 'Earned a Master\'s degree in Software Engineering.' },
+  { tier: 't2', icon: '⚗',   name: 'R&D Success',      desc: 'Researched and implemented automated testing in Unreal Engine 4.27.' },
+  { tier: 't1', icon: '❝',   name: 'Team Speaker',      desc: 'Delivered a master class for the team on unit testing' },
+  { tier: 'locked', icon: '?',   name: 'Solo Developer',      desc: 'Build and ship a complete game solo. <em>In Progress.</em>' },
+  { tier: 'locked', icon: '?', name: 'Plugin Publisher',  desc: 'Publish a public UE plugin or dev tool. <em>In Progress.</em>' },
+  { tier: 'locked', icon: '?', name: 'GDC Speaker',       desc: 'Speak at a major industry conference. <em>Career Goal.</em>' },
 ];
 
 const CONTACT = {
