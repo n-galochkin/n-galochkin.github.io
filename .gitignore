@@ -1,26 +1,25 @@
+### macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
 ### Windows
-# Windows thumbnail cache files
 Thumbs.db
-
-# Folder config file
+ehthumbs.db
 [Dd]esktop.ini
-
-# Recycle Bin used on file shares
 $RECYCLE.BIN/
-
-# Windows shortcuts
 *.lnk
 
-### JetBrains
-# JetBrains IDE directory
+### JetBrains / VS Code
 .idea/
-
-# CMake build directories
-cmake-build-*/
-
-# File-based project format
+.vscode/
 *.iws
 *.iml
-
-# IntelliJ build output
 out/
+
+### Jekyll (just in case)
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
