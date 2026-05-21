@@ -2860,28 +2860,27 @@ body[data-palette="frost"]{
               <stop offset="100%" stop-color="#7a1814" stop-opacity="0.2"/>
             </radialGradient>
           </defs>
-          <!-- octagonal rings -->
+          <!-- heptagonal rings (7 axes) -->
           <g fill="none" stroke="#3a1e16" stroke-width="1">
-            <polygon points="200,40 313.1,86.9 360,200 313.1,313.1 200,360 86.9,313.1 40,200 86.9,86.9"/>
-            <polygon points="200,72 290.5,108.4 328,200 290.5,291.5 200,328 109.5,291.5 72,200 109.5,108.4" stroke-opacity="0.7"/>
-            <polygon points="200,104 267.9,129.9 296,200 267.9,270.1 200,296 132.1,270.1 104,200 132.1,129.9" stroke-opacity="0.5"/>
-            <polygon points="200,136 245.3,151.4 264,200 245.3,248.6 200,264 154.7,248.6 136,200 154.7,151.4" stroke-opacity="0.4"/>
-            <polygon points="200,168 222.6,173.0 232,200 222.6,227.0 200,232 177.4,227.0 168,200 177.4,173.0" stroke-opacity="0.3"/>
+            <polygon points="200,40 324.79,100.23 355.98,235.60 269.42,344.15 130.58,344.15 44.02,235.60 75.21,100.23"/>
+            <polygon points="200,72 299.83,120.18 324.79,228.48 255.54,315.32 144.46,315.32 75.21,228.48 100.17,120.18" stroke-opacity="0.7"/>
+            <polygon points="200,104 274.87,140.14 293.59,221.36 241.65,286.49 158.35,286.49 106.41,221.36 125.13,140.14" stroke-opacity="0.5"/>
+            <polygon points="200,136 249.92,160.09 262.39,214.24 227.77,257.66 172.23,257.66 137.61,214.24 149.92,160.09" stroke-opacity="0.4"/>
+            <polygon points="200,168 224.96,180.05 231.20,207.12 213.88,228.83 186.12,228.83 168.80,207.12 175.04,180.05" stroke-opacity="0.3"/>
           </g>
           <!-- axis lines -->
           <g stroke="#5a4034" stroke-width="0.8" opacity="0.55">
             <line x1="200" y1="200" x2="200" y2="40"/>
-            <line x1="200" y1="200" x2="313.1" y2="86.9"/>
-            <line x1="200" y1="200" x2="360" y2="200"/>
-            <line x1="200" y1="200" x2="313.1" y2="313.1"/>
-            <line x1="200" y1="200" x2="200" y2="360"/>
-            <line x1="200" y1="200" x2="86.9" y2="313.1"/>
-            <line x1="200" y1="200" x2="40" y2="200"/>
-            <line x1="200" y1="200" x2="86.9" y2="86.9"/>
+            <line x1="200" y1="200" x2="324.79" y2="100.23"/>
+            <line x1="200" y1="200" x2="355.98" y2="235.60"/>
+            <line x1="200" y1="200" x2="269.42" y2="344.15"/>
+            <line x1="200" y1="200" x2="130.58" y2="344.15"/>
+            <line x1="200" y1="200" x2="44.02" y2="235.60"/>
+            <line x1="200" y1="200" x2="75.21" y2="100.23"/>
           </g>
-          <!-- 5,4,4,3,3,2,2,1 stat polygon -->
+          <!-- 5,4,3,3,2,2,1 stat polygon -->
           <polygon
-            points="200,40 267.9,129.9 296,200 245.3,248.6 200,264 177.4,227.0 168,200 177.4,173.0"
+            points="200,40 299.83,120.18 293.59,221.36 241.65,286.49 172.23,257.66 137.61,214.24 175.04,180.05"
             fill="url(#radarFill)"
             stroke="#d8421a" stroke-width="1.8" stroke-linejoin="round"/>
 
@@ -2893,47 +2892,41 @@ body[data-palette="frost"]{
               <circle class="pip"  cx="200" cy="40"  r="4"/>
               <text class="label" x="200" y="20" text-anchor="middle">GAMEPLAY · <tspan class="lv">5</tspan></text>
             </g>
-            <g class="vertex" data-skill="Multiplayer" data-tx="78.275" data-ty="21.725"
-               data-weapons="Network Replication • Dedicated Server • EOS • Easy Anti-Cheat • Matchmaking">
-              <circle class="ring" cx="267.9" cy="129.9" r="9"/>
-              <circle class="pip"  cx="267.9" cy="129.9" r="4"/>
-              <text class="label" x="332" y="82" text-anchor="middle">MULTIPLAYER · <tspan class="lv">4</tspan></text>
+            <g class="vertex" data-skill="Network &amp; Backend" data-tx="81.2" data-ty="25.1"
+               data-weapons="Network Replication • Dedicated Server • EOS • Easy Anti-Cheat • Matchmaking • WebSocket • QUIC • k8s • Agones • Docker • gRPC • Protobuf">
+              <circle class="ring" cx="299.83" cy="120.18" r="9"/>
+              <circle class="pip"  cx="299.83" cy="120.18" r="4"/>
+              <text class="label" x="340" y="68" text-anchor="middle">NETWORK · <tspan class="lv">4</tspan></text>
             </g>
-            <g class="vertex" data-skill="Backend" data-tx="90" data-ty="50"
-               data-weapons="WebSocket • Quic Protocol • k8s • Agones • Docker • GRPC • Protobuf">
-              <circle class="ring" cx="296" cy="200" r="9"/>
-              <circle class="pip"  cx="296" cy="200" r="4"/>
-              <text class="label" x="386" y="204" text-anchor="end">BACKEND · <tspan class="lv">4</tspan></text>
-            </g>
-            <g class="vertex" data-skill="AI" data-tx="78.275" data-ty="78.275"
+            <g class="vertex" data-skill="AI" data-tx="89" data-ty="58.9"
                data-weapons="HTN • Behavior Tree • EQS • Navigation">
-              <circle class="ring" cx="245.3" cy="248.6" r="9"/>
-              <circle class="pip"  cx="245.3" cy="248.6" r="4"/>
-              <text class="label" x="334" y="332" text-anchor="middle">AI · <tspan class="lv">3</tspan></text>
+              <circle class="ring" cx="293.59" cy="221.36" r="9"/>
+              <circle class="pip"  cx="293.59" cy="221.36" r="4"/>
+              <text class="label" x="392" y="248" text-anchor="end">AI · <tspan class="lv">3</tspan></text>
             </g>
-            <g class="vertex" data-skill="UI" data-tx="50" data-ty="90"
+            <g class="vertex" data-skill="UI" data-tx="67.4" data-ty="86"
                data-weapons="CommonUI • MVVM • UMG">
-              <circle class="ring" cx="200" cy="264" r="9"/>
-              <circle class="pip"  cx="200" cy="264" r="4"/>
-              <text class="label" x="200" y="388" text-anchor="middle">UI · <tspan class="lv">3</tspan></text>
+              <circle class="ring" cx="241.65" cy="286.49" r="9"/>
+              <circle class="pip"  cx="241.65" cy="286.49" r="4"/>
+              <text class="label" x="285" y="378" text-anchor="middle">UI · <tspan class="lv">3</tspan></text>
             </g>
-            <g class="vertex" data-skill="Tooling" data-tx="21.725" data-ty="78.275"
+            <g class="vertex" data-skill="Tooling" data-tx="32.6" data-ty="86"
                data-weapons="Editor Tools • Perforce / Git • CI/CD • Sentry • Graphana">
-              <circle class="ring" cx="177.4" cy="227.0" r="9"/>
-              <circle class="pip"  cx="177.4" cy="227.0" r="4"/>
-              <text class="label" x="66" y="332" text-anchor="middle">TOOLS · <tspan class="lv">2</tspan></text>
+              <circle class="ring" cx="172.23" cy="257.66" r="9"/>
+              <circle class="pip"  cx="172.23" cy="257.66" r="4"/>
+              <text class="label" x="115" y="378" text-anchor="middle">TOOLS · <tspan class="lv">2</tspan></text>
             </g>
-            <g class="vertex" data-skill="Leadership" data-tx="10" data-ty="50"
+            <g class="vertex" data-skill="Leadership" data-tx="11" data-ty="58.9"
                data-weapons="Team Management">
-              <circle class="ring" cx="168" cy="200" r="9"/>
-              <circle class="pip"  cx="168" cy="200" r="4"/>
-              <text class="label" x="14" y="204" text-anchor="start">LEADERSHIP · <tspan class="lv">2</tspan></text>
+              <circle class="ring" cx="137.61" cy="214.24" r="9"/>
+              <circle class="pip"  cx="137.61" cy="214.24" r="4"/>
+              <text class="label" x="8" y="248" text-anchor="start">LEADERSHIP · <tspan class="lv">2</tspan></text>
             </g>
-            <g class="vertex" data-skill="Optimisation" data-tx="21.725" data-ty="21.725"
+            <g class="vertex" data-skill="Optimisation" data-tx="18.8" data-ty="25.1"
                data-weapons="Unreal Insights • Gauntlet • Unit Testing • Automation Spec">
-              <circle class="ring" cx="177.4" cy="173.0" r="9"/>
-              <circle class="pip"  cx="177.4" cy="173.0" r="4"/>
-              <text class="label" x="68" y="82" text-anchor="middle">OPTIMISATION · <tspan class="lv">1</tspan></text>
+              <circle class="ring" cx="175.04" cy="180.05" r="9"/>
+              <circle class="pip"  cx="175.04" cy="180.05" r="4"/>
+              <text class="label" x="60" y="68" text-anchor="middle">OPTIMISATION · <tspan class="lv">1</tspan></text>
             </g>
           </g>
 
