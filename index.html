@@ -7,6 +7,10 @@
 <meta name="description" content="Senior Unreal Engine Programmer — Gameplay, Network &amp; AI. 10+ years across AAA titles." />
 <meta name="author" content="Nikita Galochkin" />
 
+<!-- GoatCounter analytics -->
+<script data-goatcounter="https://ngalochkin.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
 <!-- Open Graph (LinkedIn, Facebook, Telegram, Discord, iMessage, Slack) -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://n-galochkin.github.io/" />
@@ -223,13 +227,20 @@ section{ position: relative; z-index: 5; }
 /* Nav sits ABOVE the vignette/scanlines so its contents stay bright,
    and its content edges are inset to line up with the centered .shell
    (max-width 1440px) + section padding (4rem). When the viewport is
-   narrower than the shell, the padding falls back to a safe minimum. */
+   narrower than the shell, the padding falls back to a safe minimum.
+
+   Adaptive: at the top of the page the menu reads as large display text
+   with roman numeral prefixes (variant A). Once the user scrolls past the
+   hero, .nav.compact swaps it to a denser bar with heraldry icons + small
+   labels (variant B) so the menu doesn't fight section content. */
 .nav{
   position: fixed; top: 0; left: 0; right: 0; z-index: 95;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 1.2rem max(1.25rem, calc((100vw - 1440px) / 2 + 4rem));
+  padding: 1.4rem max(1.25rem, calc((100vw - 1440px) / 2 + 4rem));
   background: linear-gradient(to bottom, rgba(8,6,10,0.95), rgba(8,6,10,0.5) 80%, transparent);
   pointer-events: none;
+  transition: padding 0.28s ease, background 0.28s ease, border-color 0.28s ease;
+  border-bottom: 1px solid transparent;
 }
 .nav > *{ pointer-events: auto; }
 
@@ -239,78 +250,109 @@ section{ position: relative; z-index: 5; }
   font-weight: 700; letter-spacing: 0.2em;
   font-size: 0.95rem; text-transform: uppercase;
   color: var(--bone);
+  transition: font-size 0.28s ease;
 }
 .nav-mark .sigil{
   width: 32px; height: 36px;
   display: flex; align-items: center; justify-content: center;
+  transition: width 0.28s ease, height 0.28s ease;
 }
 .nav-mark .sigil svg{ width: 100%; height: 100%; }
 .nav-mark em{ color: var(--ember); font-style: normal; font-weight: 400; }
 
-.nav-shields{
-  display: flex; gap: 0.1rem; align-items: stretch;
+/* ── Menu links — expanded state (hero) ────────────────────────
+   Roman-numeral chip + uppercase display label; thin ember rune
+   stroke slides in under the active/hover label. Icons live in the
+   DOM but stay collapsed (opacity 0 / max-width 0) until .compact. */
+.nav-links{
+  display: flex; align-items: center; gap: 1.7rem;
 }
-.shield{
+.nav-link{
   position: relative;
-  width: 56px; height: 64px;
-  display: flex; align-items: center; justify-content: center;
-  transition: transform 0.2s ease, filter 0.2s ease;
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.7));
-}
-.shield .plate{
-  position: absolute; inset: 0;
-  background:
-    /* rivets at the four cardinal points */
-    radial-gradient(circle 1.6px at 50% 8%,  #6a5236 60%, transparent 75%),
-    radial-gradient(circle 1.6px at 12% 22%, #6a5236 60%, transparent 75%),
-    radial-gradient(circle 1.6px at 88% 22%, #6a5236 60%, transparent 75%),
-    radial-gradient(circle 1.6px at 50% 86%, #6a5236 60%, transparent 75%),
-    /* base iron-stone gradient */
-    linear-gradient(165deg, #312418, #16110d 55%, #0b0807);
-  clip-path: polygon(50% 0%, 100% 12%, 100% 70%, 50% 100%, 0% 70%, 0% 12%);
-  border: 1px solid transparent;
-}
-.shield::before{
-  content: '';
-  position: absolute; inset: 1px;
-  clip-path: polygon(50% 0%, 100% 12%, 100% 70%, 50% 100%, 0% 70%, 0% 12%);
-  /* engraved highlight: thin upper-left bevel + central etched seam */
-  background:
-    linear-gradient(180deg, rgba(232,200,142,0.10), transparent 35%),
-    linear-gradient(90deg, transparent 49.4%, rgba(0,0,0,0.35) 49.7%, rgba(232,200,142,0.06) 50%, rgba(0,0,0,0.35) 50.3%, transparent 50.6%);
-  pointer-events: none;
-}
-.shield svg.heraldry{
-  position: relative; z-index: 2;
-  width: 30px; height: 30px;
-  color: var(--bronze2);
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-.shield .label{
-  position: absolute; top: calc(100% + 8px); left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--f-mono);
-  font-size: 0.62rem; letter-spacing: 0.2em;
+  display: inline-flex; align-items: baseline; gap: 0.55rem;
+  font-family: var(--f-display);
+  font-size: 0.86rem; letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ash-text);
-  white-space: nowrap;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.2s;
+  color: var(--bone2);
+  padding: 0.4rem 0;
+  transition: color 0.25s ease, letter-spacing 0.28s ease, font-size 0.28s ease, gap 0.28s ease;
 }
-.shield:hover{
-  transform: translateY(-3px);
-  filter: drop-shadow(0 6px 14px rgba(216,66,26,0.4));
+.nav-link .num{
+  font-family: var(--f-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  color: var(--bronze);
+  transition: color 0.25s ease, opacity 0.28s ease, max-width 0.28s ease, margin-right 0.28s ease;
 }
-.shield:hover svg.heraldry{ color: var(--ember); }
-.shield:hover .label{ opacity: 1; color: var(--bone); }
-.shield.active svg.heraldry{ color: var(--ember); }
-.shield.active::after{
-  content: ''; position: absolute; left: 50%; bottom: -10px;
+.nav-link .icon{
+  position: relative; top: 2px;
+  width: 16px; height: 16px;
+  color: var(--bronze2);
+  flex-shrink: 0;
+  opacity: 0; max-width: 0; margin-right: 0; overflow: hidden;
+  transition: opacity 0.28s ease, max-width 0.28s ease, margin-right 0.28s ease, color 0.25s ease;
+}
+.nav-link::after{
+  content: '';
+  position: absolute; left: 0; right: 0; bottom: -2px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ember) 30%, var(--ember) 70%, transparent);
+  opacity: 0;
+  transform: scaleX(0.6);
+  transform-origin: 50% 50%;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.nav-link:hover,
+.nav-link.active{ color: var(--bone); }
+.nav-link:hover .num,
+.nav-link.active .num{ color: var(--ember); }
+.nav-link:hover .icon,
+.nav-link.active .icon{ color: var(--ember); }
+.nav-link:hover::after,
+.nav-link.active::after{ opacity: 1; transform: scaleX(1); }
+.nav-link.active::before{
+  content: ''; position: absolute; left: 50%; bottom: -8px;
   transform: translateX(-50%);
-  width: 6px; height: 6px;
+  width: 4px; height: 4px;
   background: var(--ember);
   border-radius: 50%;
-  box-shadow: 0 0 12px var(--ember);
+  box-shadow: 0 0 10px var(--ember);
+}
+
+/* ── Compact state (scrolled past hero) ─────────────────────── */
+.nav.compact{
+  padding: 0.7rem max(1.25rem, calc((100vw - 1440px) / 2 + 4rem));
+  background: linear-gradient(to bottom, rgba(8,6,10,0.97), rgba(8,6,10,0.88));
+  border-bottom-color: rgba(216,200,168,0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.nav.compact .nav-mark{ font-size: 0.78rem; }
+.nav.compact .nav-mark .sigil{ width: 24px; height: 28px; }
+.nav.compact .nav-links{ gap: 1.05rem; }
+.nav.compact .nav-link{
+  font-size: 0.7rem; letter-spacing: 0.16em;
+  gap: 0;
+}
+.nav.compact .nav-link .num{
+  opacity: 0; max-width: 0; margin-right: 0; overflow: hidden;
+}
+.nav.compact .nav-link .icon{
+  opacity: 1; max-width: 16px; margin-right: 0.45rem;
+}
+
+/* ── Mobile fallback ───────────────────────────────────────── */
+@media (max-width: 900px){
+  .nav{ padding: 0.9rem 1rem; }
+  .nav-links{ gap: 0.55rem; }
+  .nav-link{ font-size: 0.65rem; letter-spacing: 0.12em; }
+  .nav-link .num{ display: none; }
+  .nav-link .label-text{ display: none; }
+  .nav-link .icon{
+    opacity: 1; max-width: 18px; width: 18px; height: 18px;
+    margin-right: 0;
+  }
+  .nav.compact .nav-link .icon{ margin-right: 0; }
 }
 
 /* ────────────────────────────────────────────
@@ -1401,6 +1443,223 @@ section{ position: relative; z-index: 5; }
 .t-epic .trophy-rarity{ color: var(--bronze2); }
 .t-rare .trophy-rarity{ color: #b4a484; }
 .t-common .trophy-rarity{ color: var(--bone2); }
+
+/* ────────────────────────────────────────────
+   SCROLLS (ARTICLES)
+   Manuscript cards holding writings on craft. Each scroll is a single
+   article preview — the published ones link to /articles/, the
+   in-progress ones (default state until the user ships one) wear a
+   "FORTHCOMING" wax stamp. Two-row layout: published cards first, then
+   a slim row of work-in-progress entries with the same chrome muted.
+   ──────────────────────────────────────────── */
+
+.scrolls{
+  position: relative;
+  background: linear-gradient(180deg, var(--void) 0%, #0e0a0c 50%, var(--void) 100%);
+}
+
+.scrolls-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem;
+  margin-top: 1rem;
+}
+@media (max-width: 1100px){ .scrolls-grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 720px){ .scrolls-grid{ grid-template-columns: 1fr; } }
+
+.scroll-card{
+  position: relative;
+  display: flex; flex-direction: column;
+  padding: 1.6rem 1.5rem 1.4rem;
+  background:
+    /* faint parchment texture — diagonal etched noise */
+    repeating-linear-gradient(135deg, rgba(216,200,168,0.015) 0 2px, transparent 2px 5px),
+    linear-gradient(165deg, rgba(34,26,24,0.95), rgba(14,10,10,0.95));
+  border: 1px solid var(--line);
+  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  overflow: hidden;
+  min-height: 260px;
+}
+.scroll-card::before{
+  /* top bronze rune line — matches weapon card */
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(to right, transparent, var(--bronze), transparent);
+}
+.scroll-card::after{
+  /* wax seal in top-right corner */
+  content: '';
+  position: absolute; top: 14px; right: 14px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #c14224, #6a1a10 70%);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.7);
+}
+.scroll-card:hover{
+  border-color: var(--bronze);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -16px rgba(0,0,0,0.8), inset 0 0 30px rgba(216,66,26,0.05);
+}
+
+.scroll-meta{
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px dashed var(--line);
+}
+.scroll-folio{
+  font-family: var(--f-mono);
+  font-size: 0.62rem; letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--bronze2);
+}
+.scroll-stamp{
+  font-family: var(--f-mono);
+  font-size: 0.62rem; letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ash-text);
+  text-align: right;
+}
+.scroll-stamp .dot{
+  display: inline-block;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--bronze);
+  vertical-align: middle;
+  margin: 0 0.5rem;
+  position: relative; top: -2px;
+}
+
+.scroll-title{
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--bone);
+  line-height: 1.15;
+  margin-bottom: 0.7rem;
+}
+.scroll-title em{
+  font-style: italic; font-weight: 400;
+  color: var(--bronze2);
+}
+
+.scroll-excerpt{
+  font-family: var(--f-body);
+  font-size: 0.95rem;
+  color: var(--bone2);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.scroll-tags{
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+.scroll-tag{
+  font-family: var(--f-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone2);
+  padding: 0.25rem 0.55rem;
+  background: rgba(216,200,168,0.04);
+  border: 1px solid var(--line);
+}
+
+.scroll-foot{
+  margin-top: auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px dashed var(--line);
+}
+.scroll-open{
+  font-family: var(--f-mono);
+  font-size: 0.7rem; letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--bone);
+  transition: color 0.2s;
+}
+.scroll-open .arrow{
+  display: inline-block;
+  margin-left: 0.4rem;
+  transition: transform 0.2s, color 0.2s;
+  color: var(--bronze2);
+}
+.scroll-card:hover .scroll-open{ color: var(--ember); }
+.scroll-card:hover .scroll-open .arrow{ transform: translateX(4px); color: var(--ember); }
+
+.scroll-mirrors{
+  display: flex; gap: 0.4rem;
+  font-family: var(--f-mono);
+  font-size: 0.55rem; letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.scroll-mirrors a{
+  padding: 0.25rem 0.45rem;
+  color: var(--ash-text);
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,0.25);
+  transition: color 0.2s, border-color 0.2s;
+}
+.scroll-mirrors a:hover{ color: var(--ember); border-color: var(--ember); }
+
+/* ── Forthcoming (coming-soon) state ──────────────────────── */
+.scroll-card.forthcoming{
+  pointer-events: none;
+  opacity: 0.72;
+}
+.scroll-card.forthcoming::before{
+  background: linear-gradient(to right, transparent, var(--mute), transparent);
+}
+.scroll-card.forthcoming::after{
+  background: radial-gradient(circle at 35% 30%, #4a3a2a, #1d160f 70%);
+}
+.scroll-card.forthcoming .scroll-title{ color: var(--bone2); }
+.scroll-card.forthcoming .scroll-title em{ color: var(--mute); }
+.scroll-card.forthcoming .scroll-excerpt{ color: var(--ash-text); }
+.scroll-card.forthcoming .scroll-open{ color: var(--mute); }
+.scroll-card.forthcoming .scroll-open .arrow{ color: var(--mute); }
+.scroll-forthcoming-stamp{
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 0.95rem; letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(216,200,168,0.18);
+  padding: 0.5rem 1.4rem;
+  border: 2px solid rgba(216,200,168,0.18);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.scroll-forthcoming-stamp::before,
+.scroll-forthcoming-stamp::after{
+  content: '✶'; margin: 0 0.5rem;
+  color: rgba(216,66,26,0.4);
+}
+
+/* ── Empty-state hint below grid ──────────────────────────── */
+.scrolls-empty-note{
+  margin-top: 2.5rem;
+  padding: 1.2rem 1.5rem;
+  border: 1px dashed var(--line);
+  background: rgba(0,0,0,0.25);
+  text-align: center;
+  font-family: var(--f-mono);
+  font-size: 0.72rem; letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ash-text);
+}
+.scrolls-empty-note em{ color: var(--bronze2); font-style: normal; }
 
 /* ────────────────────────────────────────────
    SUMMON (CONTACT)
@@ -2538,6 +2797,21 @@ body[data-palette="frost"]{
       </g>
     </symbol>
 
+    <!-- 07 Quill & scroll: writings / articles -->
+    <symbol id="h-quill" viewBox="0 0 32 32">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round">
+        <!-- rolled scroll body -->
+        <path d="M6 8 C6 6 7 5 9 5 L23 5 C25 5 26 6 26 8 L26 24 C26 26 25 27 23 27 L9 27 C7 27 6 26 6 24 Z"/>
+        <!-- scroll text lines -->
+        <line x1="10" y1="11" x2="20" y2="11" stroke-width="1"/>
+        <line x1="10" y1="15" x2="22" y2="15" stroke-width="1"/>
+        <line x1="10" y1="19" x2="18" y2="19" stroke-width="1"/>
+        <!-- quill across -->
+        <path d="M20 4 L27 11 L19 22 L16 22 L16 19 Z" stroke-width="1.2"/>
+        <line x1="16" y1="22" x2="14" y2="24" stroke-width="1.2"/>
+      </g>
+    </symbol>
+
     <!-- weapon glyphs -->
     <symbol id="w-blade" viewBox="0 0 32 32">
       <g fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
@@ -2657,36 +2931,41 @@ body[data-palette="frost"]{
     N. <em>Galochkin</em>
   </a>
 
-  <div class="nav-shields">
-    <a href="#codex" class="shield" data-target="codex">
-      <div class="plate"></div>
-      <svg class="heraldry"><use href="#h-shield"/></svg>
-      <span class="label">Codex</span>
+  <div class="nav-links">
+    <a href="#codex" class="nav-link" data-target="codex">
+      <span class="num">I</span>
+      <svg class="icon" aria-hidden="true"><use href="#h-shield"/></svg>
+      <span class="label-text">Codex</span>
     </a>
-    <a href="#arsenal" class="shield" data-target="arsenal">
-      <div class="plate"></div>
-      <svg class="heraldry"><use href="#h-swords"/></svg>
-      <span class="label">Arsenal</span>
+    <a href="#arsenal" class="nav-link" data-target="arsenal">
+      <span class="num">II</span>
+      <svg class="icon" aria-hidden="true"><use href="#h-swords"/></svg>
+      <span class="label-text">Arsenal</span>
     </a>
-    <a href="#bestiary" class="shield" data-target="bestiary">
-      <div class="plate"></div>
-      <svg class="heraldry"><use href="#h-book"/></svg>
-      <span class="label">Realms</span>
+    <a href="#bestiary" class="nav-link" data-target="bestiary">
+      <span class="num">III</span>
+      <svg class="icon" aria-hidden="true"><use href="#h-book"/></svg>
+      <span class="label-text">Realms</span>
     </a>
-    <a href="#campaign" class="shield" data-target="campaign">
-      <div class="plate"></div>
-      <svg class="heraldry"><use href="#h-scroll"/></svg>
-      <span class="label">Campaign</span>
+    <a href="#campaign" class="nav-link" data-target="campaign">
+      <span class="num">IV</span>
+      <svg class="icon" aria-hidden="true"><use href="#h-scroll"/></svg>
+      <span class="label-text">Campaign</span>
     </a>
-    <a href="#trophies" class="shield" data-target="trophies">
-      <div class="plate"></div>
-      <svg class="heraldry"><use href="#h-skull"/></svg>
-      <span class="label">Trophies</span>
+    <a href="#trophies" class="nav-link" data-target="trophies">
+      <span class="num">V</span>
+      <svg class="icon" aria-hidden="true"><use href="#h-skull"/></svg>
+      <span class="label-text">Trophies</span>
     </a>
-    <a href="#summon" class="shield" data-target="summon">
-      <div class="plate"></div>
-      <svg class="heraldry"><use href="#h-seal"/></svg>
-      <span class="label">Summon</span>
+    <a href="#scrolls" class="nav-link" data-target="scrolls">
+      <span class="num">VI</span>
+      <svg class="icon" aria-hidden="true"><use href="#h-quill"/></svg>
+      <span class="label-text">Scrolls</span>
+    </a>
+    <a href="#summon" class="nav-link" data-target="summon">
+      <span class="num">VII</span>
+      <svg class="icon" aria-hidden="true"><use href="#h-seal"/></svg>
+      <span class="label-text">Summon</span>
     </a>
   </div>
 </nav>
@@ -3420,6 +3699,78 @@ body[data-palette="frost"]{
   </div>
 </section>
 
+<!-- ─── SCROLLS (ARTICLES) ─── -->
+<section class="scrolls sec-pad" id="scrolls">
+  <div class="shell">
+    <div class="sec-head" data-reveal>
+      <div class="sec-label">VI · The Scrolls</div>
+      <h2 class="sec-title">Writings on <em>Craft</em></h2>
+      <p class="sec-sub">Essays from the workshop — patterns, post-mortems, and the lessons that came at a cost.</p>
+    </div>
+
+    <div class="scrolls-grid">
+      <!-- Forthcoming placeholders — replace with real articles as they ship.
+           To publish: copy articles/_template.html, edit the front-matter
+           comment block + body, then swap one of these .forthcoming cards
+           for a live one (drop the .forthcoming class, fill in href + meta). -->
+      <a class="scroll-card forthcoming" aria-disabled="true">
+        <div class="scroll-meta">
+          <span class="scroll-folio">Folio I</span>
+          <span class="scroll-stamp">Drafting</span>
+        </div>
+        <h3 class="scroll-title">On the Anatomy of a <em>Boss Encounter</em></h3>
+        <p class="scroll-excerpt">A dissection of the rhythms, tells, and recovery windows that turn a damage sponge into a duel worth losing to.</p>
+        <div class="scroll-tags">
+          <span class="scroll-tag">Combat</span>
+          <span class="scroll-tag">Design</span>
+        </div>
+        <div class="scroll-foot">
+          <span class="scroll-open">Read <span class="arrow">→</span></span>
+        </div>
+        <div class="scroll-forthcoming-stamp">Forthcoming</div>
+      </a>
+
+      <a class="scroll-card forthcoming" aria-disabled="true">
+        <div class="scroll-meta">
+          <span class="scroll-folio">Folio II</span>
+          <span class="scroll-stamp">Drafting</span>
+        </div>
+        <h3 class="scroll-title">Notes from the <em>Foundry</em></h3>
+        <p class="scroll-excerpt">A field guide to the tooling, pipelines, and quiet disasters that shape a shipping production cycle.</p>
+        <div class="scroll-tags">
+          <span class="scroll-tag">Pipeline</span>
+          <span class="scroll-tag">Production</span>
+        </div>
+        <div class="scroll-foot">
+          <span class="scroll-open">Read <span class="arrow">→</span></span>
+        </div>
+        <div class="scroll-forthcoming-stamp">Forthcoming</div>
+      </a>
+
+      <a class="scroll-card forthcoming" aria-disabled="true">
+        <div class="scroll-meta">
+          <span class="scroll-folio">Folio III</span>
+          <span class="scroll-stamp">Drafting</span>
+        </div>
+        <h3 class="scroll-title">What I <em>Got Wrong</em> About Player Feedback</h3>
+        <p class="scroll-excerpt">Survivorship bias, the loudest seats in the playtest room, and the signals worth listening for instead.</p>
+        <div class="scroll-tags">
+          <span class="scroll-tag">UX</span>
+          <span class="scroll-tag">Process</span>
+        </div>
+        <div class="scroll-foot">
+          <span class="scroll-open">Read <span class="arrow">→</span></span>
+        </div>
+        <div class="scroll-forthcoming-stamp">Forthcoming</div>
+      </a>
+    </div>
+
+    <div class="scrolls-empty-note">
+      The first folio is being inked. <em>Subscribe via the summoning circle below</em> to be alerted when it lands.
+    </div>
+  </div>
+</section>
+
 <!-- ─── SUMMON (CONTACT) ─── -->
 <section class="summon" id="summon">
   <div class="summon-circle" aria-hidden="true">
@@ -3458,7 +3809,7 @@ body[data-palette="frost"]{
   </div>
 
   <div class="summon-inner">
-    <div class="summon-eyebrow">VI · The Summoning</div>
+    <div class="summon-eyebrow">VII · The Summoning</div>
     <h2 class="summon-title">Summon the <em>Slayer</em></h2>
     <p class="summon-sub">Have a beast that won't die? A system that won't ship? Speak the word and I will ride.</p>
 
@@ -3620,7 +3971,7 @@ body[data-palette="frost"]{
   }
   requestAnimationFrame(tick);
 
-  const hovers = 'a, button, .shield, .beast, .weapon, .trophy, .summon-btn, .lbox-close, .lbox-nav, [data-cursor-hover]';
+  const hovers = 'a, button, .nav-link, .beast, .weapon, .trophy, .summon-btn, .lbox-close, .lbox-nav, [data-cursor-hover]';
   document.addEventListener('mouseover', e => {
     if (e.target.closest(hovers)) cur.classList.add('hover');
   });
@@ -3688,18 +4039,25 @@ body[data-palette="frost"]{
   });
 })();
 
-// ─── Nav shield active state on scroll ───────────────────────
+// ─── Nav: active state + compact on scroll ───────────────────
 (function(){
-  const shields = document.querySelectorAll('.shield[data-target]');
-  const sections = [...shields].map(s => document.getElementById(s.dataset.target)).filter(Boolean);
-  if (!sections.length) return;
+  const nav = document.querySelector('.nav');
+  const links = document.querySelectorAll('.nav-link[data-target]');
+  const sections = [...links].map(s => document.getElementById(s.dataset.target)).filter(Boolean);
+  if (!nav || !links.length || !sections.length) return;
+  // Threshold: collapse to compact bar once user scrolls about 60% of a viewport
+  // past the hero — by then the title is gone and section content is leading.
+  const compactAt = () => Math.min(window.innerHeight * 0.6, 520);
   function update(){
-    const y = window.scrollY + window.innerHeight * 0.35;
+    const sy = window.scrollY;
+    nav.classList.toggle('compact', sy > compactAt());
+    const y = sy + window.innerHeight * 0.35;
     let activeIdx = 0;
     sections.forEach((s, i) => { if (s.offsetTop <= y) activeIdx = i; });
-    shields.forEach((s, i) => s.classList.toggle('active', i === activeIdx));
+    links.forEach((s, i) => s.classList.toggle('active', i === activeIdx));
   }
   window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
   update();
 })();
 
