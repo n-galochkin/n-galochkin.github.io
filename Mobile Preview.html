@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Preview — N. Galochkin</title>
+<style>
+  *{ box-sizing: border-box; margin: 0; }
+  body{
+    background: #15110f;
+    min-height: 100vh;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 1.2rem; padding: 2rem 1rem 3rem;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    color: #b9a892;
+  }
+  .bar{
+    display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;
+    justify-content: center;
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .bar button{
+    font: inherit; color: #d8c8a8; cursor: pointer;
+    background: linear-gradient(165deg, rgba(42,32,24,0.6), rgba(14,10,10,0.7));
+    border: 1px solid rgba(216,200,168,0.18); padding: 0.5rem 0.9rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .bar button:hover{ border-color: #d8421a; color: #fff; }
+  .bar button.active{ border-color: #d8421a; color: #ff7a4d; }
+  .frame{
+    position: relative; flex: 0 0 auto;
+    border: 10px solid #050403; border-radius: 42px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.6), inset 0 0 0 2px rgba(216,200,168,0.06);
+    background: #000; overflow: hidden;
+    transition: width .35s ease, height .35s ease;
+  }
+  .frame::before{
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 140px; height: 26px; background: #050403;
+    border-radius: 0 0 16px 16px; z-index: 5;
+  }
+  iframe{ width: 100%; height: 100%; border: 0; display: block; background: #08060a; }
+  .hint{ font-size: 0.68rem; opacity: 0.6; letter-spacing: 0.1em; max-width: 420px; text-align: center; line-height: 1.7; }
+</style>
+</head>
+<body>
+  <div class="bar" id="bar">
+    <button data-w="390" data-h="844" class="active">iPhone · 390</button>
+    <button data-w="360" data-h="800">Android · 360</button>
+    <button data-w="320" data-h="690">Small · 320</button>
+    <button data-w="768" data-h="1024">Tablet · 768</button>
+  </div>
+  <div class="frame" id="frame" style="width:410px;height:864px">
+    <iframe id="view" src="index.html"></iframe>
+  </div>
+  <p class="hint">Рамка задаёт ширину вьюпорта для сайта — медиазапросы срабатывают как на реальном устройстве. Прокручивай внутри рамки; меню-гамбургер появляется на ширине ≤ 760px.</p>
+<script>
+  const frame = document.getElementById('frame');
+  document.getElementById('bar').addEventListener('click', (e) => {
+    const b = e.target.closest('button'); if (!b) return;
+    document.querySelectorAll('#bar button').forEach(x => x.classList.toggle('active', x === b));
+    frame.style.width  = (parseInt(b.dataset.w) + 20) + 'px';
+    frame.style.height = (parseInt(b.dataset.h) + 20) + 'px';
+  });
+</script>
+</body>
+</html>

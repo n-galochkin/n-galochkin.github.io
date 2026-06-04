@@ -283,6 +283,66 @@ section{ position: relative; z-index: 5; }
   .shield:hover .label, .shield.active .label{ opacity: 1; }
 }
 
+/* ── Mobile navigation: burger toggle + full-width dropdown panel ── */
+.nav-burger{ display: none; }
+
+@media (max-width: 760px){
+  .nav{ padding: 0.85rem 1.2rem; }
+  .nav-mark{ font-size: 0.8rem; letter-spacing: 0.16em; gap: 0.55rem; position: relative; z-index: 2; }
+  .nav-mark .sigil{ width: 26px; height: 30px; }
+
+  /* burger */
+  .nav-burger{
+    display: flex; flex-direction: column; justify-content: center; gap: 5px;
+    width: 44px; height: 44px; padding: 0 11px;
+    background: linear-gradient(165deg, rgba(42,32,24,0.55), rgba(14,10,10,0.6));
+    border: 1px solid var(--line);
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+    position: relative; z-index: 2;
+  }
+  .nav-burger span{
+    display: block; height: 2px; width: 100%;
+    background: var(--bronze2);
+    transition: transform 0.28s ease, opacity 0.18s ease, background 0.2s ease;
+  }
+  .nav-burger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); background: var(--ember); }
+  .nav-burger.open span:nth-child(2){ opacity: 0; }
+  .nav-burger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); background: var(--ember); }
+
+  /* the shield row becomes a slide-down panel */
+  .nav-shields{
+    position: fixed; top: 0; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    padding: 4.6rem 1.2rem 1.4rem;
+    background: linear-gradient(to bottom, rgba(8,6,10,0.985), rgba(12,8,10,0.985));
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 26px 60px rgba(0,0,0,0.65);
+    transform: translateY(-112%);
+    transition: transform 0.36s cubic-bezier(0.4,0,0.2,1);
+    z-index: 1; /* sits below the brand + burger (z-index 2) so they stay tappable */
+  }
+  .nav-shields.open{ transform: translateY(0); }
+
+  .shield{
+    padding: 0.95rem 0.6rem; gap: 0.9rem;
+    clip-path: none; border: none;
+    border-bottom: 1px solid var(--line);
+    background: none;
+  }
+  .shield:last-child{ border-bottom: none; }
+  .shield:hover{ transform: none; background: none; border-color: transparent; border-bottom: 1px solid var(--line); }
+  .shield svg.heraldry{ width: 20px; height: 20px; }
+  .shield .label{
+    position: static; opacity: 1; transform: none;
+    font-size: 0.82rem; letter-spacing: 0.18em;
+    background: none; border: none; padding: 0;
+  }
+  .shield.active{ background: linear-gradient(90deg, rgba(122,24,20,0.30), transparent); }
+  .shield.active::after{ display: none; }
+}
+
+
+
 /* ────────────────────────────────────────────
    HERO
    ──────────────────────────────────────────── */
@@ -518,6 +578,8 @@ section{ position: relative; z-index: 5; }
   margin-top: 1.4rem;
 }
 .hero-sub span{ color: var(--ember); }
+.hero-sub .hs-seg{ color: var(--bone2); }
+.hero-sub .hs-dot{ color: var(--ember); margin: 0 0.5em; }
 
 .hero-tag{
   font-family: var(--f-body);
@@ -863,11 +925,19 @@ section{ position: relative; z-index: 5; }
     grid-template-columns: 1fr;
     justify-items: center;
     gap: 2rem;
-    margin-bottom: 3rem;
+    margin: 0 auto 3rem !important;
+    width: auto !important;
+    max-width: 100%;
   }
-  .about-portrait{ width: 100%; max-width: 300px; }
-  .about-bio{ text-align: center; }
-  .about-bio .bio-oath{ margin: 2.4rem auto 0; text-align: center; }
+  .about-portrait{ width: 100% !important; max-width: 300px !important; }
+  .about-bio{
+    text-align: center;
+    width: auto !important; max-width: 100% !important;
+    margin: 0 !important;
+  }
+  .about-bio p, .about-bio .bio-lead, .about-bio .bio-oath{ width: auto !important; max-width: 100% !important; }
+  .about-bio .bio-lead em{ white-space: normal !important; }
+  .about-bio .bio-oath{ margin: 2.4rem auto 0 !important; text-align: center; }
   .about-bio .bio-oath::before{ left: 50%; transform: translateX(-50%); }
 }
 .about-bio p{ margin-bottom: 1.5rem; }
@@ -1160,6 +1230,7 @@ section{ position: relative; z-index: 5; }
   transition: border-left-color 0.2s ease;
 }
 .beast-screens[data-video-src]:not([data-video-src=""]) .play-icon{ display: flex; }
+.beast-screens .thumb[data-video-src]:not([data-video-src=""]) .play-icon{ display: flex; }
 .beast-screens .thumb.video-thumb:hover .play-icon{
   background: rgba(216,66,26,0.45);
   border-color: var(--ember2);
@@ -1991,6 +2062,42 @@ body[data-palette="frost"]{
   body{ cursor: auto; }
   .cursor{ display: none; }
   button, a { cursor: pointer; }
+}
+
+
+/* ── Mobile (≤600px): hero, contact, footer overrides — placed last so they win the cascade ── */
+@media (max-width: 600px){
+  .hero-sub{ letter-spacing: 0.2em; font-size: 0.62rem; }
+  .hero-name{ font-size: clamp(2.3rem, 12.5vw, 4rem); }
+  .hero{ padding: 7rem 1.2rem 4rem; }
+  .hero-inner{ padding: 0 0.6rem 9vh; }
+  .hero-name{ display: flex; flex-direction: column; align-items: center; gap: 0.05em; line-height: 1.02; width: 100%; }
+  .hero-name .glitchable{ white-space: nowrap; }
+  .hero-name-gap{ display: none; }
+
+  /* hide the eyebrow line on phones */
+  .hero-eyebrow{ display: none; }
+
+  /* keep only the first and last subtitle segment (e.g. "Gameplay Programmer · Est. 2014") */
+  .hero-sub .hs-seg, .hero-sub .hs-dot{ display: none; }
+  .hero-sub .hs-seg:first-of-type, .hero-sub .hs-seg:last-of-type{ display: inline; }
+  .hero-sub .hs-seg:first-of-type::after{ content: '·'; color: var(--ember); margin: 0 0.45em; }
+
+  /* contact links wrap instead of running off the edge */
+  .summon-links{
+    flex-wrap: wrap; justify-content: center;
+    gap: 0.9rem 1.1rem; margin-top: 2rem;
+    letter-spacing: 0.18em; font-size: 0.66rem;
+  }
+  .summon-btn{ padding: 1.1rem 2.2rem; letter-spacing: 0.22em; font-size: 0.9rem; }
+  .summon-email{ font-size: 0.74rem; word-break: break-all; text-align: center; }
+  .summon-sub{ font-size: 1.1rem; }
+
+  /* footer stacks centred */
+  .foot{
+    flex-direction: column; gap: 0.6rem; text-align: center;
+    padding: 2rem 1.5rem;
+  }
 }
 
 </style>
@@ -3017,6 +3124,10 @@ body[data-palette="frost"]{
       <span class="label">Summon</span>
     </a>
   </div>
+
+  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- ─── HERO ─── -->
@@ -3066,10 +3177,10 @@ body[data-palette="frost"]{
       <div class="hero-eyebrow">— Codex of a Game Developer —</div>
       <h1 class="hero-name">
         <span class="glitchable" data-text="NIKITA">N<span class="ember-letter">I</span>KITA</span>
-        &nbsp;
+        <span class="hero-name-gap">&nbsp;</span>
         <span class="glitchable" data-text="GALOCHKIN">GA<span class="ember-letter">L</span>OCHKIN</span>
       </h1>
-      <div class="hero-sub">SR. UNREAL ENGINE PROGRAMMER <span>·</span> SLAYER OF BUGS <span>·</span> EST. 2015</div>
+      <div class="hero-sub"><span class="hs-seg">SR. UNREAL ENGINE PROGRAMMER</span><span class="hs-dot">·</span><span class="hs-seg">SLAYER OF BUGS</span><span class="hs-dot">·</span><span class="hs-seg">EST. 2015</span></div>
       <div class="hero-links">
         <a class="summon-link" href="https://github.com/n-galochkin" target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.7 8.2 11.3.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.3.1 1.9 1.3 1.9 1.3 1.1 1.9 3 1.4 3.7 1 .1-.8.4-1.4.8-1.7-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2.9-.3 2-.4 3-.4s2.1.1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6 4.8-1.6 8.2-6 8.2-11.3C24 5.9 18.6.5 12 .5z"/></svg>
@@ -3126,10 +3237,10 @@ body[data-palette="frost"]{
       <div class="hero-eyebrow">— Codex of a Game Developer —</div>
       <h1 class="hero-name">
         <span class="glitchable" data-text="NIKITA">N<span class="ember-letter">I</span>KITA</span>
-        &nbsp;
+        <span class="hero-name-gap">&nbsp;</span>
         <span class="glitchable" data-text="GALOCHKIN">GA<span class="ember-letter">L</span>OCHKIN</span>
       </h1>
-      <div class="hero-sub">GAMEPLAY PROGRAMMER <span>·</span> SLAYER OF BUGS <span>·</span> EST. 2014</div>
+      <div class="hero-sub"><span class="hs-seg">GAMEPLAY PROGRAMMER</span><span class="hs-dot">·</span><span class="hs-seg">SLAYER OF BUGS</span><span class="hs-dot">·</span><span class="hs-seg">EST. 2014</span></div>
       <p class="hero-tag">Forging multiplayer titles and gameplay systems through fires of production.</p>
     </div>
   </template>
@@ -3155,7 +3266,7 @@ body[data-palette="frost"]{
       </figure>
       <div class="codex-bio about-bio" style="text-align: left; margin: 0px 0px 0px 191px; width: 512px">
         <p class="bio-lead" style="text-align: center; width: 500px">I have loved games for as long as I can remember. I grew up playing them — and dreaming of building my own. From my first clumsy attempts in school, through diplomas and a dissertation in game development, every step pointed at a single dream: <em>to create games.</em></p>
-        <p style="width: 500px">That dream has carried me down the path of game-making for more than ten years. I've fought alongside brilliant teams on projects I'm proud of, shaping gameplay, netcode and AI in Unreal Engine across PC, mobile and VR — and I still chase the very thing I did as a kid: to ship a Game of the Year.</p>
+        <p style="width: 500px">That dream has carried me down the path of game-making for more than ten years. I've fought alongside brilliant teams on projects I'm proud of, shaping gameplay, netcode and AI in Unreal Engine across PC, mobile and VR. And that passion still burns — I dream of helping ship a Game of the Year.</p>
         <p class="bio-oath" style="text-align: center; width: 500px">So if you carry that same dream — <span>I'm in.</span></p>
       </div>
     </div>
@@ -3286,9 +3397,10 @@ body[data-palette="frost"]{
       </article>
 
       <article class="beast legendary" data-reveal>
-        <div class="beast-screens has-video" data-video-src="https://www.youtube.com/watch?v=k1dJ1VYJVNg">
-          <div class="thumb wide video-thumb"><img src="https://img.youtube.com/vi/k1dJ1VYJVNg/maxresdefault.jpg" alt="Blood of Heroes trailer preview"><span class="play-icon" aria-hidden="true"></span></div>
+        <div class="beast-screens has-video" data-video-src="https://www.youtube.com/watch?v=2zYlwnGIXu0">
+          <div class="thumb wide video-thumb"><img src="https://img.youtube.com/vi/2zYlwnGIXu0/maxresdefault.jpg" alt="Blood of Heroes trailer preview"><span class="play-icon" aria-hidden="true"></span></div>
           <div class="thumb-row">
+            <div class="thumb video-thumb" data-video-src="https://www.youtube.com/watch?v=YvmNSmqSk40"><img src="https://img.youtube.com/vi/YvmNSmqSk40/maxresdefault.jpg" alt="Blood of Heroes gameplay video"><span class="play-icon" aria-hidden="true"></span></div>
             <div class="thumb"><img src="media/blood-of-heroes/1.jpg" alt="Blood of Heroes screenshot"></div>
             <div class="thumb"><img src="media/blood-of-heroes/2.jpg" alt="Blood of Heroes screenshot"></div>
           </div>
@@ -3303,7 +3415,7 @@ body[data-palette="frost"]{
             <span class="beast-year">2019 — 2022</span>
           </div>
           <div class="beast-tags"><span class="beast-tag">UE4</span><span class="beast-tag">Action</span><span class="beast-tag">Melee fighting</span><span class="beast-tag">PvP Arena</span><span class="beast-tag">Third Person</span></div>
-          <div class="beast-links"><a class="beast-link" href="https://www.youtube.com/watch?v=k1dJ1VYJVNg" target="_blank" rel="noopener noreferrer">Trailer</a></div>
+          <div class="beast-links"><a class="beast-link" href="https://www.youtube.com/watch?v=2zYlwnGIXu0" target="_blank" rel="noopener noreferrer">Trailer</a></div>
         </div>
       </article>
 
@@ -4029,12 +4141,19 @@ body[data-palette="frost"]{
     const vx = parseFloat(v.dataset.tx), vy = parseFloat(v.dataset.ty);
     tipSkill.textContent = v.dataset.skill || '';
     tipList.innerHTML = (v.dataset.weapons || '').split('•').map(s => s.trim()).filter(Boolean).map(w => `<li>${w}</li>`).join('');
-    const tX = vx < 45 ? '-100%' : vx > 55 ? '0%' : '-50%';
-    const tY = vy < 45 ? '-100%' : vy > 55 ? '0%' : '-50%';
-    const pX = vx < 45 ? '-14px' : vx > 55 ? '14px' : '0px';
-    const pY = vy < 45 ? '-14px' : vy > 55 ? '14px' : '0px';
-    tip.style.left = vx + '%'; tip.style.top = vy + '%';
-    tip.style.transform = `translate(calc(${tX} + ${pX}), calc(${tY} + ${pY}))`;
+    if (window.matchMedia('(max-width: 640px)').matches){
+      // On phones the vertex-anchored tip overflows the screen edge — pin it
+      // to the centre of the wheel where it can never be clipped.
+      tip.style.left = '50%'; tip.style.top = '50%';
+      tip.style.transform = 'translate(-50%, -50%)';
+    } else {
+      const tX = vx < 45 ? '-100%' : vx > 55 ? '0%' : '-50%';
+      const tY = vy < 45 ? '-100%' : vy > 55 ? '0%' : '-50%';
+      const pX = vx < 45 ? '-14px' : vx > 55 ? '14px' : '0px';
+      const pY = vy < 45 ? '-14px' : vy > 55 ? '14px' : '0px';
+      tip.style.left = vx + '%'; tip.style.top = vy + '%';
+      tip.style.transform = `translate(calc(${tX} + ${pX}), calc(${tY} + ${pY}))`;
+    }
     tip.classList.add('on'); tip.setAttribute('aria-hidden', 'false');
     svg.querySelectorAll('.vertex.is-active').forEach(o => { if (o !== v) o.classList.remove('is-active'); });
     v.classList.add('is-active');
@@ -4065,6 +4184,28 @@ body[data-palette="frost"]{
   }
   window.addEventListener('scroll', update, { passive: true });
   update();
+})();
+
+// ─── Mobile nav: burger toggles the shield panel ─────────────
+(function(){
+  const burger = document.querySelector('.nav-burger');
+  const panel  = document.querySelector('.nav-shields');
+  if (!burger || !panel) return;
+  const setOpen = (open) => {
+    burger.classList.toggle('open', open);
+    panel.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  burger.addEventListener('click', () => setOpen(!burger.classList.contains('open')));
+  panel.querySelectorAll('.shield').forEach(s => s.addEventListener('click', () => setOpen(false)));
+  // tapping outside the panel closes it
+  document.addEventListener('click', (e) => {
+    if (!burger.classList.contains('open')) return;
+    if (e.target.closest('.nav-shields') || e.target.closest('.nav-burger')) return;
+    setOpen(false);
+  });
+  // reset when leaving mobile width
+  window.matchMedia('(min-width: 761px)').addEventListener('change', (m) => { if (m.matches) setOpen(false); });
 })();
 
 // ─── Glitch on hover for headings ────────────────────────────
@@ -4204,10 +4345,15 @@ body[data-palette="frost"]{
         items.push({ type: 'image', src: img ? img.src : '', el: wide });
       }
     }
-    // screenshots (first 3, skip empty)
+    // screenshots (first 3, skip empty) — a row thumb may itself be a video
     screens.querySelectorAll('.thumb-row .thumb').forEach(thumb => {
-      const img = thumb.querySelector('img');
-      items.push({ type: 'image', src: img ? img.src : '', el: thumb });
+      const thumbVideo = (thumb.dataset.videoSrc || '').trim();
+      if (thumbVideo){
+        items.push({ type: 'video', src: thumbVideo, el: thumb });
+      } else {
+        const img = thumb.querySelector('img');
+        items.push({ type: 'image', src: img ? img.src : '', el: thumb });
+      }
     });
 
     items.forEach((item, i) => {
@@ -4834,7 +4980,10 @@ function TweaksApp(){
     if (cur) cur.style.display = (tweaks.cursor === 'off') ? 'none' : '';
     const sub = document.querySelector('.hero-sub');
     if (sub && tweaks.subtitle) {
-      sub.innerHTML = tweaks.subtitle.replace(/·/g, '<span>·</span>');
+      const parts = tweaks.subtitle.split('·').map(s => s.trim()).filter(Boolean);
+      sub.innerHTML = parts.map((p, i) =>
+        `<span class="hs-seg">${p}</span>` + (i < parts.length - 1 ? '<span class="hs-dot">·</span>' : '')
+      ).join('');
     }
     const name = document.querySelector('.hero-name');
     if (name && tweaks.name) {
@@ -4843,7 +4992,7 @@ function TweaksApp(){
       const b = parts.slice(1).join(' ') || '';
       name.innerHTML =
         `<span class="glitchable" data-text="${a}">${a.charAt(0)}<span class="ember-letter">${a.charAt(1) || ''}</span>${a.slice(2)}</span>` +
-        (b ? `&nbsp;<span class="glitchable" data-text="${b}">${b.charAt(0)}<span class="ember-letter">${b.charAt(1) || ''}</span>${b.slice(2)}</span>` : '');
+        (b ? `<span class="hero-name-gap">&nbsp;</span><span class="glitchable" data-text="${b}">${b.charAt(0)}<span class="ember-letter">${b.charAt(1) || ''}</span>${b.slice(2)}</span>` : '');
     }
   }, [tweaks]);
 
