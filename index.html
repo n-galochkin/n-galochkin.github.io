@@ -124,6 +124,63 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .cursor.hover { width: 44px; height: 44px; }
 .cursor.hover circle.outer { stroke: var(--gold); }
 .cursor.hover circle.inner { fill: var(--gold); }
+.cursor.fire svg { animation: cursor-recoil 0.18s ease-out; }
+@keyframes cursor-recoil{
+  0%  { transform: scale(0.62) rotate(-8deg); }
+  60% { transform: scale(1.18) rotate(2deg); }
+  100%{ transform: scale(1) rotate(0); }
+}
+
+/* gunshot on click: muzzle flash, shock ring, sparks, smouldering hole */
+.shot{
+  position: fixed; pointer-events: none; z-index: 9998;
+  width: 0; height: 0;
+}
+.shot > *{ position: absolute; left: 0; top: 0; border-radius: 50%; }
+.shot-flash{
+  width: 70px; height: 70px; margin: -35px 0 0 -35px;
+  background: radial-gradient(circle, #fff6d8 0%, var(--gold) 22%, var(--ember) 45%, transparent 70%);
+  mix-blend-mode: screen;
+  animation: shot-flash 0.16s ease-out forwards;
+}
+.shot-ring{
+  width: 64px; height: 64px; margin: -32px 0 0 -32px;
+  border: 1.5px solid var(--ember);
+  animation: shot-ring 0.38s ease-out forwards;
+}
+.shot-hole{
+  width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px;
+  background: radial-gradient(circle, #050304 0 40%, #2a0d08 55%, transparent 72%);
+  box-shadow: 0 0 6px 2px rgba(216,66,26,0.55);
+  animation: shot-hole 1.4s ease-in forwards;
+}
+.shot-spark{
+  width: 10px; height: 2px; margin: -1px 0 0 0;
+  border-radius: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+  transform-origin: 0 50%;
+  animation: shot-spark 0.34s ease-out forwards;
+}
+@keyframes shot-flash{
+  0%  { transform: scale(0.25); opacity: 1; }
+  100%{ transform: scale(1.3);  opacity: 0; }
+}
+@keyframes shot-ring{
+  0%  { transform: scale(0.15); opacity: 0.9; }
+  100%{ transform: scale(1);    opacity: 0; }
+}
+@keyframes shot-hole{
+  0%, 55%{ opacity: 1; }
+  100%   { opacity: 0; box-shadow: 0 0 2px 0 rgba(216,66,26,0); }
+}
+@keyframes shot-spark{
+  0%  { transform: rotate(var(--a)) translateX(4px) scaleX(0.4); opacity: 1; }
+  100%{ transform: rotate(var(--a)) translateX(var(--d)) scaleX(1); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce){
+  .shot-flash, .shot-ring, .shot-spark{ display: none; }
+  .cursor.fire svg{ animation: none; }
+}
 
 /* ────────────────────────────────────────────
    LAYOUT
@@ -1063,6 +1120,10 @@ section{ position: relative; z-index: 5; }
 }
 .radar-host .vertex:hover .ring,
 .radar-host .vertex.is-active .ring{ opacity: 0.7; }
+/* phones: tighter labels so the fitted wheel stays readable */
+@media (max-width: 640px){
+  .radar-host .vertex .label{ font-size: 11px; letter-spacing: 1px; }
+}
 .radar-host .vertex:hover .label,
 .radar-host .vertex.is-active .label{ fill: var(--bone); }
 .radar-host .vertex:hover .label .lv,
@@ -1579,189 +1640,6 @@ section{ position: relative; z-index: 5; }
 .t-epic .trophy-rarity{ color: var(--bronze2); }
 .t-rare .trophy-rarity{ color: #b4a484; }
 .t-common .trophy-rarity{ color: var(--bone2); }
-
-/* ────────────────────────────────────────────
-   SCROLLS (ARTICLES)
-   ──────────────────────────────────────────── */
-.scrolls{
-  position: relative;
-  background: linear-gradient(180deg, var(--void) 0%, #0e0a0c 50%, var(--void) 100%);
-}
-.scrolls-grid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.6rem;
-  margin-top: 1rem;
-}
-@media (max-width: 1100px){ .scrolls-grid{ grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 720px){ .scrolls-grid{ grid-template-columns: 1fr; } }
-
-.scroll-card{
-  position: relative;
-  display: flex; flex-direction: column;
-  padding: 1.6rem 1.5rem 1.4rem;
-  background:
-    repeating-linear-gradient(135deg, rgba(216,200,168,0.015) 0 2px, transparent 2px 5px),
-    linear-gradient(165deg, rgba(34,26,24,0.95), rgba(14,10,10,0.95));
-  border: 1px solid var(--line);
-  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-  overflow: hidden;
-  min-height: 260px;
-}
-.scroll-card::before{
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(to right, transparent, var(--bronze), transparent);
-}
-.scroll-card::after{
-  content: '';
-  position: absolute; top: 14px; right: 14px;
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #c14224, #6a1a10 70%);
-  box-shadow: 0 0 0 1px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.7);
-}
-.scroll-card:hover{
-  border-color: var(--bronze);
-  transform: translateY(-3px);
-  box-shadow: 0 18px 40px -16px rgba(0,0,0,0.8), inset 0 0 30px rgba(216,66,26,0.05);
-}
-.scroll-meta{
-  display: flex; align-items: baseline; justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px dashed var(--line);
-}
-.scroll-folio{
-  font-family: var(--f-mono);
-  font-size: 0.62rem; letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--bronze2);
-}
-.scroll-stamp{
-  font-family: var(--f-mono);
-  font-size: 0.62rem; letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ash-text);
-  text-align: right;
-}
-.scroll-stamp .dot{
-  display: inline-block;
-  width: 3px; height: 3px;
-  border-radius: 50%;
-  background: var(--bronze);
-  vertical-align: middle;
-  margin: 0 0.5rem;
-  position: relative; top: -2px;
-}
-.scroll-title{
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: 1.35rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--bone);
-  line-height: 1.15;
-  margin-bottom: 0.7rem;
-}
-.scroll-title em{
-  font-style: italic; font-weight: 400;
-  color: var(--bronze2);
-}
-.scroll-excerpt{
-  font-family: var(--f-body);
-  font-size: 0.95rem;
-  color: var(--bone2);
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.scroll-tags{
-  display: flex; flex-wrap: wrap; gap: 0.4rem;
-  margin-bottom: 1.1rem;
-}
-.scroll-tag{
-  font-family: var(--f-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--bone2);
-  padding: 0.25rem 0.55rem;
-  background: rgba(216,200,168,0.04);
-  border: 1px solid var(--line);
-}
-.scroll-foot{
-  margin-top: auto;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 1rem;
-  padding-top: 0.8rem;
-  border-top: 1px dashed var(--line);
-}
-.scroll-open{
-  font-family: var(--f-mono);
-  font-size: 0.7rem; letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: var(--bone);
-  transition: color 0.2s;
-}
-.scroll-open .arrow{
-  display: inline-block;
-  margin-left: 0.4rem;
-  transition: transform 0.2s, color 0.2s;
-  color: var(--bronze2);
-}
-.scroll-card:hover .scroll-open{ color: var(--ember); }
-.scroll-card:hover .scroll-open .arrow{ transform: translateX(4px); color: var(--ember); }
-.scroll-card.forthcoming{
-  pointer-events: none;
-  opacity: 0.72;
-}
-.scroll-card.forthcoming::before{
-  background: linear-gradient(to right, transparent, var(--mute), transparent);
-}
-.scroll-card.forthcoming::after{
-  background: radial-gradient(circle at 35% 30%, #4a3a2a, #1d160f 70%);
-}
-.scroll-card.forthcoming .scroll-title{ color: var(--bone2); }
-.scroll-card.forthcoming .scroll-title em{ color: var(--mute); }
-.scroll-card.forthcoming .scroll-excerpt{ color: var(--ash-text); }
-.scroll-card.forthcoming .scroll-open{ color: var(--mute); }
-.scroll-card.forthcoming .scroll-open .arrow{ color: var(--mute); }
-.scroll-forthcoming-stamp{
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%) rotate(-8deg);
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: 0.95rem; letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: rgba(216,200,168,0.18);
-  padding: 0.5rem 1.4rem;
-  border: 2px solid rgba(216,200,168,0.18);
-  pointer-events: none;
-  white-space: nowrap;
-}
-.scroll-forthcoming-stamp::before,
-.scroll-forthcoming-stamp::after{
-  content: '✶'; margin: 0 0.5rem;
-  color: rgba(216,66,26,0.4);
-}
-.scrolls-empty-note{
-  margin-top: 2.5rem;
-  padding: 1.2rem 1.5rem;
-  border: 1px dashed var(--line);
-  background: rgba(0,0,0,0.25);
-  text-align: center;
-  font-family: var(--f-mono);
-  font-size: 0.72rem; letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ash-text);
-}
-.scrolls-empty-note em{ color: var(--bronze2); font-style: normal; }
 
 /* ────────────────────────────────────────────
    SUMMON (CONTACT)
@@ -2935,18 +2813,6 @@ body[data-palette="frost"]{
       </g>
     </symbol>
 
-    <!-- 07 Quill & scroll: writings / articles -->
-    <symbol id="h-quill" viewBox="0 0 32 32">
-      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round">
-        <path d="M6 8 C6 6 7 5 9 5 L23 5 C25 5 26 6 26 8 L26 24 C26 26 25 27 23 27 L9 27 C7 27 6 26 6 24 Z"/>
-        <line x1="10" y1="11" x2="20" y2="11" stroke-width="1"/>
-        <line x1="10" y1="15" x2="22" y2="15" stroke-width="1"/>
-        <line x1="10" y1="19" x2="18" y2="19" stroke-width="1"/>
-        <path d="M20 4 L27 11 L19 22 L16 22 L16 19 Z" stroke-width="1.2"/>
-        <line x1="16" y1="22" x2="14" y2="24" stroke-width="1.2"/>
-      </g>
-    </symbol>
-
     <!-- 08 Gem: skills / specializations -->
     <symbol id="h-gem" viewBox="0 0 32 32">
       <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
@@ -3115,10 +2981,6 @@ body[data-palette="frost"]{
       <svg class="heraldry"><use href="#h-cup"/></svg>
       <span class="label">Awards</span>
     </a>
-    <a href="#scrolls" class="shield" data-target="scrolls">
-      <svg class="heraldry"><use href="#h-quill"/></svg>
-      <span class="label">Writing</span>
-    </a>
     <a href="#summon" class="shield" data-target="summon">
       <svg class="heraldry"><use href="#h-seal"/></svg>
       <span class="label">Summon</span>
@@ -3180,7 +3042,7 @@ body[data-palette="frost"]{
         <span class="hero-name-gap">&nbsp;</span>
         <span class="glitchable" data-text="GALOCHKIN">GA<span class="ember-letter">L</span>OCHKIN</span>
       </h1>
-      <div class="hero-sub"><span class="hs-seg">SR. UNREAL ENGINE PROGRAMMER</span><span class="hs-dot">·</span><span class="hs-seg">SLAYER OF BUGS</span><span class="hs-dot">·</span><span class="hs-seg">EST. 2015</span></div>
+      <div class="hero-sub"><span class="hs-seg">SR. GAMEPLAY &amp; AI ENGINEER</span><span class="hs-dot">·</span><span class="hs-seg">SLAYER OF BUGS</span><span class="hs-dot">·</span><span class="hs-seg">EST. 2015</span></div>
       <div class="hero-links">
         <a class="summon-link" href="https://github.com/n-galochkin" target="_blank" rel="noopener">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.7 8.2 11.3.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.8.1-.8 1.3.1 1.9 1.3 1.9 1.3 1.1 1.9 3 1.4 3.7 1 .1-.8.4-1.4.8-1.7-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2.9-.3 2-.4 3-.4s2.1.1 3 .4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6 4.8-1.6 8.2-6 8.2-11.3C24 5.9 18.6.5 12 .5z"/></svg>
@@ -3255,7 +3117,7 @@ body[data-palette="frost"]{
     <div class="sec-head" data-reveal>
       <div class="sec-label">01 · About</div>
       <h2 class="sec-title">Who I <em>Am</em></h2>
-      <p class="sec-sub">10+ years · 6 titles shipped · AAA experience · Unreal &amp; Unity</p>
+      <p class="sec-sub">10+ years · 6 titles shipped · AAA experience · Unreal · Generative AI</p>
     </div>
 
     <div class="about-wrap" data-reveal style="text-align: center; margin: 0px 0px 72px 50px; border-width: 0px; border-style: solid">
@@ -3266,7 +3128,7 @@ body[data-palette="frost"]{
       </figure>
       <div class="codex-bio about-bio" style="text-align: left; margin: 0px 0px 0px 191px; width: 512px">
         <p class="bio-lead" style="text-align: center; width: 500px">I have loved games for as long as I can remember. I grew up playing them — and dreaming of building my own. From my first clumsy attempts in school, through diplomas and a dissertation in game development, every step pointed at a single dream: <em>to create games.</em></p>
-        <p style="width: 500px">That dream has carried me down the path of game-making for more than ten years. I've fought alongside brilliant teams on projects I'm proud of, shaping gameplay, netcode and AI in Unreal Engine across PC, mobile and VR. And that passion still burns — I dream of helping ship a Game of the Year.</p>
+        <p style="width: 500px">That dream has carried me down the path of game-making for more than ten years. I've fought alongside brilliant teams on projects I'm proud of, shaping gameplay, netcode and AI in Unreal Engine across PC, mobile and VR. Lately that also means generative AI: agent pipelines that cut weeks of work down to hours, and Skillstorm, a game I build together with AI agents. And that passion still burns — I dream of helping ship a Game of the Year.</p>
         <p class="bio-oath" style="text-align: center; width: 500px">So if you carry that same dream — <span>I'm in.</span></p>
       </div>
     </div>
@@ -3300,6 +3162,53 @@ body[data-palette="frost"]{
     </div>
 
     <div class="bestiary-list">
+      <article class="beast legendary" data-reveal>
+        <div class="beast-screens">
+          <div class="thumb wide"><img src="media/skillstorm/og.jpg" alt="Skillstorm key art"></div>
+          <div class="thumb-row">
+            <div class="thumb"><img src="media/skillstorm/beat-fight.jpg" alt="Skillstorm fight"></div>
+            <div class="thumb"><img src="media/skillstorm/beat-builds.jpg" alt="Skillstorm skill builds"></div>
+            <div class="thumb"><img src="media/skillstorm/beat-storm.jpg" alt="Skillstorm storm zone"></div>
+            <div class="thumb"><img src="media/skillstorm/beat-forge.jpg" alt="Skillstorm forge"></div>
+          </div>
+        </div>
+        <div class="beast-body">
+          <div class="beast-rank legendary">⌬ LEGENDARY</div>
+          <h3 class="beast-name">Skillstorm</h3>
+          <div class="beast-studio">Personal project · Solo dev + AI agents</div>
+          <p class="beast-desc">An auto-battle royale roguelite for PC and Android, forged with a pack of AI agents. They write most of the code; I design, direct the art and make the architecture calls. 660+ commits and ~70k lines of C++ since July, art from ComfyUI pipelines, and bots that fight like people.</p>
+          <div class="beast-status-line">
+            <span class="beast-status active">In development</span>
+            <span class="beast-year">2026 — Present</span>
+          </div>
+          <div class="beast-tags"><span class="beast-tag">UE 5.8</span><span class="beast-tag">Roguelite</span><span class="beast-tag">Generative AI</span><span class="beast-tag">PC</span><span class="beast-tag">Android</span></div>
+          <div class="beast-links"><a class="beast-link" href="https://n-galochkin.github.io/skillstorm-site/" target="_blank" rel="noopener noreferrer">Website</a><a class="beast-link" href="https://www.youtube.com/@NikitaGalochkin" target="_blank" rel="noopener noreferrer">Devlog</a></div>
+        </div>
+      </article>
+
+      <article class="beast legendary" data-reveal>
+        <div class="beast-screens">
+          <div class="thumb wide"><img src="media/trophyrc/1.jpg" alt="TrophyRC crawler at the start gate"></div>
+          <div class="thumb-row">
+            <div class="thumb"><img src="media/trophyrc/2.jpg" alt="TrophyRC workshop bench"></div>
+            <div class="thumb"><img src="media/trophyrc/3.jpg" alt="TrophyRC garage"></div>
+            <div class="thumb"><img src="media/trophyrc/4.jpg" alt="TrophyRC obstacle course"></div>
+          </div>
+        </div>
+        <div class="beast-body">
+          <div class="beast-rank legendary">⌬ LEGENDARY</div>
+          <h3 class="beast-name">TrophyRC</h3>
+          <div class="beast-studio">CrossBridge · Montpellier · Sr. Gameplay Programmer</div>
+          <p class="beast-desc">A 1:10 scale off-road RC trial for PC, where precision beats speed. I forged the workshop where crawlers are built and tuned, the UI architecture for mouse and gamepad, designer tools and base P2P replication with interpolation. My agent pipeline drags Figma screens into the game: a week of work now falls in about two hours, review included.</p>
+          <div class="beast-status-line">
+            <span class="beast-status active">In development</span>
+            <span class="beast-year">2026 — Present</span>
+          </div>
+          <div class="beast-tags"><span class="beast-tag">UE5</span><span class="beast-tag">Simulation</span><span class="beast-tag">Racing</span><span class="beast-tag">PC</span></div>
+          <div class="beast-links"><a class="beast-link" href="https://store.steampowered.com/app/3115870/TrophyRC/" target="_blank" rel="noopener noreferrer">Steam</a></div>
+        </div>
+      </article>
+
       <article class="beast legendary" data-reveal>
         <div class="beast-screens has-video" data-video-src="https://www.youtube.com/watch?v=ct3dSTfC3TE">
           <div class="thumb wide video-thumb"><img src="https://img.youtube.com/vi/ct3dSTfC3TE/maxresdefault.jpg" alt="Atone trailer preview"><span class="play-icon" aria-hidden="true"></span></div>
@@ -3525,14 +3434,33 @@ body[data-palette="frost"]{
     <div class="timeline">
       <div class="chapter" data-reveal>
         <div class="chapter-meta">
+          <div class="chapter-num">— Chapter VII —</div>
+          <div class="chapter-period">2026 ▸ Present</div>
+          <div class="chapter-loc">Da Nang · Remote</div>
+        </div>
+        <div class="chapter-body">
+          <h3>Senior Gameplay <em>Programmer</em></h3>
+          <div class="chapter-org">CrossBridge — TrophyRC</div>
+          <ul class="chapter-points">
+            <li>Built an agent workflow that moves Figma designs into the game as UI: from a week down to about two hours.</li>
+            <li>Built the workshop from scratch, where players assemble and tune their RC cars.</li>
+            <li>Created designer tools and the UI architecture for PC and gamepad.</li>
+            <li>Implemented base P2P replication with client-side interpolation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="chapter" data-reveal>
+        <div class="chapter-meta">
           <div class="chapter-num">— Chapter VI —</div>
-          <div class="chapter-period">2025 ▸ Present</div>
+          <div class="chapter-period">2025 ▸ 2026</div>
           <div class="chapter-loc">Da Nang · Remote</div>
         </div>
         <div class="chapter-body">
           <h3>Senior Client <em>Programmer</em></h3>
           <div class="chapter-org">GS Studio — Atone MMORPG</div>
           <ul class="chapter-points">
+            <li>Developed an internal plugin that simplifies multiplayer development (NDA).</li>
             <li>Integrated Epic Online Services for online sessions.</li>
             <li>Refactored client network layer using Quic protocol.</li>
             <li>Investigated and decomposed automated test bot framework.</li>
@@ -3766,78 +3694,6 @@ body[data-palette="frost"]{
   </div>
 </section>
 
-<!-- ─── SCROLLS (ARTICLES) ─── -->
-<section class="scrolls sec-pad" id="scrolls" data-screen-label="Scrolls">
-  <div class="shell">
-    <div class="sec-head" data-reveal>
-      <div class="sec-label">05 · Writing</div>
-      <h2 class="sec-title">Writings on <em>Craft</em></h2>
-      <p class="sec-sub">Essays from the workshop — patterns, post-mortems, and the lessons that came at a cost.</p>
-    </div>
-
-    <div class="scrolls-grid">
-      <!-- Forthcoming placeholders — replace with real articles as they ship.
-           To publish: copy articles/_template.html, edit the front-matter
-           comment block + body, then swap one of these .forthcoming cards
-           for a live one (drop the .forthcoming class, fill in href + meta). -->
-      <a class="scroll-card forthcoming" aria-disabled="true">
-        <div class="scroll-meta">
-          <span class="scroll-folio">Folio I</span>
-          <span class="scroll-stamp">Drafting</span>
-        </div>
-        <h3 class="scroll-title">On the Anatomy of a <em>Boss Encounter</em></h3>
-        <p class="scroll-excerpt">A dissection of the rhythms, tells, and recovery windows that turn a damage sponge into a duel worth losing to.</p>
-        <div class="scroll-tags">
-          <span class="scroll-tag">Combat</span>
-          <span class="scroll-tag">Design</span>
-        </div>
-        <div class="scroll-foot">
-          <span class="scroll-open">Read <span class="arrow">→</span></span>
-        </div>
-        <div class="scroll-forthcoming-stamp">Forthcoming</div>
-      </a>
-
-      <a class="scroll-card forthcoming" aria-disabled="true">
-        <div class="scroll-meta">
-          <span class="scroll-folio">Folio II</span>
-          <span class="scroll-stamp">Drafting</span>
-        </div>
-        <h3 class="scroll-title">Notes from the <em>Foundry</em></h3>
-        <p class="scroll-excerpt">A field guide to the tooling, pipelines, and quiet disasters that shape a shipping production cycle.</p>
-        <div class="scroll-tags">
-          <span class="scroll-tag">Pipeline</span>
-          <span class="scroll-tag">Production</span>
-        </div>
-        <div class="scroll-foot">
-          <span class="scroll-open">Read <span class="arrow">→</span></span>
-        </div>
-        <div class="scroll-forthcoming-stamp">Forthcoming</div>
-      </a>
-
-      <a class="scroll-card forthcoming" aria-disabled="true">
-        <div class="scroll-meta">
-          <span class="scroll-folio">Folio III</span>
-          <span class="scroll-stamp">Drafting</span>
-        </div>
-        <h3 class="scroll-title">What I <em>Got Wrong</em> About Player Feedback</h3>
-        <p class="scroll-excerpt">Survivorship bias, the loudest seats in the playtest room, and the signals worth listening for instead.</p>
-        <div class="scroll-tags">
-          <span class="scroll-tag">UX</span>
-          <span class="scroll-tag">Process</span>
-        </div>
-        <div class="scroll-foot">
-          <span class="scroll-open">Read <span class="arrow">→</span></span>
-        </div>
-        <div class="scroll-forthcoming-stamp">Forthcoming</div>
-      </a>
-    </div>
-
-    <div class="scrolls-empty-note">
-      The first folio is being inked. <em>Reach out via the summoning circle below</em> to be alerted when it lands.
-    </div>
-  </div>
-</section>
-
 <!-- ─── SUMMON (CONTACT) ─── -->
 <section class="summon" id="summon" data-screen-label="Summon">
   <div class="summon-circle" aria-hidden="true">
@@ -4049,6 +3905,30 @@ body[data-palette="frost"]{
   document.addEventListener('mouseout', e => {
     if (e.target.closest(hovers)) cur.classList.remove('hover');
   });
+
+  // Gunshot on left click (mouse only — touch taps stay quiet)
+  const finePointer = window.matchMedia('(pointer: fine)');
+  document.addEventListener('mousedown', e => {
+    if (e.button !== 0 || !finePointer.matches) return;
+    const shot = document.createElement('div');
+    shot.className = 'shot';
+    shot.style.left = e.clientX + 'px';
+    shot.style.top  = e.clientY + 'px';
+    let html = '<span class="shot-hole"></span><span class="shot-ring"></span><span class="shot-flash"></span>';
+    for (let i = 0; i < 7; i++){
+      const a = Math.round(i * 360 / 7 + Math.random() * 30);
+      const d = Math.round(22 + Math.random() * 22);
+      html += `<span class="shot-spark" style="--a:${a}deg;--d:${d}px"></span>`;
+    }
+    shot.innerHTML = html;
+    document.body.appendChild(shot);
+    setTimeout(() => shot.remove(), 1500);
+
+    cur.classList.remove('fire');
+    void cur.offsetWidth; // restart the recoil animation on rapid fire
+    cur.classList.add('fire');
+  });
+  cur.addEventListener('animationend', () => cur.classList.remove('fire'));
 })();
 
 // ─── Scroll reveal ───────────────────────────────────────────
@@ -4077,10 +3957,10 @@ body[data-palette="frost"]{
      └─────────────────────────────────────────────────────────┘ */
   const SPECS = [
     { skill:'Gameplay',     level:5, weapons:['GAS','Gameplay Framework','Game Features','Enhanced Input','Geometry Scripting','Metahuman','Mutable Customization'] },
-    { skill:'Multiplayer',  level:4, weapons:['Network Replication','Dedicated Server','EOS','Easy Anti-Cheat','Matchmaking'] },
-    { skill:'Backend',      level:4, weapons:['WebSocket','Quic Protocol','k8s','Agones','Docker','gRPC','Protobuf'] },
+    { skill:'Multiplayer',  level:4, weapons:['Network Replication','Iris','Dedicated Server','EOS','Easy Anti-Cheat','Matchmaking','WebSocket','Quic Protocol','k8s','Agones','Docker','gRPC','Protobuf'] },
     { skill:'AI',           level:3, weapons:['HTN','Behavior Tree','EQS','Navigation'] },
-    { skill:'UI',           level:3, weapons:['CommonUI','MVVM','UMG'] },
+    { skill:'UI',           level:3, weapons:['CommonUI','MVVM','UMG','Figma-to-UMG agent'] },
+    { skill:'Generative AI', level:3, weapons:['Coding agents (Claude Code, Codex)','ComfyUI (SAM3, LaMa)','FLUX LoRA','Model pipelines'] },
     { skill:'Tooling',      level:2, weapons:['Editor Tools','Perforce / Git','CI/CD','Sentry','Grafana'] },
     { skill:'Leadership',   level:2, weapons:['Team Management'] },
     { skill:'Optimisation', level:1, weapons:['Unreal Insights','Gauntlet','Unit Testing','Automation Spec'] },
@@ -4090,49 +3970,71 @@ body[data-palette="frost"]{
   const tip = document.getElementById('compassTip');
   if (!svg || !tip) return;
 
-  const MAX = 5, CX = 200, CY = 200, R = 160, LABEL_R = R + 26;
+  // Phones: smaller wheel, side labels split over two lines, viewBox fitted
+  // to the drawn content so no label runs off the screen edge.
+  const narrowMq = window.matchMedia('(max-width: 640px)');
+  const MAX = 5, CX = 200, CY = 200;
   const N = SPECS.length;
   const ang = i => (-90 + i * 360 / N) * Math.PI / 180;
-  const pt  = (i, rad) => [CX + rad * Math.cos(ang(i)), CY + rad * Math.sin(ang(i))];
   const fx  = n => Math.round(n * 100) / 100;
   const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
-  // concentric rings (one per level)
-  let rings = '';
-  for (let r = 1; r <= MAX; r++){
-    const pts = SPECS.map((_, i) => pt(i, R * r / MAX).map(fx).join(',')).join(' ');
-    rings += `<polygon points="${pts}" stroke-opacity="${fx(0.2 + 0.1*(MAX-r))}"/>`;
-  }
-  // axes
-  let axes = '';
-  SPECS.forEach((_, i) => { const [x,y] = pt(i, R).map(fx); axes += `<line x1="${CX}" y1="${CY}" x2="${x}" y2="${y}"/>`; });
-  // filled stat polygon
-  const statPts = SPECS.map((s, i) => pt(i, R * Math.max(0.0001, Math.min(MAX, s.level)) / MAX).map(fx).join(',')).join(' ');
-  // vertices (pip + label)
-  let verts = '';
-  SPECS.forEach((s, i) => {
-    const [px, py] = pt(i, R * Math.min(MAX, s.level) / MAX).map(fx);
-    const [lx, ly] = pt(i, LABEL_R).map(fx);
-    const cos = Math.cos(ang(i));
-    const anchor = cos > 0.25 ? 'start' : cos < -0.25 ? 'end' : 'middle';
-    const tx = fx(lx / 400 * 100), ty = fx(ly / 400 * 100);
-    verts += `<g class="vertex" data-skill="${esc(s.skill)}" data-tx="${tx}" data-ty="${ty}" data-weapons="${esc(s.weapons.join(' • '))}" tabindex="0">`
-      + `<circle class="ring" cx="${px}" cy="${py}" r="9"/>`
-      + `<circle class="pip" cx="${px}" cy="${py}" r="4"/>`
-      + `<text class="label" x="${lx}" y="${fx(ly+4)}" text-anchor="${anchor}">${esc(s.skill.toUpperCase())} · <tspan class="lv">${s.level}</tspan></text>`
-      + `</g>`;
-  });
+  function render(){
+    const narrow = narrowMq.matches;
+    const R = narrow ? 120 : 160, LABEL_R = R + (narrow ? 16 : 26);
+    const pt  = (i, rad) => [CX + rad * Math.cos(ang(i)), CY + rad * Math.sin(ang(i))];
 
-  svg.innerHTML =
-    `<defs><radialGradient id="radarFill" cx="50%" cy="50%" r="50%">`
-    + `<stop offset="0%" stop-color="#d8421a" stop-opacity="0.55"/>`
-    + `<stop offset="100%" stop-color="#7a1814" stop-opacity="0.2"/></radialGradient></defs>`
-    + `<g fill="none" stroke="#3a1e16" stroke-width="1">${rings}</g>`
-    + `<g stroke="#5a4034" stroke-width="0.8" opacity="0.55">${axes}</g>`
-    + `<polygon points="${statPts}" fill="url(#radarFill)" stroke="#d8421a" stroke-width="1.8" stroke-linejoin="round"/>`
-    + `<g class="vertices">${verts}</g>`
-    + `<circle cx="${CX}" cy="${CY}" r="6" fill="none" stroke="#c89a4a" stroke-width="1"/>`
-    + `<circle cx="${CX}" cy="${CY}" r="2" fill="#c89a4a"/>`;
+    // concentric rings (one per level)
+    let rings = '';
+    for (let r = 1; r <= MAX; r++){
+      const pts = SPECS.map((_, i) => pt(i, R * r / MAX).map(fx).join(',')).join(' ');
+      rings += `<polygon points="${pts}" stroke-opacity="${fx(0.2 + 0.1*(MAX-r))}"/>`;
+    }
+    // axes
+    let axes = '';
+    SPECS.forEach((_, i) => { const [x,y] = pt(i, R).map(fx); axes += `<line x1="${CX}" y1="${CY}" x2="${x}" y2="${y}"/>`; });
+    // filled stat polygon
+    const statPts = SPECS.map((s, i) => pt(i, R * Math.max(0.0001, Math.min(MAX, s.level)) / MAX).map(fx).join(',')).join(' ');
+    // vertices (pip + label)
+    let verts = '';
+    SPECS.forEach((s, i) => {
+      const [px, py] = pt(i, R * Math.min(MAX, s.level) / MAX).map(fx);
+      const [lx, ly] = pt(i, LABEL_R).map(fx);
+      const cos = Math.cos(ang(i));
+      const anchor = cos > 0.25 ? 'start' : cos < -0.25 ? 'end' : 'middle';
+      const tx = fx(lx / 400 * 100), ty = fx(ly / 400 * 100);
+      const label = (narrow && anchor !== 'middle')
+        ? `<text class="label" x="${lx}" y="${fx(ly-2)}" text-anchor="${anchor}">${esc(s.skill.toUpperCase())}<tspan class="lv" x="${lx}" dy="1.25em">${s.level}</tspan></text>`
+        : `<text class="label" x="${lx}" y="${fx(ly+4)}" text-anchor="${anchor}">${esc(s.skill.toUpperCase())} · <tspan class="lv">${s.level}</tspan></text>`;
+      verts += `<g class="vertex" data-skill="${esc(s.skill)}" data-tx="${tx}" data-ty="${ty}" data-weapons="${esc(s.weapons.join(' • '))}" tabindex="0">`
+        + `<circle class="ring" cx="${px}" cy="${py}" r="9"/>`
+        + `<circle class="pip" cx="${px}" cy="${py}" r="4"/>`
+        + label
+        + `</g>`;
+    });
+
+    svg.innerHTML =
+      `<defs><radialGradient id="radarFill" cx="50%" cy="50%" r="50%">`
+      + `<stop offset="0%" stop-color="#d8421a" stop-opacity="0.55"/>`
+      + `<stop offset="100%" stop-color="#7a1814" stop-opacity="0.2"/></radialGradient></defs>`
+      + `<g fill="none" stroke="#3a1e16" stroke-width="1">${rings}</g>`
+      + `<g stroke="#5a4034" stroke-width="0.8" opacity="0.55">${axes}</g>`
+      + `<polygon points="${statPts}" fill="url(#radarFill)" stroke="#d8421a" stroke-width="1.8" stroke-linejoin="round"/>`
+      + `<g class="vertices">${verts}</g>`
+      + `<circle cx="${CX}" cy="${CY}" r="6" fill="none" stroke="#c89a4a" stroke-width="1"/>`
+      + `<circle cx="${CX}" cy="${CY}" r="2" fill="#c89a4a"/>`;
+
+    fit();
+    svg.querySelectorAll('.vertex').forEach(wire);
+  }
+
+  function fit(){
+    if (!narrowMq.matches){ svg.setAttribute('viewBox', '0 0 400 400'); return; }
+    const b = svg.getBBox(), pad = 6;
+    const side = Math.max(b.width, b.height) + pad * 2;
+    // keep the wheel centred in the square host
+    svg.setAttribute('viewBox', `${fx(b.x + b.width/2 - side/2)} ${fx(b.y + b.height/2 - side/2)} ${fx(side)} ${fx(side)}`);
+  }
 
   // ── tooltip wiring ──
   const tipSkill = tip.querySelector('.tip-head .skill');
@@ -4162,13 +4064,18 @@ body[data-palette="frost"]{
     tip.classList.remove('on'); tip.setAttribute('aria-hidden', 'true');
     if (v) v.classList.remove('is-active');
   }
-  svg.querySelectorAll('.vertex').forEach(v => {
+  function wire(v){
     v.addEventListener('mouseenter', () => show(v));
     v.addEventListener('mouseleave', () => hide(v));
     v.addEventListener('focusin',   () => show(v));
     v.addEventListener('focusout',  () => hide(v));
     v.addEventListener('click',     () => v.classList.contains('is-active') ? hide(v) : show(v));
-  });
+  }
+
+  render();
+  narrowMq.addEventListener('change', () => { hide(); render(); });
+  // label widths change once the mono webfont lands
+  if (document.fonts) document.fonts.ready.then(fit);
 })();
 
 // ─── Nav shield active state on scroll ───────────────────────
@@ -4963,7 +4870,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "grain":    "on",
   "vignette": "on",
   "cursor":   "on",
-  "subtitle": "GAMEPLAY PROGRAMMER · SLAYER OF BUGS · EST. 2014",
+  "subtitle": "SR. GAMEPLAY & AI ENGINEER · SLAYER OF BUGS · EST. 2015",
   "name":     "NIKITA GALOCHKIN"
 }/*EDITMODE-END*/;
 
