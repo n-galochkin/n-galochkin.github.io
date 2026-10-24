@@ -102,7 +102,21 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   pointer-events: none; z-index: 70;
   background: radial-gradient(ellipse at 50% 100%, rgba(216,66,26,0.30), rgba(216,66,26,0.08) 35%, transparent 60%);
   mix-blend-mode: screen;
+  transform-origin: 50% 100%;
+  animation: fire-flicker 3.7s ease-in-out infinite;
+  /* the campfire sound flares it on every crackle (--crackle, set from JS) */
+  filter: brightness(var(--crackle, 1));
+  transition: filter 0.09s linear;
 }
+@keyframes fire-flicker{
+  0%, 100%{ opacity: 1;    transform: scaleY(1); }
+  18%     { opacity: 0.82; transform: scaleY(0.96); }
+  31%     { opacity: 0.95; transform: scaleY(1.03); }
+  47%     { opacity: 0.78; transform: scaleY(0.95); }
+  63%     { opacity: 1;    transform: scaleY(1.05); }
+  82%     { opacity: 0.86; transform: scaleY(0.98); }
+}
+@media (prefers-reduced-motion: reduce){ .ember-glow{ animation: none; } }
 
 /* ember canvas — same stacking band as the glow, always overlays content */
 #embers-canvas{
@@ -177,8 +191,16 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   0%  { transform: rotate(var(--a)) translateX(4px) scaleX(0.4); opacity: 1; }
   100%{ transform: rotate(var(--a)) translateX(var(--d)) scaleX(1); opacity: 0; }
 }
+/* the muzzle lights the whole room for a blink */
+.shot-light{
+  position: fixed; inset: 0; pointer-events: none; z-index: 9997;
+  background: radial-gradient(circle at var(--x) var(--y), rgba(255,190,110,0.16), rgba(216,66,26,0.06) 30%, transparent 60%);
+  mix-blend-mode: screen;
+  animation: shot-light 0.14s ease-out forwards;
+}
+@keyframes shot-light{ from{ opacity: 1; } to{ opacity: 0; } }
 @media (prefers-reduced-motion: reduce){
-  .shot-flash, .shot-ring, .shot-spark{ display: none; }
+  .shot-flash, .shot-ring, .shot-spark, .shot-light{ display: none; }
   .cursor.fire svg{ animation: none; }
 }
 
@@ -340,6 +362,34 @@ section{ position: relative; z-index: 5; }
   .shield:hover .label, .shield.active .label{ opacity: 1; }
 }
 
+/* ── Sound toggle: a plate with three bars that dance while the fire plays ── */
+/* auto margin keeps the section plates right-aligned, the sound plate right after them */
+.nav-shields{ margin-left: auto; }
+.nav-tools{ display: flex; align-items: center; gap: 0.35rem; margin-left: 0.35rem; }
+.sound-toggle{
+  display: inline-flex; align-items: flex-end; justify-content: center; gap: 3px;
+  width: 38px; height: 34px; padding: 0 0 10px;
+  border: 1px solid var(--line);
+  background: linear-gradient(165deg, rgba(42,32,24,0.55), rgba(14,10,10,0.6));
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.sound-toggle:hover{ border-color: var(--bronze); }
+.sound-toggle span{
+  display: block; width: 3px; height: 14px;
+  background: var(--ember);
+  transform-origin: 50% 100%;
+  animation: sound-bar 0.9s ease-in-out infinite;
+}
+.sound-toggle span:nth-child(2){ animation-delay: -0.3s; animation-duration: 0.7s; }
+.sound-toggle span:nth-child(3){ animation-delay: -0.6s; animation-duration: 1.1s; }
+@keyframes sound-bar{
+  0%, 100%{ transform: scaleY(0.3); }
+  50%     { transform: scaleY(1); }
+}
+.sound-toggle.muted span{ animation: none; transform: scaleY(0.2); background: var(--bronze2); }
+@media (prefers-reduced-motion: reduce){ .sound-toggle span{ animation: none; } }
+
 /* ── Mobile navigation: burger toggle + full-width dropdown panel ── */
 .nav-burger{ display: none; }
 
@@ -365,6 +415,7 @@ section{ position: relative; z-index: 5; }
   .nav-burger.open span:nth-child(1){ transform: translateY(7px) rotate(45deg); background: var(--ember); }
   .nav-burger.open span:nth-child(2){ opacity: 0; }
   .nav-burger.open span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); background: var(--ember); }
+  .sound-toggle{ position: relative; z-index: 2; width: 44px; height: 44px; padding-bottom: 14px; }
 
   /* the shield row becomes a slide-down panel */
   .nav-shields{
@@ -2813,6 +2864,16 @@ body[data-palette="frost"]{
       </g>
     </symbol>
 
+    <!-- 07 Mortarboard: education -->
+    <symbol id="h-cap" viewBox="0 0 32 32">
+      <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M2 12 L16 6 L30 12 L16 18 Z"/>
+        <path d="M8 15 L8 22 C8 24 12 26 16 26 C20 26 24 24 24 22 L24 15"/>
+        <path d="M30 12 L30 20" stroke-width="1.2"/>
+        <circle cx="30" cy="21.5" r="1.3" stroke-width="1.1"/>
+      </g>
+    </symbol>
+
     <!-- 08 Gem: skills / specializations -->
     <symbol id="h-gem" viewBox="0 0 32 32">
       <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round">
@@ -2977,6 +3038,10 @@ body[data-palette="frost"]{
       <svg class="heraldry"><use href="#h-chevrons"/></svg>
       <span class="label">Experience</span>
     </a>
+    <a href="#academy" class="shield" data-target="academy">
+      <svg class="heraldry"><use href="#h-cap"/></svg>
+      <span class="label">Education</span>
+    </a>
     <a href="#trophies" class="shield" data-target="trophies">
       <svg class="heraldry"><use href="#h-cup"/></svg>
       <span class="label">Awards</span>
@@ -2987,9 +3052,14 @@ body[data-palette="frost"]{
     </a>
   </div>
 
-  <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-tools">
+    <button class="sound-toggle" type="button" aria-label="Sound" aria-pressed="true" title="Sound">
+      <span></span><span></span><span></span>
+    </button>
+    <button class="nav-burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <!-- ─── HERO ─── -->
@@ -3157,23 +3227,24 @@ body[data-palette="frost"]{
   <div class="shell">
     <div class="sec-head" data-reveal>
       <div class="sec-label">02 · Projects</div>
-      <h2 class="sec-title">Games I've <em>Shipped</em></h2>
-      <p class="sec-sub">Shipped and in production — across PC, mobile, console &amp; VR.</p>
+      <h2 class="sec-title">Games I've <em>Forged</em></h2>
+      <p class="sec-sub">Shipped, still in the forge, or fallen in battle — across PC, mobile, console &amp; VR.</p>
     </div>
 
     <div class="bestiary-list">
-      <article class="beast legendary" data-reveal>
-        <div class="beast-screens">
-          <div class="thumb wide"><img src="media/skillstorm/og.jpg" alt="Skillstorm key art"></div>
+      <article class="beast rare" data-reveal>
+        <div class="beast-screens has-video" data-video-src="media/skillstorm/trailer.mp4">
+          <div class="thumb wide video-thumb"><img src="media/skillstorm/cover.jpg" alt="Skillstorm start screen: islands under the clouds"><span class="play-icon" aria-hidden="true"></span></div>
           <div class="thumb-row">
-            <div class="thumb"><img src="media/skillstorm/beat-fight.jpg" alt="Skillstorm fight"></div>
-            <div class="thumb"><img src="media/skillstorm/beat-builds.jpg" alt="Skillstorm skill builds"></div>
-            <div class="thumb"><img src="media/skillstorm/beat-storm.jpg" alt="Skillstorm storm zone"></div>
-            <div class="thumb"><img src="media/skillstorm/beat-forge.jpg" alt="Skillstorm forge"></div>
+            <div class="thumb"><img src="media/skillstorm/cine-bow.jpg" alt="Skillstorm bow volley in slow motion"></div>
+            <div class="thumb"><img src="media/skillstorm/fight-bow.jpg" alt="Skillstorm late-match fight from the game camera"></div>
+            <div class="thumb"><img src="media/skillstorm/fight-staff.jpg" alt="Skillstorm staff build casting a meteor"></div>
+            <div class="thumb"><img src="media/skillstorm/archipelago.jpg" alt="Skillstorm archipelago map"></div>
+            <div class="thumb"><img src="media/skillstorm/website.jpg" alt="Skillstorm website"></div>
           </div>
         </div>
         <div class="beast-body">
-          <div class="beast-rank legendary">⌬ LEGENDARY</div>
+          <div class="beast-rank">◆ RARE</div>
           <h3 class="beast-name">Skillstorm</h3>
           <div class="beast-studio">Personal project · Solo dev + AI agents</div>
           <p class="beast-desc">An auto-battle royale roguelite for PC and Android, forged with a pack of AI agents. They write most of the code; I design, direct the art and make the architecture calls. 660+ commits and ~70k lines of C++ since July, art from ComfyUI pipelines, and bots that fight like people.</p>
@@ -3186,17 +3257,17 @@ body[data-palette="frost"]{
         </div>
       </article>
 
-      <article class="beast legendary" data-reveal>
+      <article class="beast rare" data-reveal>
         <div class="beast-screens">
-          <div class="thumb wide"><img src="media/trophyrc/1.jpg" alt="TrophyRC crawler at the start gate"></div>
+          <div class="thumb wide"><img src="media/trophyrc/1.jpg" alt="TrophyRC key art: Off-Road Scale Journey"></div>
           <div class="thumb-row">
-            <div class="thumb"><img src="media/trophyrc/2.jpg" alt="TrophyRC workshop bench"></div>
-            <div class="thumb"><img src="media/trophyrc/3.jpg" alt="TrophyRC garage"></div>
-            <div class="thumb"><img src="media/trophyrc/4.jpg" alt="TrophyRC obstacle course"></div>
+            <div class="thumb"><img src="media/trophyrc/2.jpg" alt="TrophyRC crawler at the finish gate"></div>
+            <div class="thumb"><img src="media/trophyrc/3.jpg" alt="TrophyRC workshop bench"></div>
+            <div class="thumb"><img src="media/trophyrc/4.jpg" alt="TrophyRC garage"></div>
           </div>
         </div>
         <div class="beast-body">
-          <div class="beast-rank legendary">⌬ LEGENDARY</div>
+          <div class="beast-rank">◆ RARE</div>
           <h3 class="beast-name">TrophyRC</h3>
           <div class="beast-studio">CrossBridge · Montpellier · Sr. Gameplay Programmer</div>
           <p class="beast-desc">A 1:10 scale off-road RC trial for PC, where precision beats speed. I forged the workshop where crawlers are built and tuned, the UI architecture for mouse and gamepad, designer tools and base P2P replication with interpolation. My agent pipeline drags Figma screens into the game: a week of work now falls in about two hours, review included.</p>
@@ -3560,11 +3631,57 @@ body[data-palette="frost"]{
   </div>
 </section>
 
+<!-- ─── ACADEMY (EDUCATION) ─── -->
+<section class="campaign academy sec-pad" id="academy" data-screen-label="Education">
+  <div class="shell">
+    <div class="sec-head" data-reveal>
+      <div class="sec-label">04 · Education</div>
+      <h2 class="sec-title">Where I Was <em>Trained</em></h2>
+      <p class="sec-sub">Two degrees, both thesis papers on games, and extra courses in Unreal Engine and AI.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="chapter" data-reveal>
+        <div class="chapter-meta">
+          <div class="chapter-num">— Tome II —</div>
+          <div class="chapter-period">2015 ▸ 2017</div>
+          <div class="chapter-loc">Kazan · Russia</div>
+        </div>
+        <div class="chapter-body">
+          <h3>Master of Software <em>Engineering</em></h3>
+          <div class="chapter-org">Kazan Federal University — ITIS</div>
+          <ul class="chapter-points">
+            <li>Worked in the university's game development lab.</li>
+            <li>Took extra courses in Unreal Engine.</li>
+            <li>Wrote my master's dissertation on game development.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="chapter" data-reveal>
+        <div class="chapter-meta">
+          <div class="chapter-num">— Tome I —</div>
+          <div class="chapter-period">2011 ▸ 2015</div>
+          <div class="chapter-loc">Cheboksary · Russia</div>
+        </div>
+        <div class="chapter-body">
+          <h3>Bachelor of Information <em>Systems</em></h3>
+          <div class="chapter-org">Chuvash State University named after I. N. Ulyanov</div>
+          <ul class="chapter-points">
+            <li>Mathematical support and administration of information systems.</li>
+            <li>Wrote my bachelor's thesis on game development.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ─── TROPHIES ─── -->
 <section class="trophies sec-pad" id="trophies" data-screen-label="Awards">
   <div class="shell">
     <div class="sec-head" data-reveal>
-      <div class="sec-label">04 · Awards</div>
+      <div class="sec-label">05 · Awards</div>
       <h2 class="sec-title">Awards &amp; <em>Milestones</em></h2>
       <p class="sec-sub">Recognition earned — and a few goals still in progress.</p>
     </div>
@@ -3923,12 +4040,185 @@ body[data-palette="frost"]{
     shot.innerHTML = html;
     document.body.appendChild(shot);
     setTimeout(() => shot.remove(), 1500);
+    const light = document.createElement('div');
+    light.className = 'shot-light';
+    light.style.setProperty('--x', e.clientX + 'px');
+    light.style.setProperty('--y', e.clientY + 'px');
+    document.body.appendChild(light);
+    setTimeout(() => light.remove(), 200);
 
     cur.classList.remove('fire');
     void cur.offsetWidth; // restart the recoil animation on rapid fire
     cur.classList.add('fire');
   });
   cur.addEventListener('animationend', () => cur.classList.remove('fire'));
+})();
+
+// ─── Sound: dark ambience + campfire, a gunshot on every click ──
+// The beds are Freesound CC0 recordings looped seamlessly (media/audio:
+// fire.mp3 = #508110 by ahriik, ambient.mp3 = #402439 by Zat_Dude); the shots
+// are synthesised. Browsers only let a page make sound after a gesture, so the
+// fire starts on the first click or tap.
+(function(){
+  const btn  = document.querySelector('.sound-toggle');
+  const glow = document.querySelector('.ember-glow');
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!btn || !AC) { if (btn) btn.hidden = true; return; }
+
+  const KEY = 'codex-sound';
+  let enabled = true;
+  try { enabled = localStorage.getItem(KEY) !== 'off'; } catch (e) {}
+  let ctx = null, master = null, white = null, brown = null, fireTap = null, lastShot = -1;
+  const finePointer = window.matchMedia('(pointer: fine)');
+
+  function noiseBuffer(seconds, brownian){
+    const buf = ctx.createBuffer(1, Math.floor(ctx.sampleRate * seconds), ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    let last = 0;
+    for (let i = 0; i < d.length; i++){
+      const w = Math.random() * 2 - 1;
+      if (brownian){ last = (last + 0.02 * w) / 1.02; d[i] = last * 3.5; } else { d[i] = w; }
+    }
+    return buf;
+  }
+  function loop(buffer){
+    const s = ctx.createBufferSource();
+    s.buffer = buffer; s.loop = true; s.start();
+    return s;
+  }
+  // A looped recording at its own level; fetched only once sound starts.
+  function bed(url, level, tap){
+    fetch(url).then(r => r.arrayBuffer()).then(b => ctx.decodeAudioData(b)).then(buffer => {
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(0, ctx.currentTime);
+      g.gain.linearRampToValueAtTime(level, ctx.currentTime + 2.5);
+      const src = loop(buffer);
+      src.connect(g).connect(master);
+      if (tap) src.connect(tap);
+    }).catch(() => {});
+  }
+
+  function init(){
+    ctx = new AC();
+    const limiter = ctx.createDynamicsCompressor();
+    limiter.threshold.value = -10; limiter.ratio.value = 8;
+    limiter.connect(ctx.destination);
+    // init runs only with sound on, so the very first shot is already at full level
+    master = ctx.createGain(); master.gain.value = 1;
+    master.connect(limiter);
+    white = noiseBuffer(2, false);
+    brown = noiseBuffer(4, true);
+
+    // the glow listens to the fire's crackle band
+    const band = ctx.createBiquadFilter();
+    band.type = 'highpass'; band.frequency.value = 2500;
+    fireTap = ctx.createAnalyser(); fireTap.fftSize = 512;
+    band.connect(fireTap);
+    // quiet beds under the page; the shots stay on top
+    bed('media/audio/ambient.mp3', 0.08);
+    bed('media/audio/fire.mp3', 0.07, band);
+    flicker();
+  }
+
+  // Each frame: how far the crackle band jumps above its own running average ->
+  // how bright the floor glow is. Relative, so the steady fire bed never flares it.
+  let level = 0, avg = 0;
+  const samples = new Float32Array(512);
+  function flicker(){
+    requestAnimationFrame(flicker);
+    if (!glow || !enabled || ctx.state !== 'running') return;
+    fireTap.getFloatTimeDomainData(samples);
+    let sum = 0;
+    for (let i = 0; i < samples.length; i++) sum += samples[i] * samples[i];
+    const rms = Math.sqrt(sum / samples.length);
+    avg = avg ? avg * 0.97 + rms * 0.03 : rms;
+    // ~10% of frames jump past 1.8x the average (measured): those are the pops
+    const pop = Math.max(rms / (avg + 1e-6) - 1.8, 0);
+    level = Math.max(pop, level * 0.8); // fast attack, ember-like decay
+    glow.style.setProperty('--crackle', (1 + Math.min(level * 0.4, 0.8)).toFixed(2));
+  }
+
+  // Three guns, never the same one twice in a row:
+  // crack = band-passed noise sweep, thump = falling sine, tail = low rumble, echo = slap-back.
+  const GUNS = [
+    { name: 'shotgun', crack: [1900, 330, 0.22, 0.8], thump: [115, 34, 0.32, 0.75], tail: [700, 0.3, 0.95], echo: 0 },
+    { name: 'pistol',  crack: [3300, 750, 0.11, 0.6], thump: [175, 55, 0.16, 0.5],  tail: [1100, 0.14, 0.45], echo: 0 },
+    { name: 'rifle',   crack: [4300, 950, 0.08, 0.75], thump: [140, 45, 0.2, 0.55], tail: [1300, 0.18, 0.6], echo: 0.075 },
+  ];
+  function burst(t, gun, scale){
+    const [f0, f1, len, crackLevel] = gun.crack;
+    const crack = ctx.createBufferSource(); crack.buffer = white;
+    const bp = ctx.createBiquadFilter();
+    bp.type = 'bandpass'; bp.Q.value = 0.8;
+    bp.frequency.setValueAtTime(f0, t);
+    bp.frequency.exponentialRampToValueAtTime(f1, t + len * 0.75);
+    const cg = ctx.createGain();
+    cg.gain.setValueAtTime(0.0001, t);
+    cg.gain.exponentialRampToValueAtTime(crackLevel * scale, t + 0.002);
+    cg.gain.exponentialRampToValueAtTime(0.0001, t + len);
+    crack.connect(bp).connect(cg).connect(master);
+    crack.start(t, Math.random() * 1.5, len + 0.05);
+
+    const [p0, p1, plen, thumpLevel] = gun.thump;
+    const thump = ctx.createOscillator(); thump.type = 'sine';
+    thump.frequency.setValueAtTime(p0 * (0.95 + Math.random() * 0.1), t);
+    thump.frequency.exponentialRampToValueAtTime(p1, t + plen * 0.65);
+    const tg = ctx.createGain();
+    tg.gain.setValueAtTime(0.0001, t);
+    tg.gain.exponentialRampToValueAtTime(thumpLevel * scale, t + 0.004);
+    tg.gain.exponentialRampToValueAtTime(0.0001, t + plen);
+    thump.connect(tg).connect(master);
+    thump.start(t); thump.stop(t + plen + 0.02);
+  }
+  function shot(){
+    let i;
+    do { i = Math.floor(Math.random() * GUNS.length); } while (i === lastShot);
+    lastShot = i;
+    const gun = GUNS[i], t = ctx.currentTime;
+    burst(t, gun, 1);
+    if (gun.echo) burst(t + gun.echo, gun, 0.28);
+
+    const [cut, tailLevel, tailLen] = gun.tail;
+    const tail = ctx.createBufferSource(); tail.buffer = brown;
+    const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = cut;
+    const rg = ctx.createGain();
+    rg.gain.setValueAtTime(0.0001, t);
+    rg.gain.exponentialRampToValueAtTime(tailLevel, t + 0.015);
+    rg.gain.exponentialRampToValueAtTime(0.0001, t + tailLen);
+    tail.connect(lp).connect(rg).connect(master);
+    tail.start(t, Math.random() * 3, tailLen + 0.05);
+  }
+
+  function apply(){
+    btn.classList.toggle('muted', !enabled);
+    btn.setAttribute('aria-pressed', String(enabled));
+    btn.title = enabled ? 'Sound on' : 'Sound off';
+    if (!ctx) return;
+    if (enabled && ctx.state === 'suspended' && !document.hidden) ctx.resume();
+    master.gain.setTargetAtTime(enabled ? 1 : 0, ctx.currentTime, 0.25);
+  }
+
+  document.addEventListener('pointerdown', e => {
+    if (e.target.closest('.sound-toggle')) return;
+    if (!enabled) return;
+    if (!ctx) init();
+    apply();
+    if (e.pointerType === 'mouse' && e.button === 0 && finePointer.matches) shot();
+  }, true);
+  // A touch pointerdown is not a user activation; the click that follows it is.
+  document.addEventListener('click', () => { if (ctx && enabled) apply(); }, true);
+  btn.addEventListener('click', () => {
+    enabled = !enabled;
+    try { localStorage.setItem(KEY, enabled ? 'on' : 'off'); } catch (e) {}
+    if (enabled && !ctx) init();
+    apply();
+  });
+  // No fire crackling in a background tab.
+  document.addEventListener('visibilitychange', () => {
+    if (!ctx) return;
+    if (document.hidden) ctx.suspend(); else if (enabled) ctx.resume();
+  });
+  apply();
 })();
 
 // ─── Scroll reveal ───────────────────────────────────────────
@@ -3957,11 +4247,11 @@ body[data-palette="frost"]{
      └─────────────────────────────────────────────────────────┘ */
   const SPECS = [
     { skill:'Gameplay',     level:5, weapons:['GAS','Gameplay Framework','Game Features','Enhanced Input','Geometry Scripting','Metahuman','Mutable Customization'] },
-    { skill:'Multiplayer',  level:4, weapons:['Network Replication','Iris','Dedicated Server','EOS','Easy Anti-Cheat','Matchmaking','WebSocket','Quic Protocol','k8s','Agones','Docker','gRPC','Protobuf'] },
+    { skill:'Multiplayer',  level:5, weapons:['Network Replication','Iris','Dedicated Server','EOS','Easy Anti-Cheat','Matchmaking','WebSocket','Quic Protocol','k8s','Agones','Docker','gRPC','Protobuf'] },
     { skill:'AI',           level:3, weapons:['HTN','Behavior Tree','EQS','Navigation'] },
-    { skill:'UI',           level:3, weapons:['CommonUI','MVVM','UMG','Figma-to-UMG agent'] },
-    { skill:'Generative AI', level:3, weapons:['Coding agents (Claude Code, Codex)','ComfyUI (SAM3, LaMa)','FLUX LoRA','Model pipelines'] },
-    { skill:'Tooling',      level:2, weapons:['Editor Tools','Perforce / Git','CI/CD','Sentry','Grafana'] },
+    { skill:'UI',           level:4, weapons:['CommonUI','MVVM','UMG','Figma-to-UMG agent'] },
+    { skill:'Generative AI', level:4, weapons:['Coding agents (Claude Code, Codex)','ComfyUI (SAM3, LaMa)','FLUX LoRA','Model pipelines'] },
+    { skill:'Tooling',      level:3, weapons:['Editor Tools','Perforce / Git','CI/CD','Sentry','Grafana'] },
     { skill:'Leadership',   level:2, weapons:['Team Management'] },
     { skill:'Optimisation', level:1, weapons:['Unreal Insights','Gauntlet','Unit Testing','Automation Spec'] },
   ];
